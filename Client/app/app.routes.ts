@@ -4,5 +4,6 @@ import { Route } from '@angular/router';
 import {
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
 } from 'app-containers';
 

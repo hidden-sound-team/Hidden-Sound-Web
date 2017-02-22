@@ -26,6 +26,7 @@ import { AppConfig } from './app.config';
 import {
     HomeComponent,
     LoginComponent,
+    RegisterComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -52,7 +53,8 @@ const ROUTES: Route[] = [
 
     // Other routes
     { path: 'home', component: HomeComponent, data: { title: 'Home'} },
-    { path: 'login', component: LoginComponent, data: { title: 'Login'} },
+    { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+    { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
     { path: '**', redirectTo: 'not-found' }
 ];
 
@@ -67,6 +69,7 @@ const COMPONENTS = [
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
 
     // Directives
     RxContextDirective
