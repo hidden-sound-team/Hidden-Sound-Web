@@ -1,15 +1,15 @@
 ﻿<div class="row centered-form register content">
-    <form (ngSubmit)="registerUser()" role="form" class="col-xs-12">
+    <form  role="form" class="col-xs-12">
         <!-- Name -->
         <div class="row">
             <div class="col-xs-6">
                 <div class="form-group">
-                    <input type="text" [(ngModel)]="user.firstname" id="firstName" class="form-control input-md" placeholder="First Name">
+                    <input type="text"  id="firstName" class="form-control input-md" placeholder="First Name">
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
-                    <input type="text" [(ngModel)]="user.lastname" id="lastName" class="form-control input-md" placeholder="Last Name">
+                    <input type="text"  id="lastName" class="form-control input-md" placeholder="Last Name">
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-group">
-                    <input type="email" [(ngModel)]="user.email" id="email" class="form-control input-md" placeholder="Email Address">
+                    <input type="email"  id="email" class="form-control input-md" placeholder="Email Address">
                 </div>
             </div>
         </div>
@@ -27,27 +27,17 @@
         <div class="row">
             <div class="col-xs-6">
                 <div class="form-group">
-                    <input type="password" [(ngModel)]="user.password" id="password" class="form-control input-md" placeholder="Password">
+                    <input type="password"  id="password" class="form-control input-md" placeholder="Password">
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
-                    <input type="password" [(ngModel)]="user.password" id="passwordConfirmation" class="form-control input-md" placeholder="Confirm Password">
+                    <input type="password"  id="passwordConfirmation" class="form-control input-md" placeholder="Confirm Password">
                 </div>
             </div>
         </div>
         
-        <!-- Vendor? -->
-        <div class="row">
-            <div class="col-xs-12">
-                <input type="checkbox" [(ngModel)]="user.vendor"/>
-                <span> Sign up as a vendor?</span>
-                
-            </div>
-        </div>
-
-        <br />
-        <button type="submit" class="btn btn-info btn-block" [disabled]="!loginForm.form.valid">Register</button>
+        <button type="submit" class="btn btn-info btn-block" >Register</button>
     </form>
 
 </div>

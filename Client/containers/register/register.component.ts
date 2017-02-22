@@ -1,5 +1,16 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
-import { isBrowser } from 'angular2-universal';
+﻿import { Component, OnInit } from '@angular/core';
+import { isBrowser }         from 'angular2-universal';
+import { Router }            from '@angular/router';
+import { ApiGatewayService } from 'app-shared';
+import { URLSearchParams }   from '@angular/http';
+
+export class UserReg {
+    firstname:    string;
+    lastname:     string;
+    email:        string;
+    password:     string;
+    passwordConf: string;
+}
 
 @Component({
     selector: 'app-register',
@@ -7,10 +18,13 @@ import { isBrowser } from 'angular2-universal';
 })
 export class RegisterComponent implements OnInit {
     title: string = 'Register';
+    user: UserReg = new UserReg();
 
     // Use "constructor"s only for dependency injection
     constructor() {
     }
+
+
 
     registerUser() {
         
