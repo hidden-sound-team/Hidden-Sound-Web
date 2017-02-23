@@ -16,6 +16,7 @@ export class UserReg {
     selector: 'app-register',
     templateUrl: './register.component.html'
 })
+
 export class RegisterComponent implements OnInit {
     title: string = 'Register';
     user: UserReg = new UserReg();
@@ -23,8 +24,6 @@ export class RegisterComponent implements OnInit {
     // Use "constructor"s only for dependency injection
     constructor() {
     }
-
-
 
     registerUser() {
         

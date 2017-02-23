@@ -8,12 +8,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-
-using Microsoft.AspNetCore.NodeServices;
-using Microsoft.Extensions.Options;
 
 namespace HiddenSound.Web
 {

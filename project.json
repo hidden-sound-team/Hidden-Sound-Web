@@ -6,7 +6,10 @@
       ]
     },
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "nowarn": [
+      "8019"
+    ]
   },
   "dependencies": {
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
