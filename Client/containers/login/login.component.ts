@@ -17,7 +17,7 @@ export class UserModel {
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html'
+    template: require('./login.component.html')
 })
 
 export class LoginComponent implements OnInit {
@@ -36,19 +36,17 @@ export class LoginComponent implements OnInit {
         if (isBrowser) {
             this.oauthService.fetchTokenUsingPasswordFlowAndLoadUserProfile(this.user.username, this.user.password)
                 .then(() => {
-                    console.debug('successfully logged in');
+                    this.store.dispatch({
+                        type: LOGIN_USER,
+                        payload: this.user
+                    });
+
+                    this.router.navigate(['/']);
                 })
                 .catch((err) => {
                     console.error('error logging in', err);
                 });
         }
-        
-        this.store.dispatch({
-            type: LOGIN_USER,
-            payload: this.user
-        });
-
-        this.router.navigate(['/']);
     }
 
 }

@@ -53,13 +53,14 @@ NgModule({
         {
             provide: OAuthService,
             useFactory: (http: Http, config: AppConfig) => {
-                var service = new OAuthService(http);
-                service.clientId = 't4JTk7f8K3NmGv0q9X5Scs6I2';
+                let service = new OAuthService(http);
+                service.clientId = 'a5U4DvFf3r2N9Kg';
                 service.scope = 'openid profile email';
                 service.setStorage(localStorage);
                 service.issuer = config.getConfig('apiUrl');
-                service.dummyClientSecret = "";
+                service.dummyClientSecret = '';
                 service.loadDiscoveryDocument();
+                
                 return service;
             },
             deps: [Http, AppConfig]

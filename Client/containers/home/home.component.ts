@@ -3,7 +3,7 @@ import { isBrowser } from 'angular2-universal';
 
 @Component({
     selector: 'app-home',
-    templateUrl: './home.component.html'
+    template: require('./home.component.html')
 })
 export class HomeComponent implements OnInit {
 

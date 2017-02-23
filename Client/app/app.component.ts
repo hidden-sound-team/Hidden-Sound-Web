@@ -9,10 +9,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 
+import { Store } from '@ngrx/store';
+import { AppState, LOGIN_USER } from 'app';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { UserModel } from 'app-containers';
+
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+    template: require('./app.component.html'),
+    styles: [require('./app.component.css')],
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -23,14 +28,23 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public meta: Meta
+        public meta: Meta, 
+        private store: Store<AppState>, private oauthService: OAuthService
     ) {
         
     }
     
     ngOnInit() {
-        // Change "Title" on every navigationEnd event
-        // Titles come from the data.title property on all Routes (see app.routes.ts)
+        if (isBrowser && this.oauthService.hasValidAccessToken()) {
+            let user = new UserModel();
+            user.username = 'test state reload';
+            this.store.dispatch({
+                type: LOGIN_USER,
+                payload: user
+            });
+            
+        }
+        
         this.changeTitleOnNavigation();
         console.log('oninit'); 
     }

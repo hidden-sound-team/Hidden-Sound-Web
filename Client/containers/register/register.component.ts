@@ -14,7 +14,7 @@ export class UserReg {
 
 @Component({
     selector: 'app-register',
-    templateUrl: './register.component.html'
+    template: require('./register.component.html')
 })
 
 export class RegisterComponent implements OnInit {
