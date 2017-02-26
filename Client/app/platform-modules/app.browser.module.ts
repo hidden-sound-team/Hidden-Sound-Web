@@ -10,7 +10,6 @@ import { AppComponent } from 'app';
 // Universal : XHR Cache 
 import { CacheService, StorageService, BrowserStorage } from 'app-shared';
 
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { Http } from '@angular/http';
 import { AppConfig } from 'app';
 
@@ -35,8 +34,7 @@ NgModule({
         AppCommonModule,
 
         // NgRx
-        StoreDevtoolsModule.instrumentOnlyWithExtension(),
-        OAuthModule.forRoot()
+        StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
     providers: [
         // Angular -Universal- providers below ::
@@ -49,22 +47,7 @@ NgModule({
 
         // We're using Dependency Injection here to use a Browser specific "Storage" (localStorage here) through the empty shell class StorageService
         // The server will use a different one, since window & localStorage do not exist there
-        { provide: StorageService, useClass: BrowserStorage },
-        {
-            provide: OAuthService,
-            useFactory: (http: Http, config: AppConfig) => {
-                let service = new OAuthService(http);
-                service.clientId = 'a5U4DvFf3r2N9Kg';
-                service.scope = 'openid profile email';
-                service.setStorage(localStorage);
-                service.issuer = config.getConfig('apiUrl');
-                service.dummyClientSecret = '';
-                service.loadDiscoveryDocument();
-                
-                return service;
-            },
-            deps: [Http, AppConfig]
-        }
+        { provide: StorageService, useClass: BrowserStorage }
         
         // Universal concept. Uncomment this if you want to Turn OFF auto preboot complete
         // { provide: AUTO_PREBOOT, useValue: false } 

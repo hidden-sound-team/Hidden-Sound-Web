@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class AppConfig {
 
-    private config: Object = null;
+    private config: Object;
 
     constructor(private http: Http) {
 

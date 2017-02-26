@@ -3,11 +3,11 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
 import { AppState, LOGIN_USER } from 'app';
-import { ApiGatewayService } from 'app-shared';
 
 import { URLSearchParams } from '@angular/http';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { isBrowser } from 'angular2-universal';
+
+import { AuthService } from 'app-shared';
 
 // Demo model
 export class UserModel {
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
     user: UserModel = new UserModel();
 
-    constructor(private router: Router, private store: Store<AppState>, private oauthService: OAuthService) {}
+    constructor(private router: Router, private store: Store<AppState>, private authService: AuthService) {}
 
     // Here you want to handle anything with @Input()'s @Output()'s
     // Data retrieval / etc - this is when the Component is "ready" and wired up
@@ -33,20 +33,17 @@ export class LoginComponent implements OnInit {
     }
 
     submitUser() {
-        if (isBrowser) {
-            this.oauthService.fetchTokenUsingPasswordFlowAndLoadUserProfile(this.user.username, this.user.password)
-                .then(() => {
-                    this.store.dispatch({
-                        type: LOGIN_USER,
-                        payload: this.user
-                    });
-
-                    this.router.navigate(['/']);
-                })
-                .catch((err) => {
-                    console.error('error logging in', err);
+        this.authService.login(this.user.username, this.user.password)
+            .then(result => {
+                this.store.dispatch({
+                    type: LOGIN_USER,
+                    payload: result
                 });
-        }
-    }
 
+
+                this.router.navigate(['/']);
+            }).catch(error => {
+            
+            });
+    }
 }

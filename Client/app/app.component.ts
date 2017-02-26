@@ -11,7 +11,7 @@ import 'rxjs/add/operator/filter';
 
 import { Store } from '@ngrx/store';
 import { AppState, LOGIN_USER } from 'app';
-import { OAuthService } from 'angular-oauth2-oidc';
+
 import { UserModel } from 'app-containers';
 
 @Component({
@@ -29,22 +29,12 @@ export class AppComponent implements OnInit, OnDestroy {
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public meta: Meta, 
-        private store: Store<AppState>, private oauthService: OAuthService
+        private store: Store<AppState>
     ) {
         
     }
     
     ngOnInit() {
-        if (isBrowser && this.oauthService.hasValidAccessToken()) {
-            let user = new UserModel();
-            user.username = 'test state reload';
-            this.store.dispatch({
-                type: LOGIN_USER,
-                payload: user
-            });
-            
-        }
-        
         this.changeTitleOnNavigation();
         console.log('oninit'); 
     }

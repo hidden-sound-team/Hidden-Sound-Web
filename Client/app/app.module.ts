@@ -20,7 +20,7 @@ import { BaseSharedModule, AppComponent, appReducer } from 'app';
 // Component imports
 import { NavMenuComponent } from 'app-components';
 
-import { AppConfig } from './app.config';
+import { AppConfig } from 'app';
 
 // Container (aka: "pages") imports
 import {
@@ -32,9 +32,12 @@ import {
 // Provider (aka: "shared" | "services") imports
 import {
     HttpCacheService, CacheService, // Universal : XHR Cache
-    ApiGatewayService, 
     RxContextDirective,
-    Meta
+    Meta,
+
+    AuthTokenService,
+    ApiHttpService,
+    AuthService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -55,6 +58,7 @@ const ROUTES: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
+    { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
 
@@ -76,12 +80,14 @@ const COMPONENTS = [
 ];
 
 const PROVIDERS = [
-    // put shared services here
+    Meta, // MetaService is a cross platform way to change title, and update anything in the <head>
+
     CacheService,
     HttpCacheService,
-    ApiGatewayService,
     
-    Meta // MetaService is a cross platform way to change title, and update anything in the <head>
+    AuthTokenService,
+    ApiHttpService,
+    AuthService
 ];
 
 
@@ -114,8 +120,8 @@ const PROVIDERS = [
     ...COMPONENTS
   ],
   providers: [
-      ...PROVIDERS,
       AppConfig,
+      ...PROVIDERS,
       { provide: APP_INITIALIZER, useFactory: (config: AppConfig) => () => config.load(), deps: [AppConfig], multi: true }
   ]
 })

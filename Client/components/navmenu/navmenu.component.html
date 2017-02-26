@@ -14,7 +14,7 @@
         <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
             <a [routerLink]="['/register']">Register</a>
         </li>
-        <li *ngIf="loggedIn$" (click)="logout()">
+        <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']">
             <a [routerLink]="['/account']">{{ user$.username }}</a>
         </li>
         <li *ngIf="loggedIn$" (click)="logout()">

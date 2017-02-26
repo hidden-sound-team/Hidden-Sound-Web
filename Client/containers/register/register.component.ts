@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { isBrowser }         from 'angular2-universal';
 import { Router }            from '@angular/router';
-import { ApiGatewayService } from 'app-shared';
 import { URLSearchParams }   from '@angular/http';
 
 export class UserReg {

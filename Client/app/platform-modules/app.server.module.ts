@@ -11,8 +11,6 @@ import { AppComponent } from 'app';
 // Universal : XHR Cache 
 import { CacheService, StorageService, ServerStorage } from 'app-shared';
 
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-
 export function getRequest() {
   return Zone.current.get('req') || {};
 }
@@ -41,9 +39,8 @@ export function getResponse() {
         { provide: 'res', useFactory: getResponse },
 
         // We're using Dependency Injection here to use a Server/Node specific "Storage" through the empty shell class StorageService
-        { provide: StorageService, useClass: ServerStorage },
+        { provide: StorageService, useClass: ServerStorage }
         
-        { provide: OAuthService, useFactory: () => {} }
         // Other providers you want to add that you don't want shared in "Common" but are browser only
     ]
 })

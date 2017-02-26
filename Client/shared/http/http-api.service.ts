@@ -10,8 +10,9 @@ import { Http, Response, RequestOptions, RequestMethod, URLSearchParams } from '
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { AppConfig } from '../../app/app.config';
+import { AuthTokenService } from '../app/auth-token.service';
 
-export class ApiGatewayOptions {
+export class ApiHttpOptions {
     method: RequestMethod;
     url: string;
     headers: any = {};
@@ -20,7 +21,7 @@ export class ApiGatewayOptions {
 }
 
 @Injectable()
-export class ApiGatewayService {
+export class ApiHttpService {
 
     // Define the internal Subject we'll use to push the command count
     private pendingCommandsSubject = new Subject<number>();
@@ -29,7 +30,7 @@ export class ApiGatewayService {
     // Provide the *public* Observable that clients can subscribe to
     private pendingCommands$: Observable<number>;
 
-    constructor(private http: Http, private router: Router, private config: AppConfig) {
+    constructor(private http: Http, private router: Router, private config: AppConfig, private authToken: AuthTokenService) {
         this.pendingCommands$ = this.pendingCommandsSubject.asObservable();
     }
 
@@ -37,7 +38,7 @@ export class ApiGatewayService {
     // -------------------
 
     get(url: string, params?: any): Observable<Response> {
-        let options = new ApiGatewayOptions();
+        let options = new ApiHttpOptions();
 
         this.addBearerToken(options);
 
@@ -49,11 +50,25 @@ export class ApiGatewayService {
             data = params;
             params = {};
         }
-        let options = new ApiGatewayOptions();
+        let options = new ApiHttpOptions();
         options.method = RequestMethod.Post;
         options.url = this.createApiUrl(url);
         options.params = params;
-        options.data = data;
+        options.data = JSON.stringify(data);
+
+        this.addContentType(options, false);
+
+        return this.request(options);
+    }
+
+    postForm(url: string, data?: any): Observable<Response> {
+        let options = new ApiHttpOptions();
+        options.method = RequestMethod.Post;
+        options.url = this.createApiUrl(url);
+        options.data = this.buildUrlSearchParams(data);
+
+        this.addContentType(options, true);
+
         return this.request(options);
     }
 
@@ -62,19 +77,25 @@ export class ApiGatewayService {
             data = params;
             params = {};
         }
-        let options = new ApiGatewayOptions();
+        let options = new ApiHttpOptions();
         options.method = RequestMethod.Put;
         options.url = this.createApiUrl(url);
         options.params = params;
-        options.data = data;
+        options.data = JSON.stringify(data);
+
+        this.addContentType(options, false);
+
         return this.request(options);
     }
 
     delete(url: string, params?: any): Observable<Response> {
-        let options = new ApiGatewayOptions();
+        let options = new ApiHttpOptions();
         options.method = RequestMethod.Delete;
         options.url = this.createApiUrl(url);
         options.params = params;
+
+        this.addContentType(options, false);
+
         return this.request(options);
     }
 
@@ -86,7 +107,7 @@ export class ApiGatewayService {
         return this.config.getConfig('apiUrl') + path;
     }
 
-    private request(options: ApiGatewayOptions): Observable<any> {
+    private request(options: ApiHttpOptions): Observable<any> {
         options.method = (options.method || RequestMethod.Get);
         options.url = (options.url || '');
         options.headers = (options.headers || {});
@@ -95,7 +116,6 @@ export class ApiGatewayService {
 
         this.interpolateUrl(options);
         this.addXsrfToken(options);
-        this.addContentType(options);
         this.addBearerToken(options);
 
         let requestOptions = new RequestOptions();
@@ -103,7 +123,7 @@ export class ApiGatewayService {
         requestOptions.url = options.url;
         requestOptions.headers = options.headers;
         requestOptions.search = this.buildUrlSearchParams(options.params);
-        requestOptions.body = JSON.stringify(options.data);
+        requestOptions.body = options.data;
 
         let isCommand = (options.method !== RequestMethod.Get);
 
@@ -116,30 +136,29 @@ export class ApiGatewayService {
                 this.handleError(error);
                 return Observable.throw(error);
             })
-            .map(this.unwrapHttpValue)
             .catch((error: any) => {
-                return Observable.throw(this.unwrapHttpError(error));
+                return Observable.throw(error);
             })
             .finally(() => {
                 if (isCommand) {
                     this.pendingCommandsSubject.next(--this.pendingCommandCount);
                 }
             });
-
+            
         return stream;
     }
 
 
-    private addContentType(options: ApiGatewayOptions): ApiGatewayOptions {
+    private addContentType(options: ApiHttpOptions, form: boolean): ApiHttpOptions {
         if (options.method !== RequestMethod.Get) {
-            options.headers['Content-Type'] = 'application/json; charset=UTF-8';
+            options.headers['Content-Type'] = form ? 'application/x-www-form-urlencoded' : 'application/json; charset=UTF-8';
         }
         return options;
     }
 
-    private addBearerToken(options: ApiGatewayOptions): ApiGatewayOptions {
-        if (sessionStorage.getItem('accessToken')) {
-            options.headers.Authorization = 'Bearer ' + sessionStorage.getItem('accessToken');
+    private addBearerToken(options: ApiHttpOptions): ApiHttpOptions {
+        if (this.authToken.getAccessToken()) {
+            options.headers.Authorization = 'Bearer ' + this.authToken.getAccessToken();
         }
         return options;
     }
@@ -150,7 +169,7 @@ export class ApiGatewayService {
         return value;
     }
 
-    private addXsrfToken(options: ApiGatewayOptions): ApiGatewayOptions {
+    private addXsrfToken(options: ApiHttpOptions): ApiHttpOptions {
         let xsrfToken = this.getXsrfCookie();
         if (xsrfToken) {
             options.headers['X-XSRF-TOKEN'] = xsrfToken;
@@ -167,7 +186,7 @@ export class ApiGatewayService {
         }
     }
 
-    private addCors(options: ApiGatewayOptions): ApiGatewayOptions {
+    private addCors(options: ApiHttpOptions): ApiHttpOptions {
         options.headers['Access-Control-Allow-Origin'] = '*';
         return options;
     }
@@ -182,7 +201,7 @@ export class ApiGatewayService {
         return searchParams;
     }
 
-    private interpolateUrl(options: ApiGatewayOptions): ApiGatewayOptions {
+    private interpolateUrl(options: ApiHttpOptions): ApiHttpOptions {
         options.url = options.url.replace(/:([a-zA-Z]+[\w-]*)/g, ($0, token) => {
             // Try to move matching token from the params collection.
             if (options.params.hasOwnProperty(token)) {

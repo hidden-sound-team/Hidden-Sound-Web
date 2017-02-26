@@ -14,7 +14,6 @@
 */
 
 export * from './app.component';
-export * from './app.routes';
 export * from './app.config';
 
 export * from './state/app.reducer';
