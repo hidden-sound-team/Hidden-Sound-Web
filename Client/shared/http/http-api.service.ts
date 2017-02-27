@@ -42,7 +42,7 @@ export class ApiHttpService {
 
         this.addBearerToken(options);
 
-        return this.http.get(this.createApiUrl(url), options);
+        return this.http.get(this.config.getConfig('apiUrl') + url, options);
     }
 
     post(url: string, data?: any, params?: any): Observable<Response> {
@@ -52,7 +52,7 @@ export class ApiHttpService {
         }
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Post;
-        options.url = this.createApiUrl(url);
+        options.url = url;
         options.params = params;
         options.data = JSON.stringify(data);
 
@@ -64,7 +64,7 @@ export class ApiHttpService {
     postForm(url: string, data?: any): Observable<Response> {
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Post;
-        options.url = this.createApiUrl(url);
+        options.url = url;
         options.data = this.buildUrlSearchParams(data);
 
         options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -79,7 +79,7 @@ export class ApiHttpService {
         }
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Put;
-        options.url = this.createApiUrl(url);
+        options.url = url;
         options.params = params;
         options.data = JSON.stringify(data);
 
@@ -91,7 +91,7 @@ export class ApiHttpService {
     delete(url: string, params?: any): Observable<Response> {
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Delete;
-        options.url = this.createApiUrl(url);
+        options.url = url;
         options.params = params;
 
         this.addContentType(options);
@@ -103,12 +103,7 @@ export class ApiHttpService {
     // Internal methods
     // --------------------
 
-    private createApiUrl(path: string): string {
-        return this.config.getConfig('apiUrl') + path;
-    }
-
     private request(options: ApiHttpOptions): Observable<any> {
-        console.log(options.url);
         options.method = (options.method || RequestMethod.Get);
         options.url = (options.url || '');
         options.headers = (options.headers || {});
@@ -121,6 +116,8 @@ export class ApiHttpService {
         this.addXsrfToken(options);
         this.addBearerToken(options);
 
+        options.url = this.config.getConfig('apiUrl') + options.url;
+
         console.log(options.url);
 
         let requestOptions = new RequestOptions();
@@ -129,8 +126,6 @@ export class ApiHttpService {
         requestOptions.headers = options.headers;
         requestOptions.search = this.buildUrlSearchParams(options.params);
         requestOptions.body = options.data;
-
-        console.log(requestOptions.url);
 
         let isCommand = (options.method !== RequestMethod.Get);
 
@@ -151,9 +146,6 @@ export class ApiHttpService {
                     this.pendingCommandsSubject.next(--this.pendingCommandCount);
                 }
             });
-            
-        console.log(options.url);
-        console.log(requestOptions.url);
 
         return stream;
     }
