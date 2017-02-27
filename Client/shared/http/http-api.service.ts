@@ -108,22 +108,29 @@ export class ApiHttpService {
     }
 
     private request(options: ApiHttpOptions): Observable<any> {
+        console.log(options.url);
         options.method = (options.method || RequestMethod.Get);
         options.url = (options.url || '');
         options.headers = (options.headers || {});
         options.params = (options.params || {});
         options.data = (options.data || {});
 
+        console.log(options.url);
+
         this.interpolateUrl(options);
         this.addXsrfToken(options);
         this.addBearerToken(options);
 
+        console.log(options.url);
+
         let requestOptions = new RequestOptions();
         requestOptions.method = options.method;
-        // requestOptions.url = options.url;
+        requestOptions.url = options.url;
         requestOptions.headers = options.headers;
         requestOptions.search = this.buildUrlSearchParams(options.params);
         requestOptions.body = options.data;
+
+        console.log(requestOptions.url);
 
         let isCommand = (options.method !== RequestMethod.Get);
 
@@ -145,6 +152,9 @@ export class ApiHttpService {
                 }
             });
             
+        console.log(options.url);
+        console.log(requestOptions.url);
+
         return stream;
     }
 
