@@ -120,7 +120,7 @@ export class ApiHttpService {
 
         let requestOptions = new RequestOptions();
         requestOptions.method = options.method;
-        requestOptions.url = options.url;
+        // requestOptions.url = options.url;
         requestOptions.headers = options.headers;
         requestOptions.search = this.buildUrlSearchParams(options.params);
         requestOptions.body = options.data;
