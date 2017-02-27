@@ -22,7 +22,7 @@ export class UserService {
         return new Promise((resolve, reject) => {
             this.apiHttpService.postForm('/Application/User/Register', request)
                 .subscribe(response => {
-                    resolve();
+                    resolve(response.text());
                 }, error => {
                     reject(error);
                 });

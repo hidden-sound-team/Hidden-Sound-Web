@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
@@ -23,26 +23,44 @@ export class UserModel {
 export class LoginComponent implements OnInit {
 
     user: UserModel = new UserModel();
+    errorMessage: string;
+    verifyEmail: string;
+    verifyEmailUrl: {};
+    returnUrl: string;
 
-    constructor(private router: Router, private store: Store<AppState>, private authService: AuthService) {}
+    constructor(private router: Router, private route: ActivatedRoute, private store: Store<AppState>, private authService: AuthService) {}
 
-    // Here you want to handle anything with @Input()'s @Output()'s
-    // Data retrieval / etc - this is when the Component is "ready" and wired up
     ngOnInit () {
-
+        if (isBrowser){
+            this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ? decodeURIComponent(this.route.snapshot.queryParams['returnUrl']) : '/';
+        }
+        
+        this.store.select('verifyEmail').subscribe(verifyEmail => {
+            this.verifyEmail = '';
+            if(verifyEmail){
+                this.verifyEmail = "Verification email sent. Please confirm your email before logging in.";
+                this.verifyEmailUrl = verifyEmail;
+            }
+        });
     }
 
     submitUser() {
         this.authService.login(this.user.username, this.user.password)
             .then(result => {
-                this.store.dispatch({
-                    type: LOGIN_USER,
-                    payload: result
-                });
+                this.errorMessage = '';
+                this.verifyEmail = '';
 
-                this.router.navigate(['/']);
+                this.store.dispatch({ type: LOGIN_USER, payload: result });
+
+                this.router.navigate([ this.returnUrl ]);
             }).catch(error => {
-                
+                this.errorMessage = '';
+                this.verifyEmail = '';
+                if((<string>error).includes('confirmed email')){
+                    this.verifyEmail = error;
+                } else {
+                    this.errorMessage = error;
+                }
             });
     }
 }

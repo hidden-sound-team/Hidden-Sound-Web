@@ -56,7 +56,7 @@ export class ApiHttpService {
         options.params = params;
         options.data = JSON.stringify(data);
 
-        this.addContentType(options, false);
+        this.addContentType(options);
 
         return this.request(options);
     }
@@ -67,7 +67,7 @@ export class ApiHttpService {
         options.url = this.createApiUrl(url);
         options.data = this.buildUrlSearchParams(data);
 
-        this.addContentType(options, true);
+        options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
         return this.request(options);
     }
@@ -83,7 +83,7 @@ export class ApiHttpService {
         options.params = params;
         options.data = JSON.stringify(data);
 
-        this.addContentType(options, false);
+        this.addContentType(options);
 
         return this.request(options);
     }
@@ -94,7 +94,7 @@ export class ApiHttpService {
         options.url = this.createApiUrl(url);
         options.params = params;
 
-        this.addContentType(options, false);
+        this.addContentType(options);
 
         return this.request(options);
     }
@@ -149,9 +149,9 @@ export class ApiHttpService {
     }
 
 
-    private addContentType(options: ApiHttpOptions, form: boolean): ApiHttpOptions {
+    private addContentType(options: ApiHttpOptions): ApiHttpOptions {
         if (options.method !== RequestMethod.Get) {
-            options.headers['Content-Type'] = form ? 'application/x-www-form-urlencoded' : 'application/json; charset=UTF-8';
+            options.headers['Content-Type'] = 'application/json; charset=UTF-8';
         }
         return options;
     }

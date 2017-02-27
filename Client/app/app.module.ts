@@ -20,13 +20,14 @@ import { BaseSharedModule, AppComponent, appReducer } from 'app';
 // Component imports
 import { NavMenuComponent } from 'app-components';
 
-import { AppConfig } from 'app';
+import { AppConfig, AuthenticatedGuard } from 'app';
 
 // Container (aka: "pages") imports
 import {
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DevicesComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -59,6 +60,7 @@ const ROUTES: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
+    { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
@@ -77,7 +79,8 @@ const COMPONENTS = [
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DevicesComponent
 ];
 
 const PROVIDERS = [
@@ -89,7 +92,9 @@ const PROVIDERS = [
     AuthTokenService,
     ApiHttpService,
     AuthService,
-    UserService
+    UserService,
+
+    AuthenticatedGuard
 ];
 
 

@@ -1,4 +1,11 @@
 ﻿<form (ngSubmit)="submitUser()" #loginForm="ngForm">
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+    </div>
+    <div *ngIf="verifyEmail" class="alert alert-warning">
+        {{verifyEmail}}
+        <div style="overflow: hidden; text-overflow: ellipsis;">DEV: <a *ngIf="verifyEmailUrl" href="{{verifyEmailUrl}}">{{verifyEmailUrl}}</a></div>
+    </div>
     <div class="form-group">
         <label for="username">Username:</label>
         <input [(ngModel)]="user.username" name="username" class="form-control" required />

@@ -10,6 +10,7 @@ import { List } from 'immutable';
 export interface AppState {
     loggedIn: boolean;
     loggedInUser: {};
+    verifyEmail: string;
 }
 
 // An Immutable.js Record implementation of the AppState interface.
@@ -21,5 +22,7 @@ export interface AppStateRecord extends TypedRecord<AppStateRecord>, AppState {Â
 // An Immutable.js record factory for the record.
 export const appStateFactory = makeTypedFactory<AppState, AppStateRecord>({
     loggedIn : false,
-    loggedInUser: {}
+    loggedInUser: {},
+    verifyEmail: ""
 });
+

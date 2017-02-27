@@ -39,12 +39,13 @@ export class AuthService {
 
         return new Promise<User>((resolve, reject) => {
             this.apiService.postForm('/OAuth/Token', request)
-                .map(r => <OAuthTokenResponse>r.json())
-                .subscribe(result => {
+                .subscribe(r => {
+                    let result = <OAuthTokenResponse>r.json();
                     this.authTokenService.setAccessToken(result.access_token);
 
                     let user = new User();
                     user.username = username;
+
                     resolve(user);
                     /*
                     this.apiService.get('/OAuth/UserInfo')
@@ -59,7 +60,12 @@ export class AuthService {
                         */
                 },
                 error => {
-                    reject(error);
+                    let jsonError = error.json();
+                    if(jsonError.error == 'invalid_grant'){
+                        reject(jsonError.error_description);
+                    } else {
+                        reject("An unknown error has occured");
+                    }
                 });
         });
     }

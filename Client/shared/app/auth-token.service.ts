@@ -17,4 +17,8 @@ export class AuthTokenService {
     removeAccessToken() {
         this.storageService.removeItem('access_token');
     }
+
+    hasValidAccessToken(): boolean {
+        return this.storageService.getItem('access_token');
+    }
 }

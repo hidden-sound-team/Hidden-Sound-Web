@@ -12,6 +12,8 @@ import { AppStateRecord, appStateFactory } from 'app';
 // Action definitions
 export const LOGIN_USER = 'LOGIN_USER'; 
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const REGISTER_USER = 'REGISTER_USER';
+export const VERIFY_EMAIL = 'VERIFY_EMAIL';
 
 // The reducer function. Receives actions and produces new application states.
 export const appReducer: ActionReducer<AppStateRecord> = (state = makeInitialState(), action: Action) => { 
@@ -19,10 +21,13 @@ export const appReducer: ActionReducer<AppStateRecord> = (state = makeInitialSta
   switch (action.type) {
 
     case LOGIN_USER:
-      return state.merge({ loggedInUser: action.payload, loggedIn: true });
+      return state.merge({ loggedInUser: action.payload, loggedIn: true, verifyEmail: "" });
 
     case LOGOUT_USER:
       return state.merge(makeInitialState());
+
+    case REGISTER_USER:
+      return state.merge({ verifyEmail: action.payload });
 
     default:
       return state;
@@ -33,7 +38,9 @@ export const appReducer: ActionReducer<AppStateRecord> = (state = makeInitialSta
 function makeInitialState() {
   return appStateFactory({
       loggedIn: false,
-      loggedInUser: {}
+      loggedInUser: {},
+      verifyEmail: ""
   });
 }
+
 

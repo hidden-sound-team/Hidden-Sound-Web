@@ -1,8 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { isBrowser }         from 'angular2-universal';
-import { Router }            from '@angular/router';
-import { URLSearchParams }   from '@angular/http';
+import { isBrowser } from 'angular2-universal';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { URLSearchParams } from '@angular/http';
 import { UserService, RegisterRequestModel } from 'app-shared';
+import { AppState, REGISTER_USER } from 'app';
 
 export class UserReg {
     firstName:    string;
@@ -22,7 +24,7 @@ export class RegisterComponent implements OnInit {
     user: UserReg = new UserReg();
     emailSent: boolean = false;
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private router: Router, private store: Store<AppState>) { }
 
     registerUser() {
         let request = new RegisterRequestModel();
@@ -33,8 +35,12 @@ export class RegisterComponent implements OnInit {
         request.confirmPassword = this.user.passwordConf;
 
         this.userService.register(request)
-            .then(() => {
-                this.emailSent = true;
+            .then(url => {
+                this.store.dispatch({
+                    type: REGISTER_USER,
+                    payload: url
+                });
+                this.router.navigate(['/login']);
             });
     }
 
