@@ -2,10 +2,11 @@
 import { isBrowser }         from 'angular2-universal';
 import { Router }            from '@angular/router';
 import { URLSearchParams }   from '@angular/http';
+import { UserService, RegisterRequestModel } from 'app-shared';
 
 export class UserReg {
-    firstname:    string;
-    lastname:     string;
+    firstName:    string;
+    lastName:     string;
     email:        string;
     password:     string;
     passwordConf: string;
@@ -19,17 +20,24 @@ export class UserReg {
 export class RegisterComponent implements OnInit {
     title: string = 'Register';
     user: UserReg = new UserReg();
+    emailSent: boolean = false;
 
-    // Use "constructor"s only for dependency injection
-    constructor() {
-    }
+    constructor(private userService: UserService) { }
 
     registerUser() {
-        
+        let request = new RegisterRequestModel();
+        request.firstName = this.user.firstName;
+        request.lastName = this.user.lastName;
+        request.email = this.user.email;
+        request.password = this.user.password;
+        request.confirmPassword = this.user.passwordConf;
+
+        this.userService.register(request)
+            .then(() => {
+                this.emailSent = true;
+            });
     }
 
-    // Here you want to handle anything with @Input()'s @Output()'s
-    // Data retrieval / etc - this is when the Component is "ready" and wired up
     ngOnInit() {
 
     }

@@ -40,10 +40,9 @@ export class LoginComponent implements OnInit {
                     payload: result
                 });
 
-
                 this.router.navigate(['/']);
             }).catch(error => {
-            
+                
             });
     }
 }

@@ -37,7 +37,8 @@ import {
 
     AuthTokenService,
     ApiHttpService,
-    AuthService
+    AuthService,
+    UserService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -68,15 +69,15 @@ const PIPES = [
 ];
 
 const COMPONENTS = [
+    // Directives
+    RxContextDirective,
+
     // put shared components here
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
-
-    // Directives
-    RxContextDirective
+    RegisterComponent
 ];
 
 const PROVIDERS = [
@@ -87,7 +88,8 @@ const PROVIDERS = [
     
     AuthTokenService,
     ApiHttpService,
-    AuthService
+    AuthService,
+    UserService
 ];
 
 
