@@ -6,9 +6,6 @@
         <li [routerLinkActive]="['link-active']">
             <a [routerLink]="['/home']">Home</a>
         </li>
-        <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/devices']">Devices</a>
-        </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
