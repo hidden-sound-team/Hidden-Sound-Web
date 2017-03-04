@@ -27,7 +27,6 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DevicesComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
