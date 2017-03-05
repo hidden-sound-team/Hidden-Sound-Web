@@ -27,6 +27,44 @@ export class RegisterComponent implements OnInit {
     emailSent: boolean = false;
     regForm: FormGroup;
 
+    formErrors = {
+        'fname': '',
+        'lname': '',
+        'emailaddress': '',
+        'pword': '',
+        'pwordconf': ''
+    };
+
+    validationMessages = {
+        'fname': {
+            'required':     'First name is required.',
+            'minlength':    'First name must be at least 2 characters long',
+            'maxlength':    'First name can be no longer than 24 characters.'
+        },
+        'lname': {
+            'required':     'Last name is required.',
+            'minlength':    'Last name must be at least 2 characters long',
+            'maxlength':    'Last name can be no longer than 24 characters.'
+        },
+        'emailaddress': {
+            'required':     'Email address is required.',
+            'minlength':    'Email address must be at least 7 characters long.',
+            'maxlength':    'Email address can be no longer than 24 characters.',
+            'pattern':      'Not a valid email.'
+        },
+        'pword': {
+            'required':     'Password is required.',
+            'minlength':    'Password must be at least 8 characters long',
+            'maxlength':    'Password can be no longer than 24 characters.'
+        },
+        'pwordconf': {
+            'required':     'Password is required.',
+            'minlength':    'Password must be at least 8 characters long',
+            'maxlength':    'Password can be no longer than 24 characters.'
+        }
+    }
+
+
     constructor(private userService: UserService, private router: Router, private store: Store<AppState>,
         private fb: FormBuilder) { }
 
@@ -66,7 +104,7 @@ export class RegisterComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(7),
                 Validators.maxLength(24),
-                Validators.pattern( '@' )
+                Validators.pattern( '^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$' )
                 ]
             ],
             'pword': [this.user.password, [
@@ -94,6 +132,7 @@ export class RegisterComponent implements OnInit {
 
         const form = this.regForm;
 
+        // tslint:disable-next-line:forin
         for (const field in this.formErrors) {
             // clear previous error message (if any)
             this.formErrors[field] = '';
@@ -101,50 +140,14 @@ export class RegisterComponent implements OnInit {
 
             if (control && control.dirty && !control.valid) {
                 const messages = this.validationMessages[field];
+                // tslint:disable-next-line:forin
                 for (const key in control.errors) {
                     this.formErrors[field] += messages[key] + ' ';
                 }
             }
         }
     }
-
-    formErrors = {
-        'fname': '',
-        'lname': '',
-        'emailaddress': '',
-        'pword': '',
-        'pwordconf': ''
-    };
-
-    validationMessages = {
-        'fname': {
-            'required':     'First name is required.',
-            'minlength':    'First name must be at least 2 characters long',
-            'maxlength':    'First name can be no longer than 24 characters.'
-        },
-        'lname': {
-            'required':     'Last name is required.',
-            'minlength':    'Last name must be at least 2 characters long',
-            'maxlength':    'Last name can be no longer than 24 characters.'
-        },
-        'emailaddress': {
-            'required':     'Email address is required.',
-            'minlength':    'Email address must be at least 7 characters long.',
-            'maxlength':    'Email address can be no longer than 24 characters.',
-            'pattern':      'Need @'
-        },
-        'pword': {
-            'required':     'Password is required.',
-            'minlength':    'Password must be at least 8 characters long',
-            'maxlength':    'Password can be no longer than 24 characters.'
-        },
-        'pwordconf': {
-            'required':     'Password is required.',
-            'minlength':    'Password must be at least 8 characters long',
-            'maxlength':    'Password can be no longer than 24 characters.'
-        }
-    }
-
+    
     ngOnInit() {
         this.buildForm();
     }
