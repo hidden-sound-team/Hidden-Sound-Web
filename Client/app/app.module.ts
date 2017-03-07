@@ -28,6 +28,7 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    AuthorizeComponent
     // DevicesComponent
 } from 'app-containers';
 
@@ -61,6 +62,7 @@ const ROUTES: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
     // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
@@ -81,6 +83,7 @@ const COMPONENTS = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    AuthorizeComponent
     // DevicesComponent
 ];
 
