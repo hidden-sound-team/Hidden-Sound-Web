@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
             'minlength':    'Password must be at least 8 characters long',
             'maxlength':    'Password can be no longer than 24 characters.'
         }
-    }
+    };
 
 
     constructor(private userService: UserService, private router: Router, private store: Store<AppState>,

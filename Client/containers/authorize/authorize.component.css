@@ -1,0 +1,15 @@
+h1 {
+    margin: auto;
+    width: 60%;
+}
+
+#buttons {
+    margin: auto;
+    width: 60%;
+    align-items: center;
+    display: flex;
+}
+
+#buttons > button {
+    margin: auto;
+}
