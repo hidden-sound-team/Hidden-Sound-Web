@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
 
+
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
 
@@ -27,6 +28,11 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+<<<<<<< HEAD
+=======
+    AuthorizeComponent
+    // DevicesComponent
+>>>>>>> 972746d761a85597d07f65640296b759aae6cda5
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -59,7 +65,8 @@ const ROUTES: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Home'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
-    { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
+    // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
@@ -79,7 +86,8 @@ const COMPONENTS = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DevicesComponent
+    AuthorizeComponent
+    // DevicesComponent
 ];
 
 const PROVIDERS = [
