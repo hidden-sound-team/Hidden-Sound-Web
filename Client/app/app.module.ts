@@ -28,11 +28,8 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
-=======
     AuthorizeComponent
-    // DevicesComponent
->>>>>>> 972746d761a85597d07f65640296b759aae6cda5
+
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
