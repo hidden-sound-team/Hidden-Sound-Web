@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         'lname': '',
         'emailaddress': '',
         'pword': '',
-        'pwordconf': ''
+        // 'pwordconf': ''
     };
 
     validationMessages = {
@@ -57,11 +57,11 @@ export class RegisterComponent implements OnInit {
             'minlength':    'Password must be at least 8 characters long',
             'maxlength':    'Password can be no longer than 24 characters.'
         },
-        'pwordconf': {
-            'required':     'Password is required.',
-            'minlength':    'Password must be at least 8 characters long',
-            'maxlength':    'Password can be no longer than 24 characters.'
-        }
+        // 'pwordconf': {
+        //     'required':     'Password is required.',
+        //     'minlength':    'Password must be at least 8 characters long',
+        //     'maxlength':    'Password can be no longer than 24 characters.'
+        // }
     };
 
 
@@ -125,10 +125,32 @@ export class RegisterComponent implements OnInit {
 
         this.regForm.valueChanges
             .subscribe(data => this.onValueChanged(data));
+        
+        // this.regForm.get( 'passwords' ).valueChanges
+        //     .subscribe( data => this.onPWordChange(data));        
 
         this.onValueChanged();
     }
 
+    // onPWordChange( data?: any ){
+    //     if(!this.regForm.get( 'passwords' )) { return; }
+
+    //     const pForm = this.regForm.get( 'passwords' );
+
+    //     for( const field in this.pwordErrors ){
+    //         this.pwordErrors[field] = '';
+            
+    //         const control = pForm.get(field);
+
+    //         if (control && control.dirty && !control.valid) {
+    //             const messages = this.validationMessages[field];
+    //             // tslint:disable-next-line:forin
+    //             for (const key in control.errors) {
+    //                 this.pwordErrors[field] += messages[key] + ' ';
+    //             }
+    //         }
+    //     }
+    // }
     
 
     onValueChanged( data?: any ){
@@ -141,6 +163,15 @@ export class RegisterComponent implements OnInit {
             // clear previous error message (if any)
             this.formErrors[field] = '';
             const control = form.get(field);
+
+            if ( this.regForm.get( 'passwords' ).get( 'pword' ).errors ){
+                const messages = this.validationMessages['pword'];
+                
+                for (const key in this.regForm.get( 'passwords' ).get( 'pword' ).errors ){
+                    this.formErrors['pword'] += messages[key] + ' ';
+                }
+                
+            }            
 
             if (control && control.dirty && !control.valid) {
                 const messages = this.validationMessages[field];
@@ -158,6 +189,19 @@ export class RegisterComponent implements OnInit {
 }
 
 function passwordMatcher( c: AbstractControl ){
+    // const pwordErrors = this.regForm.get( 'passwords' ).get( 'pword' );
+
+    // if( pwordErrors && pwordErrors.dirty && !pwordErrors.valid ){
+    //     const msg = this.validationMessages['pword'];
+    //     for( const key in pwordErrors.errors ) {
+    //         this.formErrors['pword'] += msg[key] + ' ';
+    //     }
+    // }
+
+    // if ( c.get( 'pword' ).errors ) {
+    //     this.formErrors['pword'] = this.validationMessages['pword'];
+    // }
+
     return c.get( 'pword' ).value === c.get( 'pwordconf' ).value
         ? undefined : { 'nomatch': true };
 }

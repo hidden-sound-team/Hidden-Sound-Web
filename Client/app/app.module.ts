@@ -28,7 +28,7 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthorizeComponent
+    AuthorizeComponent,
 
 } from 'app-containers';
 
