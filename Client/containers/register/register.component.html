@@ -2,7 +2,7 @@
     <div *ngIf="emailSent" class="row">
         You will need to confirm your account before you can sign in. Please check your email for a confirmation link.
     </div>
-    <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent" #registerForm="ngForm" class="col-xs-12">
+    <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent" class="col-xs-12">
         <!-- Name -->
         <div class="row">
             <div class="col-xs-6">
@@ -27,7 +27,7 @@
         </div>
 
         <!-- Password -->
-        <div class="row">
+        <div class="row" formGroupName="passwords">
             <div class="col-xs-6">
                 <div class="form-group">
                     <input type="password"  [(ngModel)]="user.password" formControlName="pword" name="password" class="form-control input-md" placeholder="Password">
@@ -56,8 +56,14 @@
         <div *ngIf="formErrors.pwordconf" class="alert alert-danger">
           {{ formErrors.pwordconf }}
         </div>
+        <div *ngIf="regForm.get('passwords').errors" class="alert alert-danger">
+            Passwords must match.
+        </div>
         
-        <button type="submit" class="btn btn-info btn-block">Register</button>
+        <button [disabled]="regForm.status" type="submit" class="btn btn-info btn-block">Register</button>
     </form>
-
+    <p> Form: {{ regForm.value | json }}</p>
+    <p> Form status: {{ regForm.status }}</p>
+    <p> Password status: {{ regForm.get('passwords').errors | json }}</p>
+    <p> Form errors: {{ formErrors | json }}</p>
 </div>

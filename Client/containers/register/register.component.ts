@@ -3,7 +3,7 @@ import { isBrowser }                            from 'angular2-universal';
 import { Router }                               from '@angular/router';
 import { Store }                                from '@ngrx/store';
 import { URLSearchParams }                      from '@angular/http';
-import { FormGroup, FormBuilder, Validators }   from '@angular/forms';
+import { AbstractControl, FormGroup, FormBuilder, Validators }   from '@angular/forms';
 
 import { UserService, RegisterRequestModel }    from 'app-shared';
 import { AppState, REGISTER_USER }              from 'app';
@@ -88,37 +88,39 @@ export class RegisterComponent implements OnInit {
 
     buildForm(): void {
         this.regForm = this.fb.group({
-            'fname': [this.user.firstName, [
+            fname: [this.user.firstName, [
                 Validators.required,
                 Validators.minLength(2),
                 Validators.maxLength(24)
                 ]
             ],
-            'lname': [this.user.lastName, [
+            lname: [this.user.lastName, [
                 Validators.required,
                 Validators.minLength(2),
                 Validators.maxLength(24)
                 ]
             ],
-            'emailaddress':[this.user.email, [
+            emailaddress:[this.user.email, [
                 Validators.required,
                 Validators.minLength(7),
                 Validators.maxLength(24),
                 Validators.pattern( '^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$' )
                 ]
             ],
-            'pword': [this.user.password, [
-                Validators.required,
-                Validators.minLength(8),
-                Validators.maxLength(24)
+            passwords: this.fb.group({
+                pword: [this.user.password, [
+                    Validators.required,
+                    Validators.minLength(8),
+                    Validators.maxLength(24)
+                    ]
+                ],
+                pwordconf: [this.user.passwordConf, [
+                    Validators.required,
+                    Validators.minLength(8),
+                    Validators.maxLength(24)
+                    ]
                 ]
-            ],
-            'pwordconf': [this.user.passwordConf, [
-                Validators.required,
-                Validators.minLength(8),
-                Validators.maxLength(24)
-                ]
-            ]
+            }, {validator: passwordMatcher})            
         });
 
         this.regForm.valueChanges
@@ -126,6 +128,8 @@ export class RegisterComponent implements OnInit {
 
         this.onValueChanged();
     }
+
+    
 
     onValueChanged( data?: any ){
         if (!this.regForm) { return; }
@@ -151,4 +155,9 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.buildForm();
     }
+}
+
+function passwordMatcher( c: AbstractControl ){
+    return c.get( 'pword' ).value === c.get( 'pwordconf' ).value
+        ? undefined : { 'nomatch': true };
 }
