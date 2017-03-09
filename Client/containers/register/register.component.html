@@ -59,11 +59,13 @@
         <div *ngIf="regForm.get('passwords').errors" class="alert alert-danger">
             Passwords must match.
         </div>
-        
-        <button [disabled]="regForm.status" type="submit" class="btn btn-info btn-block">Register</button>
+
+        <button [disabled]="!(regForm.status === 'VALID')" type="submit" class="btn btn-info btn-block">Register</button>
     </form>
-    <p> Form: {{ regForm.value | json }}</p>
-    <p> Form status: {{ regForm.status }}</p>
-    <p> Password status: {{ regForm.get('passwords').errors | json }}</p>
-    <p> Form errors: {{ formErrors | json }}</p>
 </div>
+
+<br>
+<p> Form: {{ regForm.value | json }}</p>
+<p> Form status: {{ regForm.status }}</p>
+<p> Password error: {{ regForm.get('passwords').errors | json }}</p>
+<p> Form errors: {{ formErrors | json }}</p>
