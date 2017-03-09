@@ -2,21 +2,12 @@
     background: #390a8c;
 }
 
-.footer {
-    background: #390a8c;
-    position: relative;
-    margin-top: -150px; /* negative value of footer height */
-    height: 152px;
-    clear:both;
-    padding-top:20px;
-}
-
 .footer-copyright {
+    border-top: 1px solid #fff;
+    background: #390a8c;
     overflow: hidden;
-    height: 50px;
     line-height: 50px;
-    color: rgba(255,255,255,.8);
-    background-color: rgba(0,0,0,.2);
+    color: #fff;
     text-align: center;
 }
 
@@ -26,6 +17,8 @@
 
 .footer .social-section {
     text-align: center;
+    background: #390a8c;
+        margin-top: 10px;
 }
 
 .btn-floating.btn-small .fa {

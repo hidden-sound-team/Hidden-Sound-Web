@@ -13,10 +13,12 @@ import { AuthService } from 'app-shared';
 export class NavMenuComponent implements OnInit {
 
     public logoImageUrl = require('../../images/logo-large.png');
-    
+    public isCollapsed: boolean = true;
+
+
     loggedIn$: {};
     user$: {};
-    
+
 
     // Use "constructor"s only for dependency injection
     constructor(private store: Store<AppState>, private authService: AuthService) {}

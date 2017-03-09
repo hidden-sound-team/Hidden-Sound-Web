@@ -12,7 +12,7 @@ import { RouterModule, Route } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { Ng2BootstrapModule } from 'ng2-bootstrap';
+import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
 
 
 // Main "APP" Root Component
