@@ -59,7 +59,7 @@ const ROUTES: Route[] = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Other routes
-    { path: 'home', component: HomeComponent, data: { title: 'Home'} },
+    { path: 'home', component: HomeComponent, data: { title: 'Two Factor Authentication Manager'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
@@ -68,6 +68,7 @@ const ROUTES: Route[] = [
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
+
 
 
 const PIPES = [

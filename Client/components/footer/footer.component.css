@@ -31,19 +31,19 @@
     text-align: center;
     font-size: 1.6rem;
     display: inline-block;
-    line-height: 37px;
+    line-height: 27px;
     color: #fff;
 }
 
 .btn-floating, .btn-floating i {
     display: inline-block;
-    line-height: 37px;
+    line-height: 27px;
     color: #fff;
 }
 
 .btn-floating.btn-small {
-    height: 47px;
-    width: 47px;
+    height: 37px;
+    width: 37px;
     line-height: 0;
 }
 
@@ -51,8 +51,8 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-    width: 37px;
-    height: 37px;
+    width: 27px;
+    height: 27px;
     padding: 0;
     background-color: #a6c;
     -webkit-border-radius: 50%;

@@ -22,7 +22,7 @@ import { UserModel } from 'app-containers';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-    private defaultPageTitle: string = 'HiddenSound';
+    private defaultPageTitle: string = 'Hidden Sound';
     private sub: Subscription;
   
     constructor(
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
                 // Set Title if available, otherwise leave the default Title
                 const title = event['title'] 
-                    ? (event['title'] + ' - ' + this.defaultPageTitle)
+                    ? (this.defaultPageTitle + ' - ' + event['title'])
                     : this.defaultPageTitle;
 
                 metaStore.title = title;
