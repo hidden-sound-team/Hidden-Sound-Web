@@ -1,0 +1,19 @@
+.nav-menu li a {
+    line-height: 50px;
+}
+
+.navbar-btn {
+    line-height: 64px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 24px;
+}
+
+.btn.purple {
+    background: #390a8c;
+    border-color: #390a8c;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}

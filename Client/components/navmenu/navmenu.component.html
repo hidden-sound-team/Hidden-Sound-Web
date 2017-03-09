@@ -1,24 +1,36 @@
-<div class="navbar-header">
-    <a class="navbar-brand" href="#">HiddenSound</a>
-</div>
-<div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/home']">Home</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/login']">Login</a>
-        </li>
-        <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/register']">Register</a>
-        </li>
-        <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']">
-            <a [routerLink]="['/account']">{{ user$.username }}</a>
-        </li>
-        <li *ngIf="loggedIn$" (click)="logout()">
-            <a [routerLink]="['/logout']">Logout</a>
-        </li>
-    </ul>
-</div>
+<header class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <div class="logo navbar-header">
+            <a class="navbar-brand" [routerLink]="['/home']">
+                <img height="50" [src]="logoImageUrl">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
+                    <p class="navbar-btn">
+                        <a class="btn btn-primary round" [routerLink]="['/login']">Login</a>
+                    </p>
+                </li>
+                <li *ngIf="!loggedIn$" [routerLinkActive]="['link-active']">
+                    <p class="navbar-btn">
+                        <a class="btn btn-primary round purple" [routerLink]="['/register']">Sign Up</a>
+                    </p>
+                </li>
+                <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/account']">{{ user$.username }}</a>
+                </li>
+                <li *ngIf="loggedIn$" (click)="logout()">
+                    <a [routerLink]="['/logout']">Logout</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right nav-menu">
+                <li [routerLinkActive]="['link-active']">
+                    <a>How It Works</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+

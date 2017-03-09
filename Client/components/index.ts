@@ -12,4 +12,6 @@
     Makes life easier!
 */
 
+export * from './footer/footer.component';
 export * from './navmenu/navmenu.component';
+

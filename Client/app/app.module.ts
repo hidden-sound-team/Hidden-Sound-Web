@@ -19,7 +19,7 @@ import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
 
 // Component imports
-import { NavMenuComponent } from 'app-components';
+import { NavMenuComponent, FooterComponent } from 'app-components';
 
 import { AppConfig, AuthenticatedGuard } from 'app';
 
@@ -29,7 +29,7 @@ import {
     LoginComponent,
     RegisterComponent,
     AuthorizeComponent,
-
+    AccountComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -63,6 +63,7 @@ const ROUTES: Route[] = [
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
+    { path: 'account', component: AccountComponent, data: { title: 'Account' , canActivate: [AuthenticatedGuard]}},
     // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
@@ -80,11 +81,12 @@ const COMPONENTS = [
     // put shared components here
     AppComponent,
     NavMenuComponent,
+    FooterComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthorizeComponent
-    // DevicesComponent
+    AuthorizeComponent,
+    AccountComponent
 ];
 
 const PROVIDERS = [

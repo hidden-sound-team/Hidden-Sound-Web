@@ -17,10 +17,13 @@ export class UserModel {
 
 @Component({
     selector: 'app-login',
-    template: require('./login.component.html')
+    template: require('./login.component.html'),
+    styles: [require('./login.component.css')]
 })
 
 export class LoginComponent implements OnInit {
+
+    public logoImageUrl = require('../../images/logo-large.png');
 
     user: UserModel = new UserModel();
     errorMessage: string;
@@ -64,3 +67,4 @@ export class LoginComponent implements OnInit {
             });
     }
 }
+

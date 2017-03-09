@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute, PRIMARY_OUTLET } from '@angular/
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { isBrowser } from 'angular2-universal';
-import { Meta, metaStore } from 'app-shared';
+import { Meta, metaStore, AuthTokenService, UserService } from 'app-shared';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -29,14 +29,22 @@ export class AppComponent implements OnInit, OnDestroy {
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public meta: Meta, 
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private tokenService: AuthTokenService,
+        private userService: UserService
     ) {
         
     }
     
     ngOnInit() {
         this.changeTitleOnNavigation();
-        console.log('oninit'); 
+        
+        if (this.tokenService.hasValidAccessToken()){
+            this.userService.getUserInfo()
+                .then(user => {
+                    this.store.dispatch({ type: LOGIN_USER, payload: user });
+                });
+        }
     }
     
     ngOnDestroy() {
