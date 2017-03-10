@@ -1,55 +1,56 @@
-﻿
-<div class="container">
-    <div class="panel panel-register">
-        <div class="panel-heading">
-            <img height="80" [src]="logoImageUrl">
-        </div>
-    
-    <div *ngIf="emailSent" class="row">
-        You will need to confirm your account before you can sign in. Please check your email for a confirmation link.
-    </div>
-    <div class="panel-body">
-    <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent" class="col-xs-12">
-        <!-- Name -->
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <input type="text" [(ngModel)]="user.firstName" formControlName="fname" name="firstName" class="form-control input-md" placeholder="First Name">
-                </div>
+﻿<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-register">
+            <div class="panel-heading">
+                <img height="80" [src]="logoImageUrl">
             </div>
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <input type="text"  [(ngModel)]="user.lastName" formControlName="lname" name="lastName" class="form-control input-md" placeholder="Last Name">
-                </div>
+        
+            <div *ngIf="emailSent" class="row">
+                You will need to confirm your account before you can sign in. Please check your email for a confirmation link.
             </div>
-        </div>
+            <div class="panel-body">
+                <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent">
+                    <!-- Name -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="user.firstName" formControlName="fname" name="firstName" class="form-control input-md" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <input type="text"  [(ngModel)]="user.lastName" formControlName="lname" name="lastName" class="form-control input-md" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Email -->
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <input type="email"  [(ngModel)]="user.email" formControlName="emailaddress" name="email" class="form-control input-md" placeholder="Email Address">
-                </div>
+                    <!-- Email -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input type="email"  [(ngModel)]="user.email" formControlName="emailaddress" name="email" class="form-control input-md" placeholder="Email Address">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="row" formGroupName="passwords">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <input type="password"  [(ngModel)]="user.password" formControlName="pword" name="password" class="form-control input-md" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <input type="password"  [(ngModel)]="user.passwordConf" formControlName="pwordconf" name="passwordConfirmation" class="form-control input-md" placeholder="Confirm Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button [disabled]="!(regForm.status === 'VALID')" type="submit" class="btn btn-info btn-block">Register</button>
+                </form>
             </div>
         </div>
-
-        <!-- Password -->
-        <div class="row" formGroupName="passwords">
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <input type="password"  [(ngModel)]="user.password" formControlName="pword" name="password" class="form-control input-md" placeholder="Password">
-                </div>
-            </div>
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <input type="password"  [(ngModel)]="user.passwordConf" formControlName="pwordconf" name="passwordConfirmation" class="form-control input-md" placeholder="Confirm Password">
-                </div>
-            </div>
-        </div>
-
-        <button [disabled]="!(regForm.status === 'VALID')" type="submit" class="btn btn-info btn-block">Register</button>
-    </form>
-    </div>
     </div>
 </div>
 

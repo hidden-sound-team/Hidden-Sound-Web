@@ -1,0 +1,27 @@
+.modal {
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-header-content {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.close, .close span {
+    margin-right: 5px;
+    font-size: 3.5rem;
+    float: none;
+}
+
+.logo {
+    text-align: center;
+}
+
+.modal-header {
+    padding: 0px;
+}
+
+.close-header {
+    height: 0px;
+    text-align: right;
+}

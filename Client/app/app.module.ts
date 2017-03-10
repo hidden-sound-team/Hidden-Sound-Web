@@ -14,13 +14,14 @@ import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
 
 // Component imports
-import { NavMenuComponent, FooterComponent } from 'app-components';
+import { NavMenuComponent, FooterComponent, ModalComponent } from 'app-components';
 
 import { AppConfig, AuthenticatedGuard } from 'app';
 
@@ -84,6 +85,7 @@ const COMPONENTS = [
     AppComponent,
     NavMenuComponent,
     FooterComponent,
+    ModalComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,

@@ -90,7 +90,7 @@ module.exports = (env) => {
                 { test: /\.json$/, loader: 'json-loader' },
 
                 // Image files
-                { test: /\.(png|jpg|jpeg|gif|)$/, use: 'url-loader?limit=25000&name=assets/[name]-[hash:6].[ext]' },
+                { test: /\.(png|jpg|jpeg|gif)$/, use: 'url-loader?limit=25000&name=assets/[name]-[hash:6].[ext]' },
                 { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
                 // Font files of all types
                 {
