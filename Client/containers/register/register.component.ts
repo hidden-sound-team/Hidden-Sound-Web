@@ -23,6 +23,7 @@ export class UserReg {
 })
 
 export class RegisterComponent implements OnInit {
+    public logoImageUrl = require('../../images/logo-large.png');
     title: string = 'Register';
     user: UserReg = new UserReg();
     emailSent: boolean = false;

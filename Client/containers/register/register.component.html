@@ -1,8 +1,14 @@
 ﻿
-<div class="container row centered-form register content">
+<div class="container">
+    <div class="panel panel-register">
+        <div class="panel-heading">
+            <img height="80" [src]="logoImageUrl">
+        </div>
+    
     <div *ngIf="emailSent" class="row">
         You will need to confirm your account before you can sign in. Please check your email for a confirmation link.
     </div>
+    <div class="panel-body">
     <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent" class="col-xs-12">
         <!-- Name -->
         <div class="row">
@@ -41,32 +47,36 @@
             </div>
         </div>
 
-        <!-- Errors -->
-        <div *ngIf="formErrors.fname" class="alert alert-danger">
-          {{ formErrors.fname }}
-        </div>
-        <div *ngIf="formErrors.lname" class="alert alert-danger">
-          {{ formErrors.lname }}
-        </div>
-        <div *ngIf="formErrors.emailaddress" class="alert alert-danger">
-          {{ formErrors.emailaddress }}
-        </div>
-        <div *ngIf="formErrors.pword" class="alert alert-danger">
-          {{ formErrors.pword }}
-        </div>
-        <div *ngIf="formErrors.pwordconf" class="alert alert-danger">
-          {{ formErrors.pwordconf }}
-        </div>
-        <div *ngIf="regForm.get('passwords').errors" class="alert alert-danger">
-            Passwords must match.
-        </div>
-
         <button [disabled]="!(regForm.status === 'VALID')" type="submit" class="btn btn-info btn-block">Register</button>
     </form>
+    </div>
+    </div>
 </div>
 
-<br>
+<div class="col-md-6 col-md-offset-3">
+    <div *ngIf="formErrors.fname" class="alert alert-danger">
+        {{ formErrors.fname }}
+    </div>
+    <div *ngIf="formErrors.lname" class="alert alert-danger">
+        {{ formErrors.lname }}
+    </div>
+    <div *ngIf="formErrors.emailaddress" class="alert alert-danger">
+        {{ formErrors.emailaddress }}
+    </div>
+    <div *ngIf="formErrors.pword" class="alert alert-danger">
+        {{ formErrors.pword }}
+    </div>
+    <div *ngIf="formErrors.pwordconf" class="alert alert-danger">
+        {{ formErrors.pwordconf }}
+    </div>
+    <div *ngIf="regForm.get('passwords').errors" class="alert alert-danger">
+        Passwords must match.
+    </div>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
 <p> Form: {{ regForm.value | json }}</p>
 <p> Form status: {{ regForm.status }}</p>
 <p> Password error: {{ regForm.get('passwords').errors | json }}</p>
 <p> Form errors: {{ formErrors | json }}</p>
+</div>
