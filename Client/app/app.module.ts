@@ -5,6 +5,7 @@
  * - If you need something to be very "platform"-specific, put it 
  *   in the specific one (app.browser or app.server)
  */
+require('../images/favicon.ico');
 
 import { NgModule, APP_INITIALIZER  } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
