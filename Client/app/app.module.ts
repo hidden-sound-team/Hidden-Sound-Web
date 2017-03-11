@@ -5,6 +5,7 @@
  * - If you need something to be very "platform"-specific, put it 
  *   in the specific one (app.browser or app.server)
  */
+require('../images/favicon.ico');
 
 import { NgModule, APP_INITIALIZER  } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
@@ -12,14 +13,15 @@ import { RouterModule, Route } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { Ng2BootstrapModule } from 'ng2-bootstrap';
+import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
 
 // Component imports
-import { NavMenuComponent } from 'app-components';
+import { NavMenuComponent, FooterComponent, ModalComponent } from 'app-components';
 
 import { AppConfig, AuthenticatedGuard } from 'app';
 
@@ -28,11 +30,8 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
-=======
-    AuthorizeComponent
-    // DevicesComponent
->>>>>>> 972746d761a85597d07f65640296b759aae6cda5
+    AuthorizeComponent,
+    AccountComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -62,14 +61,16 @@ const ROUTES: Route[] = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // Other routes
-    { path: 'home', component: HomeComponent, data: { title: 'Home'} },
+    { path: 'home', component: HomeComponent, data: { title: 'Two Factor Authentication Manager'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
+    { path: 'account', component: AccountComponent, data: { title: 'Account' , canActivate: [AuthenticatedGuard]}},
     // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
+
 
 
 const PIPES = [
@@ -83,11 +84,13 @@ const COMPONENTS = [
     // put shared components here
     AppComponent,
     NavMenuComponent,
+    FooterComponent,
+    ModalComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthorizeComponent
-    // DevicesComponent
+    AuthorizeComponent,
+    AccountComponent
 ];
 
 const PROVIDERS = [

@@ -1,0 +1,101 @@
+.footer {
+    background: #390a8c;
+}
+
+.footer-copyright {
+    border-top: 1px solid #fff;
+    background: #390a8c;
+    overflow: hidden;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+.footer .social-section ul li {
+    display: inline-block;
+}
+
+.footer .social-section {
+    text-align: center;
+    background: #390a8c;
+        margin-top: 10px;
+}
+
+.btn-floating.btn-small .fa {
+    font-size: 18px;
+    margin-top: 5px;
+} 
+
+.btn-floating i {
+    width: inherit;
+    text-align: center;
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 27px;
+    color: #fff;
+}
+
+.btn-floating, .btn-floating i {
+    display: inline-block;
+    line-height: 27px;
+    color: #fff;
+}
+
+.btn-floating.btn-small {
+    height: 37px;
+    width: 37px;
+    line-height: 0;
+}
+
+.btn-floating {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 27px;
+    height: 27px;
+    padding: 0;
+    background-color: #a6c;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    transition: .3s;
+    margin: 10px;
+}
+
+.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.btn-fb {
+    background-color: #3B5998;
+}
+
+.btn-tw {
+    background-color: #55ACEE;
+}
+
+.btn-gplus {
+    background-color: #DD4B39;
+}
+
+.btn-li {
+    background-color: #0082CA;
+}
+
+.btn-git {
+    background-color: #4183C4;
+}
+
+.btn-pin {
+    background-color: #C61118;
+}
+
+.btn-ins {
+    background-color: #3F729B;
+}

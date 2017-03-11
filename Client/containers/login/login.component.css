@@ -1,0 +1,44 @@
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+
+.panel {
+    margin-top: 90px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    padding: 15px;
+}
+
+.panel-heading {
+    text-align: center;
+}
+
+.forgot a:hover {
+    cursor:pointer;
+}
+
+.forgot {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cbd2d6;
+}
+
+.register {
+    margin-top: 20px;
+}
+
+.forgot-body {
+    text-align: center;
+}
+
+.app-modal-body {
+    float: none;
+    margin-left: 20%;
+    margin-right: 20%;
+}

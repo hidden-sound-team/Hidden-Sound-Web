@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute, PRIMARY_OUTLET } from '@angular/
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { isBrowser } from 'angular2-universal';
-import { Meta, metaStore } from 'app-shared';
+import { Meta, metaStore, AuthTokenService, UserService } from 'app-shared';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -22,21 +22,29 @@ import { UserModel } from 'app-containers';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-    private defaultPageTitle: string = 'HiddenSound';
+    private defaultPageTitle: string = 'Hidden Sound';
     private sub: Subscription;
   
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public meta: Meta, 
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private tokenService: AuthTokenService,
+        private userService: UserService
     ) {
         
     }
     
     ngOnInit() {
         this.changeTitleOnNavigation();
-        console.log('oninit'); 
+        
+        if (this.tokenService.hasValidAccessToken()){
+            this.userService.getUserInfo()
+                .then(user => {
+                    this.store.dispatch({ type: LOGIN_USER, payload: user });
+                });
+        }
     }
     
     ngOnDestroy() {
@@ -58,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
                 // Set Title if available, otherwise leave the default Title
                 const title = event['title'] 
-                    ? (event['title'] + ' - ' + this.defaultPageTitle)
+                    ? (this.defaultPageTitle + ' - ' + event['title'])
                     : this.defaultPageTitle;
 
                 metaStore.title = title;

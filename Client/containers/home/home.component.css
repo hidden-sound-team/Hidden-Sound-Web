@@ -1,0 +1,19 @@
+.row {
+
+}
+
+.main {
+    text-align: center;
+    height: 200px;
+    color: #390a8c;
+}
+
+.gs {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn.purple {
+    background: #390a8c;
+    border-color: #390a8c;
+}

@@ -13,6 +13,13 @@ export class RegisterRequestModel {
     confirmPassword: string;
 }
 
+export class UserInfoResponse {
+    firstName: string;
+    lastName: string;
+    email: string;
+    userName: string;
+}
+
 @Injectable()
 export class UserService {
 
@@ -23,6 +30,22 @@ export class UserService {
             this.apiHttpService.postForm('/Application/User/Register', request)
                 .subscribe(response => {
                     resolve(response.text());
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getUserInfo(): Promise<User> {
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.get('/Application/User/Info')
+                .subscribe(response => {
+                    let result = <UserInfoResponse>response.json();
+
+                    let user = new User();
+                    user.username = result.userName;
+
+                    resolve(user);
                 }, error => {
                     reject(error);
                 });

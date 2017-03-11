@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 
 import { AppState, LOGIN_USER } from 'app';
 
@@ -8,6 +8,8 @@ import { URLSearchParams } from '@angular/http';
 import { isBrowser } from 'angular2-universal';
 
 import { AuthService } from 'app-shared';
+
+import { ModalComponent } from 'app-components';
 
 // Demo model
 export class UserModel {
@@ -17,10 +19,16 @@ export class UserModel {
 
 @Component({
     selector: 'app-login',
-    template: require('./login.component.html')
+    template: require('./login.component.html'),
+    styles: [require('./login.component.css')]
 })
 
 export class LoginComponent implements OnInit {
+
+    public logoImageUrl = require('../../images/logo-large.png');
+
+    @ViewChild(ModalComponent)
+    public readonly modal: ModalComponent;
 
     user: UserModel = new UserModel();
     errorMessage: string;
@@ -64,3 +72,4 @@ export class LoginComponent implements OnInit {
             });
     }
 }
+

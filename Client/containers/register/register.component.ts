@@ -18,10 +18,12 @@ export class UserReg {
 
 @Component({
     selector: 'app-register',
-    template: require('./register.component.html')
+    template: require('./register.component.html'),
+    styles: [require('./register.component.css')]
 })
 
 export class RegisterComponent implements OnInit {
+    public logoImageUrl = require('../../images/logo-large.png');
     title: string = 'Register';
     user: UserReg = new UserReg();
     emailSent: boolean = false;
@@ -31,8 +33,7 @@ export class RegisterComponent implements OnInit {
         'fname': '',
         'lname': '',
         'emailaddress': '',
-        'pword': '',
-        'pwordconf': ''
+        'pword': ''
     };
 
     validationMessages = {
@@ -53,11 +54,6 @@ export class RegisterComponent implements OnInit {
             'pattern':      'Not a valid email.'
         },
         'pword': {
-            'required':     'Password is required.',
-            'minlength':    'Password must be at least 8 characters long',
-            'maxlength':    'Password can be no longer than 24 characters.'
-        },
-        'pwordconf': {
             'required':     'Password is required.',
             'minlength':    'Password must be at least 8 characters long',
             'maxlength':    'Password can be no longer than 24 characters.'
@@ -125,22 +121,29 @@ export class RegisterComponent implements OnInit {
 
         this.regForm.valueChanges
             .subscribe(data => this.onValueChanged(data));
-
+        
         this.onValueChanged();
-    }
-
-    
+    }    
 
     onValueChanged( data?: any ){
         if (!this.regForm) { return; }
 
         const form = this.regForm;
+        const pwordField = this.regForm.get( 'passwords' ).get( 'pword' );
 
         // tslint:disable-next-line:forin
         for (const field in this.formErrors) {
             // clear previous error message (if any)
             this.formErrors[field] = '';
             const control = form.get(field);
+
+            if ( pwordField.errors && pwordField.dirty ){
+                const messages = this.validationMessages['pword'];
+                
+                for (const key in pwordField.errors ){
+                    this.formErrors['pword'] += messages[key] + ' ';
+                }                
+            }            
 
             if (control && control.dirty && !control.valid) {
                 const messages = this.validationMessages[field];
