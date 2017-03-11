@@ -17,3 +17,4 @@ export * from './login/login.component';
 export * from './register/register.component';
 export * from './account/account.component';
 export * from './authorize/authorize.component';
+export * from './qr/qr.component';

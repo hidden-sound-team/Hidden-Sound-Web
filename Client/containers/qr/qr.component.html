@@ -1,0 +1,16 @@
+<div >
+    <!--<input ng-model="qrImage" type="text" />-->
+    <div class="aligner">
+        <button (click)="showQR()" class=" btn btn-lg btn-primary">Verify Purchase</button>
+    </div>
+    <div class="aligner">
+        <img *ngIf="qrVisible" [src]="qrString">
+    </div>
+</div>
+
+<p>
+    {{ authCode }}
+</p>
+<p>
+    {{ qrString }}
+</p>
