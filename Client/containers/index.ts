@@ -16,4 +16,5 @@ export * from './home/home.component';
 export * from './login/login.component';
 export * from './register/register.component';
 export * from './account/account.component';
+export * from './account-info/account-info.component';
 export * from './authorize/authorize.component';

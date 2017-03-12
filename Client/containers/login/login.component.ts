@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit () {
         if (isBrowser){
-            this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ? decodeURIComponent(this.route.snapshot.queryParams['returnUrl']) : '/';
+            this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ? decodeURIComponent(this.route.snapshot.queryParams['returnUrl']) : '/account/info';
+            console.log(this.returnUrl);
         }
         
         this.store.select('verifyEmail').subscribe(verifyEmail => {

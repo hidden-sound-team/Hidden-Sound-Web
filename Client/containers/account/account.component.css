@@ -1,0 +1,27 @@
+#account-wrapper {
+    display: flex;
+    transition: all 0.4s ease 0s;
+}
+
+#account-content-wrapper {
+  width: 100%;
+}
+
+#account-sidebar-wrapper {
+    width: 200px;
+    min-width: 200px;
+    overflow-y: auto;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+    float: none;
+}
+
+.sidebar-nav > li{
+    float: none;
+}
+
+.sidebar-nav .glyphicon {
+    padding-right: 10px;
+}

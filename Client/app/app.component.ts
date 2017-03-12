@@ -38,8 +38,9 @@ export class AppComponent implements OnInit, OnDestroy {
     
     ngOnInit() {
         this.changeTitleOnNavigation();
+        console.log('Valid token: ' + this.tokenService.hasValidAccessToken());
         
-        if (this.tokenService.hasValidAccessToken()){
+        if (this.tokenService.hasValidAccessToken()) {
             this.userService.getUserInfo()
                 .then(user => {
                     this.store.dispatch({ type: LOGIN_USER, payload: user });
