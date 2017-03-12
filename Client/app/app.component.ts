@@ -14,6 +14,8 @@ import { AppState, LOGIN_USER } from 'app';
 
 import { UserModel } from 'app-containers';
 
+import { PageScrollConfig } from 'ng2-page-scroll';
+
 @Component({
     selector: 'app-root',
     template: require('./app.component.html'),
@@ -33,7 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
         private tokenService: AuthTokenService,
         private userService: UserService
     ) {
-        
+        PageScrollConfig.defaultScrollOffset = 80;
+        PageScrollConfig.defaultDuration = 750;
     }
     
     ngOnInit() {

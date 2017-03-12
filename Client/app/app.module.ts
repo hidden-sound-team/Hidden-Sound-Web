@@ -15,7 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
@@ -130,7 +130,9 @@ const PROVIDERS = [
     Ng2BootstrapModule.forRoot(),
 
     // Routing
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+
+    Ng2PageScrollModule.forRoot()
   ],
   declarations: [
     ...PIPES,

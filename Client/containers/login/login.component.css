@@ -33,12 +33,10 @@
     margin-top: 20px;
 }
 
-.forgot-body {
+.app-modal-body {
     text-align: center;
 }
 
-.app-modal-body {
-    float: none;
-    margin-left: 20%;
-    margin-right: 20%;
+.modal-dialog {
+    width: 350px;
 }

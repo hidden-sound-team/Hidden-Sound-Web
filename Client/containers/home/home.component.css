@@ -4,7 +4,6 @@
 
 .main {
     text-align: center;
-    height: 200px;
     color: #390a8c;
 }
 
@@ -16,4 +15,12 @@
 .btn.purple {
     background: #390a8c;
     border-color: #390a8c;
+}
+
+#first {
+    height: 1200px;
+}
+
+#second {
+    height: 1200px;
 }

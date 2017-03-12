@@ -2,6 +2,10 @@
   background: rgba(0,0,0,0.6);
 }
 
+.modal-footer {
+    padding: 10px;
+}
+
 .modal-header-content {
     padding-bottom: 10px;
     text-align: center;
