@@ -32,7 +32,8 @@ import {
     RegisterComponent,
     AuthorizeComponent,
     AccountComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    QRComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -44,7 +45,8 @@ import {
     AuthTokenService,
     ApiHttpService,
     AuthService,
-    UserService
+    UserService,
+    QRService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -70,6 +72,8 @@ const ROUTES: Route[] = [
         { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' } },
         { path: '*', component: AccountInfoComponent }
     ]},
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
+    { path: 'qr', component: QRComponent, data: { title: 'QR' }},
     // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
@@ -95,7 +99,8 @@ const COMPONENTS = [
     RegisterComponent,
     AuthorizeComponent,
     AccountComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    QRComponent
 ];
 
 const PROVIDERS = [
@@ -108,6 +113,7 @@ const PROVIDERS = [
     ApiHttpService,
     AuthService,
     UserService,
+    QRService,
 
     AuthenticatedGuard
 ];

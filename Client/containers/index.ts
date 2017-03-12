@@ -18,3 +18,4 @@ export * from './register/register.component';
 export * from './account/account.component';
 export * from './account-info/account-info.component';
 export * from './authorize/authorize.component';
+export * from './qr/qr.component';

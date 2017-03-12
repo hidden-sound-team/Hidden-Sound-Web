@@ -1,6 +1,7 @@
 ﻿export * from './app/auth-token.service'
 export * from './app/auth.service';
 export * from './app/user.service';
+export * from './app/qr.service';
 
 export * from './cache/api';
 export * from './cache/universal-cache';
