@@ -1,44 +1,18 @@
-<div class="container">
-    <form id="tab">
-        <h3>YOUR ACCOUNT</h3>
-        <label>First Name: </label>
-        <input type="text" value="" disabled>
-        <br>
-        <label>Last Name: </label>
-        <input type="text" value="" disabled>
-        <br>
-        <label>Email: </label>
-        <input type="email" value="" disabled>
-        <br>
-        
-        <hr>
-
-        <div>
-            <button type="button" class="btn btn-default">Change Password</button>
-        </div>
-
-        <div class="hide">       
-            <label>New Password: </label>
-            <input type="password">
-            <br>
-            <label>Verify Password: </label>
-            <input type="password">
-            <br>
-            <label>Old Password: </label>
-            <input type="password">
-            <br>
-            <div>
-                <button type="button" class="btn btn-primary">Update</button>
-            </div>
-        </div>
-
-        <hr>
-
-        <h3>Your Device</h3>
-        <input type="text" value="" Disabled>
-        <div>
-            <br>
-            <button type="button" class="btn btn-danger">Remove Device</button>
-        </div>
-    </form>
+<div id="account-wrapper">
+    <div id="account-sidebar-wrapper" class="navbar-inverse">
+        <nav class="navbar navbar-inverse bg-inverse">
+            <ul class="nav navbar-nav sidebar-nav">
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/info']"><span class="glyphicon glyphicon-user"></span>My Info</a>
+                </li>
+                <li>
+                    <a><span class="glyphicon glyphicon-phone"></span>Devices</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div id="account-content-wrapper">
+        <router-outlet></router-outlet>
+    </div>
 </div>
+

@@ -21,7 +21,7 @@ export const appReducer: ActionReducer<AppStateRecord> = (state = makeInitialSta
   switch (action.type) {
 
     case LOGIN_USER:
-      return state.merge({ loggedInUser: action.payload, loggedIn: true, verifyEmail: "" });
+      return state.merge({ loggedInUser: action.payload, loggedIn: true, verifyEmail: '' });
 
     case LOGOUT_USER:
       return state.merge(makeInitialState());
@@ -39,7 +39,7 @@ function makeInitialState() {
   return appStateFactory({
       loggedIn: false,
       loggedInUser: {},
-      verifyEmail: ""
+      verifyEmail: ''
   });
 }
 

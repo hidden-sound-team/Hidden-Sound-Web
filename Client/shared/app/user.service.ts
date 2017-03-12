@@ -16,8 +16,7 @@ export class RegisterRequestModel {
 export class UserInfoResponse {
     firstName: string;
     lastName: string;
-    email: string;
-    userName: string;
+    username: string;
 }
 
 @Injectable()
@@ -43,7 +42,7 @@ export class UserService {
                     let result = <UserInfoResponse>response.json();
 
                     let user = new User();
-                    user.username = result.userName;
+                    user.username = result.username;
 
                     resolve(user);
                 }, error => {
