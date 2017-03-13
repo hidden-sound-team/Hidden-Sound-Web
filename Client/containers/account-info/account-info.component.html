@@ -5,7 +5,10 @@
         </div>
     </div>
     <div class="content-inner content-inner-end">
-        <form class="form-horizontal" (ngSubmit)="submit" #myInfoForm="ngForm">
+        <form class="form-horizontal" (ngSubmit)="saveChanges()" #myInfoForm="ngForm">
+            <div *ngIf="successMessage" class="alert alert-success">
+                {{successMessage}}
+            </div>
             <div class="form-group">
                 <label for="email" class="control-label">Email</label>
                 <div class="controls">

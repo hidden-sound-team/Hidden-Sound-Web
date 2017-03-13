@@ -40,6 +40,9 @@
                 <li>
                     <a pageScroll [routerLink]="['/home']" href="#how" (click)="isCollapsed = true">How it works</a>
                 </li>
+                <li *ngIf="loggedIn$">
+                    <a href="{{devDocUrl}}" target="_blank">Developer Documentation</a>
+                </li>
             </ul>
         </div>
     </div>

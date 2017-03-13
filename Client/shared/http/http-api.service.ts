@@ -88,6 +88,17 @@ export class ApiHttpService {
         return this.request(options);
     }
 
+    putForm(url: string, data?: any): Observable<Response> {
+        let options = new ApiHttpOptions();
+        options.method = RequestMethod.Put;
+        options.url = url;
+        options.data = this.buildUrlSearchParams(data);
+
+        options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+        return this.request(options);
+    }
+
     delete(url: string, params?: any): Observable<Response> {
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Delete;
