@@ -33,6 +33,9 @@ import {
     AuthorizeComponent,
     AccountComponent,
     AccountInfoComponent,
+    AccountDevicesComponent,
+    AccountChangePasswordComponent,
+    AccountDeveloperComponent,
     QRComponent
 } from 'app-containers';
 
@@ -70,6 +73,9 @@ const ROUTES: Route[] = [
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard] },
     { path: 'account', component: AccountComponent, data: { title: 'Account' }, canActivate: [AuthenticatedGuard], children: [
         { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' } },
+        { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' } },
+        { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' } },
+        { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' } },
         { path: '*', component: AccountInfoComponent }
     ]},
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
@@ -100,6 +106,9 @@ const COMPONENTS = [
     AuthorizeComponent,
     AccountComponent,
     AccountInfoComponent,
+    AccountDevicesComponent,
+    AccountChangePasswordComponent,
+    AccountDeveloperComponent,
     QRComponent
 ];
 

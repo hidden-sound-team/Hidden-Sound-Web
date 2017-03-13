@@ -1,12 +1,34 @@
 <div id="account-wrapper">
-    <div id="account-sidebar-wrapper" class="navbar-inverse">
+    <div id="account-sidebar-wrapper">
         <nav class="navbar navbar-inverse bg-inverse">
             <ul class="nav navbar-nav sidebar-nav">
                 <li [routerLinkActive]="['active']">
-                    <a [routerLink]="['/account/info']"><span class="glyphicon glyphicon-user"></span>My Info</a>
+                    <a [routerLink]="['/account/info']">
+                        <span class="glyphicon glyphicon-user"></span>
+                        My Info
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
                 </li>
-                <li>
-                    <a><span class="glyphicon glyphicon-phone"></span>Devices</a>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/changepassword']">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        Change Password
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/devices']">
+                        <span class="glyphicon glyphicon-phone"></span>
+                        Devices
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/developer']">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        Developer
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
     styles: [require('./account-info.component.css')]
 })
 export class AccountInfoComponent implements OnInit {
+
+    private email: string;
+    private firstName: string;
+    private lastName: string;
+
     constructor() { }
 
     ngOnInit() { }
