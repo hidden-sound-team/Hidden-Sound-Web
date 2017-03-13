@@ -1,13 +1,3 @@
-.row {
-
-}
-
-.main {
-    text-align: center;
-    height: 200px;
-    color: #390a8c;
-}
-
 .gs {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -16,4 +6,23 @@
 .btn.purple {
     background: #390a8c;
     border-color: #390a8c;
+}
+
+#jumbo {
+    height: 400px;
+    text-align: center;
+    color: #390a8c;
+}
+
+#about {
+    height: 600px;
+    background: #f6f9fc;
+    text-align: center;
+    color: #390a8c;
+}
+
+#how {
+    height: 600px;
+    text-align: center;
+    color: #390a8c;
 }
