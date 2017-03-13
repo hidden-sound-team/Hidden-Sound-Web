@@ -39,24 +39,24 @@ export class RegisterComponent implements OnInit {
     validationMessages = {
         'fname': {
             'required':     'First name is required.',
-            'minlength':    'First name must be at least 2 characters long',
-            'maxlength':    'First name can be no longer than 24 characters.'
+            'minlength':    'Must be at least 2 characters long',
+            'maxlength':    'Can be no longer than 24 characters.'
         },
         'lname': {
             'required':     'Last name is required.',
-            'minlength':    'Last name must be at least 2 characters long',
-            'maxlength':    'Last name can be no longer than 24 characters.'
+            'minlength':    'Must be at least 2 characters long',
+            'maxlength':    'Can be no longer than 24 characters.'
         },
         'emailaddress': {
             'required':     'Email address is required.',
-            'minlength':    'Email address must be at least 7 characters long.',
-            'maxlength':    'Email address can be no longer than 24 characters.',
+            'minlength':    'Must be at least 7 characters long.',
+            'maxlength':    'Can be no longer than 24 characters.',
             'pattern':      'Not a valid email.'
         },
         'pword': {
             'required':     'Password is required.',
-            'minlength':    'Password must be at least 8 characters long',
-            'maxlength':    'Password can be no longer than 24 characters.'
+            'minlength':    'Must be at least 8 characters long',
+            'maxlength':    'Can be no longer than 24 characters.'
         }
     };
 

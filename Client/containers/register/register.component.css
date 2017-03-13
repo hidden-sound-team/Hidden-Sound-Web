@@ -19,3 +19,10 @@
     text-align: center;
 }
 
+div {
+    min-height: 20px;
+}
+
+.warning {
+    color: darkred;
+}
