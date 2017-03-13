@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" [routerLink]="['/home']" (click)="isCollapsed = true">
+            <a pageScroll class="navbar-brand" [routerLink]="['/home']" href="#jumbo" (click)="isCollapsed = true">
                 <img height="50" [src]="logoImageUrl">
             </a>
         </div>
@@ -35,10 +35,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right nav-menu">
                 <li>
-                    <a pageScroll href="#second">About Hidden Sound</a>
+                    <a pageScroll [routerLink]="['/home']" href="#about" (click)="isCollapsed = true">About Hidden Sound</a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a>How it works</a>
+                <li>
+                    <a pageScroll [routerLink]="['/home']" href="#how" (click)="isCollapsed = true">How it works</a>
                 </li>
             </ul>
         </div>

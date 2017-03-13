@@ -1,13 +1,31 @@
 .footer {
     background: #390a8c;
+    color: #fff;
+}
+
+.social-section {
+    padding-top: 10px;
+}
+
+.sitemap {
+    border-top: 1px solid #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sitemap ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.sitemap a {
+    color: #fff;
 }
 
 .footer-copyright {
     border-top: 1px solid #fff;
-    background: #390a8c;
     overflow: hidden;
     line-height: 50px;
-    color: #fff;
     text-align: center;
 }
 
@@ -18,7 +36,7 @@
 .footer .social-section {
     text-align: center;
     background: #390a8c;
-        margin-top: 10px;
+    margin-top: 10px;
 }
 
 .btn-floating.btn-small .fa {

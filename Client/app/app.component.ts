@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private defaultPageTitle: string = 'Hidden Sound';
     private sub: Subscription;
+    private routerSubscription: Subscription;
   
     constructor(
         public router: Router,
@@ -41,7 +42,12 @@ export class AppComponent implements OnInit, OnDestroy {
     
     ngOnInit() {
         this.changeTitleOnNavigation();
-        console.log('Valid token: ' + this.tokenService.hasValidAccessToken());
+        
+        this.routerSubscription = this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+            if (isBrowser) {
+                document.body.scrollTop = 0;
+            }
+        });
         
         if (this.tokenService.hasValidAccessToken()) {
             this.userService.getUserInfo()
@@ -54,6 +60,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         // Subscription clean-up
         this.sub.unsubscribe();
+        this.routerSubscription.unsubscribe();
     }
 
     private changeTitleOnNavigation () {
@@ -83,5 +90,4 @@ export class AppComponent implements OnInit, OnDestroy {
                 return isBrowser ? this.meta.setTitle(title) : '';
             });
     }
-
 }
