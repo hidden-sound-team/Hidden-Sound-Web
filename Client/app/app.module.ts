@@ -76,11 +76,10 @@ const ROUTES: Route[] = [
         { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' } },
         { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' } },
         { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' } },
+        { path: 'qrdemo', component: QRComponent, data: { title: 'Account - QR Demo' }},
         { path: '*', component: AccountInfoComponent }
     ]},
-    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
-    { path: 'qr', component: QRComponent, data: { title: 'QR' }},
-    // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard]},
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
