@@ -14,6 +14,8 @@ import { AppState, LOGIN_USER } from 'app';
 
 import { UserModel } from 'app-containers';
 
+import { PageScrollConfig } from 'ng2-page-scroll';
+
 @Component({
     selector: 'app-root',
     template: require('./app.component.html'),
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private defaultPageTitle: string = 'Hidden Sound';
     private sub: Subscription;
+    private routerSubscription: Subscription;
   
     constructor(
         public router: Router,
@@ -33,13 +36,20 @@ export class AppComponent implements OnInit, OnDestroy {
         private tokenService: AuthTokenService,
         private userService: UserService
     ) {
-        
+        PageScrollConfig.defaultScrollOffset = 80;
+        PageScrollConfig.defaultDuration = 750;
     }
     
     ngOnInit() {
         this.changeTitleOnNavigation();
         
-        if (this.tokenService.hasValidAccessToken()){
+        this.routerSubscription = this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+            if (isBrowser) {
+                document.body.scrollTop = 0;
+            }
+        });
+        
+        if (this.tokenService.hasValidAccessToken()) {
             this.userService.getUserInfo()
                 .then(user => {
                     this.store.dispatch({ type: LOGIN_USER, payload: user });
@@ -50,6 +60,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         // Subscription clean-up
         this.sub.unsubscribe();
+        this.routerSubscription.unsubscribe();
     }
 
     private changeTitleOnNavigation () {
@@ -79,5 +90,4 @@ export class AppComponent implements OnInit, OnDestroy {
                 return isBrowser ? this.meta.setTitle(title) : '';
             });
     }
-
 }

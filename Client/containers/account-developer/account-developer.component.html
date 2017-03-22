@@ -1,0 +1,14 @@
+<div class="content-main">
+    <div class="content-header">
+        <div class="header-inner">
+            <h2>Developer</h2>
+        </div>
+    </div>
+    <div class="content-inner content-inner-end">
+        <form class="form-horizontal" (ngSubmit)="submit" #developerForm="ngForm">
+            <div class="form-actions">
+                <button type="submit" class="btn btn-purple" [disabled]="!developerForm.form.valid">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>

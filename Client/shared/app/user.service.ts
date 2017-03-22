@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 
 export class User {
     username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
 }
 
 export class RegisterRequestModel {
@@ -13,11 +16,22 @@ export class RegisterRequestModel {
     confirmPassword: string;
 }
 
+export class ChangePasswordRequestModel {
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+}
+
+export class UpdateUserInfoRequest {
+    firstName: string;
+    lastName: string;
+}
+
 export class UserInfoResponse {
     firstName: string;
     lastName: string;
+    username: string;
     email: string;
-    userName: string;
 }
 
 @Injectable()
@@ -43,9 +57,42 @@ export class UserService {
                     let result = <UserInfoResponse>response.json();
 
                     let user = new User();
-                    user.username = result.userName;
+                    user.username = result.username;
+                    user.email = result.email;
+                    user.firstName = result.firstName;
+                    user.lastName = result.lastName;
 
                     resolve(user);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    updateUserInfo(request: UpdateUserInfoRequest): Promise<User> {
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.putForm('/Application/User/Info', request)
+                .subscribe(response => {
+                    let result = <UserInfoResponse>response.json();
+
+                    let user = new User();
+                    user.username = result.username;
+                    user.email = result.email;
+                    user.firstName = result.firstName;
+                    user.lastName = result.lastName;
+
+                    resolve(user);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    changePassword(request: ChangePasswordRequestModel) {
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.postForm('/Application/User/ChangePassword', request)
+                .subscribe(response => {
+                    resolve();
                 }, error => {
                     reject(error);
                 });

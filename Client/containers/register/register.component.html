@@ -12,49 +12,73 @@
                 <form  [formGroup]="regForm" (ngSubmit)="registerUser()" *ngIf="!emailSent">
                     <!-- Name -->
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" [(ngModel)]="user.firstName" formControlName="fname" name="firstName" class="form-control input-md" placeholder="First Name">
+                                
+                                <small *ngIf="formErrors.fname" class="warning">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {{ formErrors.fname }}
+                                </small>
+                                
                             </div>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text"  [(ngModel)]="user.lastName" formControlName="lname" name="lastName" class="form-control input-md" placeholder="Last Name">
+                                
+                                <small *ngIf="formErrors.lname" class="warning">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {{ formErrors.lname }}
+                                </small>
+                                
                             </div>
                         </div>
                     </div>
 
                     <!-- Email -->
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <input type="email"  [(ngModel)]="user.email" formControlName="emailaddress" name="email" class="form-control input-md" placeholder="Email Address">
+                                <small *ngIf="formErrors.emailaddress" class="warning">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {{ formErrors.emailaddress }}
+                                </small>
                             </div>
                         </div>
                     </div>
 
                     <!-- Password -->
                     <div class="row" formGroupName="passwords">
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <input type="password"  [(ngModel)]="user.password" formControlName="pword" name="password" class="form-control input-md" placeholder="Password">
+                                <small *ngIf="formErrors.pword" class="warning">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {{ formErrors.pword }}
+                                </small>
                             </div>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <input type="password"  [(ngModel)]="user.passwordConf" formControlName="pwordconf" name="passwordConfirmation" class="form-control input-md" placeholder="Confirm Password">
+                                <small *ngIf="regForm.get('passwords').errors" class="warning">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    Passwords must match.
+                                </small>
                             </div>
                         </div>
                     </div>
 
-                    <button [disabled]="!(regForm.status === 'VALID')" type="submit" class="btn btn-info btn-block">Register</button>
+                    <button [disabled]="regForm.status !== 'VALID'" type="submit" class="btn btn-primary btn-block">Register</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-md-6 col-md-offset-3">
+<!--<div class="col-md-6 col-md-offset-3">
     <div *ngIf="formErrors.fname" class="alert alert-danger">
         {{ formErrors.fname }}
     </div>
@@ -80,4 +104,4 @@
 <p> Form status: {{ regForm.status }}</p>
 <p> Password error: {{ regForm.get('passwords').errors | json }}</p>
 <p> Form errors: {{ formErrors | json }}</p>
-</div>
+</div>-->

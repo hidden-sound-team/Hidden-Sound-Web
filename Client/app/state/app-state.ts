@@ -23,6 +23,6 @@ export interface AppStateRecord extends TypedRecord<AppStateRecord>, AppState {Â
 export const appStateFactory = makeTypedFactory<AppState, AppStateRecord>({
     loggedIn : false,
     loggedInUser: {},
-    verifyEmail: ""
+    verifyEmail: ''
 });
 

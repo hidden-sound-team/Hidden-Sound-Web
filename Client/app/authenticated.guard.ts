@@ -8,11 +8,11 @@ import { AuthTokenService } from 'app-shared';
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
 
-    loggedIn: {};
-
     constructor(private router: Router, private store: Store<AppState>, private authTokenService: AuthTokenService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        console.log('Valid token: ' + this.authTokenService.hasValidAccessToken());
+        
         if (this.authTokenService.hasValidAccessToken()) {
              return true;
         }

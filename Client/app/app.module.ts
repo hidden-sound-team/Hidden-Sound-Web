@@ -15,7 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
@@ -31,7 +31,12 @@ import {
     LoginComponent,
     RegisterComponent,
     AuthorizeComponent,
-    AccountComponent
+    AccountComponent,
+    AccountInfoComponent,
+    AccountDevicesComponent,
+    AccountChangePasswordComponent,
+    AccountDeveloperComponent,
+    QRComponent
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -43,7 +48,8 @@ import {
     AuthTokenService,
     ApiHttpService,
     AuthService,
-    UserService
+    UserService,
+    QRService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -64,9 +70,16 @@ const ROUTES: Route[] = [
     { path: 'home', component: HomeComponent, data: { title: 'Two Factor Authentication Manager'} },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
-    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }},
-    { path: 'account', component: AccountComponent, data: { title: 'Account' , canActivate: [AuthenticatedGuard]}},
-    // { path: 'devices', component: DevicesComponent, data: { title: 'Devices' }, canActivate: [AuthenticatedGuard] },
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard] },
+    { path: 'account', component: AccountComponent, data: { title: 'Account' }, canActivate: [AuthenticatedGuard], children: [
+        { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' } },
+        { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' } },
+        { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' } },
+        { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' } },
+        { path: 'qrdemo', component: QRComponent, data: { title: 'Account - QR Demo' }},
+        { path: '*', component: AccountInfoComponent }
+    ]},
+    { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard]},
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
@@ -90,7 +103,12 @@ const COMPONENTS = [
     LoginComponent,
     RegisterComponent,
     AuthorizeComponent,
-    AccountComponent
+    AccountComponent,
+    AccountInfoComponent,
+    AccountDevicesComponent,
+    AccountChangePasswordComponent,
+    AccountDeveloperComponent,
+    QRComponent
 ];
 
 const PROVIDERS = [
@@ -103,6 +121,7 @@ const PROVIDERS = [
     ApiHttpService,
     AuthService,
     UserService,
+    QRService,
 
     AuthenticatedGuard
 ];
@@ -130,7 +149,9 @@ const PROVIDERS = [
     Ng2BootstrapModule.forRoot(),
 
     // Routing
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+
+    Ng2PageScrollModule.forRoot()
   ],
   declarations: [
     ...PIPES,

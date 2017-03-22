@@ -1,0 +1,35 @@
+#account-wrapper {
+    display: flex;
+    transition: all 0.4s ease 0s;
+}
+
+#account-content-wrapper {
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+#account-sidebar-wrapper {
+    width: 200px;
+    min-width: 150px;
+    overflow-y: auto;
+    transition: all 0.4s ease 0s;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#account-sidebar-wrapper a {
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+.sidebar-nav {
+    float: none;
+}
+
+.sidebar-nav > li{
+    float: none;
+}
+
+.sidebar-nav .glyphicon {
+    padding-right: 10px;
+}

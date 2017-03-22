@@ -1,0 +1,33 @@
+<div class="content-main">
+    <div class="content-header">
+        <div class="header-inner">
+            <h2>Authorization Demo</h2>
+        </div>
+    </div>
+    <div class="content-inner content-inner-end">
+        <div class="aligner">
+            <div *ngIf="approveMessage" class="alert alert-success">
+                    {{approveMessage}}
+            </div>
+            <div *ngIf="declineMessage" class="alert alert-danger">
+                    {{declineMessage}}
+            </div>
+        </div>
+        <div class="aligner">
+            <button (click)="createAuthorization()" class="btn btn-lg btn-primary">Create Authorization</button>
+        </div>
+        <div *ngIf="loading" class="aligner" style="margin-top:15px;">
+            <i class="fa fa-circle-o-notch fa-spin" style="font-size:32px"></i>
+        </div>
+        <div *ngIf="qrString" class="aligner" style="margin-top:15px;">
+            <img [src]="qrString">
+        </div>
+        <div *ngIf="qrString" class="aligner" style="margin-top:15px;">
+            <span>{{authCode}}</span>>
+        </div>
+        <div *ngIf="qrString" class="aligner" style="margin-top:15px;">
+            <button (click)="approve()" class="btn btn-lg btn-success" style="margin-right: 5px;">Approve</button>
+            <button (click)="decline()" class="btn btn-lg btn-danger" style="margin-left: 5px;">Decline</button>
+        </div>
+    </div>
+</div>

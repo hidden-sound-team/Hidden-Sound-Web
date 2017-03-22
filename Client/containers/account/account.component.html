@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <form>
         <!-- User Info -->
@@ -55,3 +56,52 @@
         </div>
     </form>
 </div>
+=======
+<div id="account-wrapper">
+    <div id="account-sidebar-wrapper">
+        <nav class="navbar navbar-inverse bg-inverse">
+            <ul class="nav navbar-nav sidebar-nav">
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/info']">
+                        <span class="glyphicon glyphicon-user"></span>
+                        My Info
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/changepassword']">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        Change Password
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/devices']">
+                        <span class="glyphicon glyphicon-phone"></span>
+                        Devices
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/developer']">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        Developer
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/account/qrdemo']">
+                        <span class="glyphicon glyphicon-qrcode"></span>
+                        Authorization Demo
+                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div id="account-content-wrapper">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+>>>>>>> e84ec818d0b32319177eda1dbafaca797e3e6802
