@@ -11,6 +11,14 @@
     border-top: 1px solid #fff;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.sitemap div {
+    width: 25%;
+    display: flex;
+    justify-content: center;
 }
 
 .sitemap ul {
@@ -22,6 +30,17 @@
     color: #fff;
 }
 
+@media (max-width: 550px) {
+    .sitemap div {
+        width: 100%;
+        display: block;
+        padding: 10px;
+    }
+    .sitemap {
+        display: block;
+    }
+}
+
 .footer-copyright {
     border-top: 1px solid #fff;
     overflow: hidden;
@@ -31,6 +50,10 @@
 
 .footer .social-section ul li {
     display: inline-block;
+}
+
+.footer .social-section ul {
+    padding-left: 0px;    
 }
 
 .footer .social-section {
