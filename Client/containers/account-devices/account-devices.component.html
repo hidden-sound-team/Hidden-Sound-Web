@@ -5,10 +5,19 @@
         </div>
     </div>
     <div class="content-inner content-inner-end">
-        <form class="form-horizontal" (ngSubmit)="submit" #devicesForm="ngForm">
-            <div class="form-actions">
-                <button type="submit" class="btn btn-purple" [disabled]="!devicesForm.form.valid">Save Changes</button>
-            </div>
-        </form>
+        <table class="table">
+                <thead>
+                    <th>Device Name</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let device of devices">
+                        <td>{{ device.name }}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" (click)="delete(device)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
 </div>

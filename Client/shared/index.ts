@@ -2,6 +2,8 @@
 export * from './app/auth.service';
 export * from './app/user.service';
 export * from './app/qr.service';
+export * from './app/device.service';
+export * from './app/app.service';
 
 export * from './cache/api';
 export * from './cache/universal-cache';
