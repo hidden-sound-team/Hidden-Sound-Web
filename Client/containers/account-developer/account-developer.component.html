@@ -1,32 +1,59 @@
 <div class="content-main">
     <div class="content-header">
         <div class="header-inner">
-            <h2>Developer</h2>
+            <h2>Your Apps</h2>
         </div>
     </div>
     <div class="content-inner content-inner-end">
-        <form class="form-horizontal" (ngSubmit)="submit" #developerForm="ngForm">
-            <div class="form-actions">
-                {{ errorMsg }}
+        <!--class="form-horizontal" (ngSubmit)="submit" #developerForm="ngForm"-->
+        <div  >
+            <div > <!--class="form-actions"-->
                 <table>
                     <thead>
-                        Your Apps
+                        <td>NAME</td>
+                        <td>REDIRECT URI</td>
+                        <td>CLIENT ID </td>                        
                     </thead>
                     <tbody>
                         <tr>
-                            <td>NAME</td>
-                            <td>CLIENT ID </td>
-                            <td>REDIRECT URI</td>
+                            <td>Test Name</td>
+                            <td>Test URI</td>
+                            <td>Test ID </td>   
                         </tr>
                         <tr *ngFor="let app of apps">
                             <td>{{ app.name }}</td>
-                            <td>{{ app.clientId }}</td>
                             <td>{{ app.redirectURI }}</td>
+                            <td>{{ app.clientId }}</td>                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <input [(ngModel)]="inputName">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="inputRedirect">
+                            </td>
+                            <td>
+                                <button (click)="createApp(inputName, inputRedirect)" class="btn btn-success">Add app</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input [(ngModel)]="deleteID">
+                            </td>
+                            <td>
+                                <button (click)="deleteApp(deleteID)" class="btn btn-danger">Delete App</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-purple" [disabled]="!developerForm.form.valid">Save Changes</button>
+                <button type="submit" class="btn btn-purple" >Save Changes</button> <!--[disabled]="!developerForm.form.valid"-->
             </div>
-        </form>
+        </div>
+
+        <p>Message: {{ message }}</p>
+        <p>Name: {{ inputName }}</p>
+        <p>Redirect URI: {{ inputRedirect }}</p>
+        <p>Delete ID: {{ deleteID }}</p>
+
     </div>
 </div>

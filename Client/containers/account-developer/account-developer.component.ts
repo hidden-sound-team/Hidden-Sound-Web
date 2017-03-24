@@ -9,17 +9,40 @@ import { DeveloperService, App } from 'app-shared';
 export class AccountDeveloperComponent implements OnInit {
 
     apps: App[];
-    errorMsg: string;
+    message: string = '';
 
     constructor(private devService: DeveloperService) { }
 
     ngOnInit() { 
         this.devService.getApps()
             .then(apps => {
-                this.apps = apps;                
+                this.apps = apps;
+                this.message = 'Successfully retrieved app list';                
             })
             .catch(error => {
-                this.errorMsg = error;
+                this.message = error;
         });
     }
+
+    createApp(appName: string, uri: string) {
+        this.message = 'START';
+        this.devService.createApp(appName, uri)
+            .then((response) => {
+                this.message = 'SUCCESS';
+            } )
+            .catch(error => {
+                this.message = error; 
+            });
+    }
+
+    deleteApp( clientID: string ) {
+        this.devService.deleteApp(clientID)
+            .then((response) => {
+                this.message = 'SUCCESS';
+            })
+            .catch(error => {
+                this.message = error;
+            });
+    }
+
 }

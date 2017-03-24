@@ -19,22 +19,38 @@ export class DeveloperService {
     getApps(): Promise<App[]> {
         return new Promise((resolve, reject) => {
             this.apiHttpService.get('/Application/Application/List')
-                .subscribe( response => {
+                .subscribe(response => {
                     let result = <AppListResponse>response.json();
                     resolve(result.apps);
                 },
                 error => {
-                    reject(error.json());
+                    reject(error);
                 });
         });
     }
 
-    createApp() {
-
+    createApp(appName: string, uri: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.post('/Application/Application/Create', appName, uri)
+                .subscribe(response => {
+                    resolve(response.json());
+                },
+                error => {
+                    reject(error);
+                });
+        });
     }
 
-    deleteApp() {
-
+    deleteApp(clientID: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.delete('/Application/Application/', clientID)
+                .subscribe(response => {
+                    resolve(response);
+                },
+                error => {
+                    reject(error);
+                });
+        });
     }
 
 
