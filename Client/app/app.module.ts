@@ -53,7 +53,8 @@ import {
     UserService,
     QRService,
     DeviceService,
-    AppService
+    AppService,
+    DeveloperService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -129,6 +130,7 @@ const PROVIDERS = [
     
     DeviceService,
     AppService,
+    DeveloperService,
 
     AuthenticatedGuard
 ];

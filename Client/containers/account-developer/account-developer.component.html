@@ -7,6 +7,24 @@
     <div class="content-inner content-inner-end">
         <form class="form-horizontal" (ngSubmit)="submit" #developerForm="ngForm">
             <div class="form-actions">
+                {{ errorMsg }}
+                <table>
+                    <thead>
+                        Your Apps
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NAME</td>
+                            <td>CLIENT ID </td>
+                            <td>REDIRECT URI</td>
+                        </tr>
+                        <tr *ngFor="let app of apps">
+                            <td>{{ app.name }}</td>
+                            <td>{{ app.clientId }}</td>
+                            <td>{{ app.redirectURI }}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <button type="submit" class="btn btn-purple" [disabled]="!developerForm.form.valid">Save Changes</button>
             </div>
         </form>

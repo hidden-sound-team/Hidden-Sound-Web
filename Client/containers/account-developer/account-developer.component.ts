@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeveloperService, App } from 'app-shared';
 
 @Component({
     selector: 'app-account-developer',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountDeveloperComponent implements OnInit {
 
-    constructor() { }
+    apps: App[];
+    errorMsg: string;
 
-    ngOnInit() { }
+    constructor(private devService: DeveloperService) { }
+
+    ngOnInit() { 
+        this.devService.getApps()
+            .then(apps => {
+                this.apps = apps;                
+            })
+            .catch(error => {
+                this.errorMsg = error;
+        });
+    }
 }
