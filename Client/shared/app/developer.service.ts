@@ -4,18 +4,23 @@ import { ApiHttpService } from './../http/http-api.service';
 export class App {
     public name: string;
     public clientId: string;
-    public redirectURI: string;
+    public redirectUri: string;
 }
 
 class AppListResponse {
-    public apps: App[];
+    public applications: App[];
+}
+
+class CreateAppRequest {
+    public name: string;
+    public redirectUri: string;    
 }
 
 export class CreateAppResponse {
     public name: string;
     public clientId: string;
     public clientSecret: string;
-    public redirectURI: string;
+    public redirectUri: string;
 }
 
 @Injectable()
@@ -28,7 +33,7 @@ export class DeveloperService {
             this.apiHttpService.get('/Application/Application/List')
                 .subscribe(response => {
                     let result = <AppListResponse>response.json();
-                    resolve(result.apps);
+                    resolve(result.applications);
                 },
                 error => {
                     reject(error);
@@ -37,8 +42,12 @@ export class DeveloperService {
     }
 
     createApp(appName: string, uri: string): Promise<CreateAppResponse> {
+        let request = new CreateAppRequest();
+        request.name = appName;
+        request.redirectUri = uri;
+
         return new Promise((resolve, reject) => {
-            this.apiHttpService.post('/Application/Application/Create', appName, uri)
+            this.apiHttpService.postForm('/Application/Application/Create', request)
                 .subscribe(response => {
                     let result = <CreateAppResponse>response.json();
                     resolve(result);

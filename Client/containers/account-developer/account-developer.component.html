@@ -20,9 +20,9 @@
                             <td>Test URI</td>
                             <td>Test ID </td>   
                         </tr>
-                        <tr *ngFor="let app of apps">
+                        <tr *ngFor="let app of apps">                            
                             <td>{{ app.name }}</td>
-                            <td>{{ app.redirectURI }}</td>
+                            <td>{{ app.redirectUri }}</td>
                             <td>{{ app.clientId }}</td>                            
                         </tr>                        
                         <tr>
@@ -56,3 +56,4 @@
 <p>Name: {{ inputName }}</p>
 <p>Redirect URI: {{ inputRedirect }}</p>
 <p>Delete ID: {{ deleteID }}</p>
+<p> App list: {{ applications }}</p>

@@ -10,6 +10,7 @@ export class AccountDeveloperComponent implements OnInit {
 
     apps: App[];
     message: string = '';
+    applications;
 
     constructor(private devService: DeveloperService) { }
 
