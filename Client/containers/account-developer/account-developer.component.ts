@@ -28,9 +28,9 @@ export class AccountDeveloperComponent implements OnInit {
         this.message = 'START';
         this.devService.createApp(appName, uri)
             .then((response) => {
-                this.message = 'SUCCESS';
+                this.message = response.name;
             } )
-            .catch(error => {
+            .catch((error) => {
                 this.message = error; 
             });
     }

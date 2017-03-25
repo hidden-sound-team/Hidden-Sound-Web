@@ -11,6 +11,13 @@ class AppListResponse {
     public apps: App[];
 }
 
+export class CreateAppResponse {
+    public name: string;
+    public clientId: string;
+    public clientSecret: string;
+    public redirectURI: string;
+}
+
 @Injectable()
 export class DeveloperService {
 
@@ -29,11 +36,12 @@ export class DeveloperService {
         });
     }
 
-    createApp(appName: string, uri: string): Promise<any> {
+    createApp(appName: string, uri: string): Promise<CreateAppResponse> {
         return new Promise((resolve, reject) => {
             this.apiHttpService.post('/Application/Application/Create', appName, uri)
                 .subscribe(response => {
-                    resolve(response.json());
+                    let result = <CreateAppResponse>response.json();
+                    resolve(result);
                 },
                 error => {
                     reject(error);
@@ -43,7 +51,7 @@ export class DeveloperService {
 
     deleteApp(clientID: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.apiHttpService.delete('/Application/Application/', clientID)
+            this.apiHttpService.delete('/Application/Application/' + clientID)
                 .subscribe(response => {
                     resolve(response);
                 },

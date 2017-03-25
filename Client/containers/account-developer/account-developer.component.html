@@ -10,9 +10,9 @@
             <div > <!--class="form-actions"-->
                 <table>
                     <thead>
-                        <td>NAME</td>
-                        <td>REDIRECT URI</td>
-                        <td>CLIENT ID </td>                        
+                        <td><strong>NAME</strong></td>
+                        <td><strong>REDIRECT URI</strong></td>
+                        <td><strong>CLIENT ID</strong></td>                        
                     </thead>
                     <tbody>
                         <tr>
@@ -24,7 +24,7 @@
                             <td>{{ app.name }}</td>
                             <td>{{ app.redirectURI }}</td>
                             <td>{{ app.clientId }}</td>                            
-                        </tr>
+                        </tr>                        
                         <tr>
                             <td>
                                 <input [(ngModel)]="inputName">
@@ -48,12 +48,11 @@
                 </table>
                 <button type="submit" class="btn btn-purple" >Save Changes</button> <!--[disabled]="!developerForm.form.valid"-->
             </div>
-        </div>
-
-        <p>Message: {{ message }}</p>
-        <p>Name: {{ inputName }}</p>
-        <p>Redirect URI: {{ inputRedirect }}</p>
-        <p>Delete ID: {{ deleteID }}</p>
-
+        </div>    
     </div>
 </div>
+
+<p>Message: {{ message }}</p>
+<p>Name: {{ inputName }}</p>
+<p>Redirect URI: {{ inputRedirect }}</p>
+<p>Delete ID: {{ deleteID }}</p>
