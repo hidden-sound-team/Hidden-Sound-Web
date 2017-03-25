@@ -9,7 +9,7 @@
 }
 
 #account-sidebar-wrapper {
-    width: 200px;
+    /*width: 200px;*/
     min-width: 150px;
     overflow-y: auto;
     transition: all 0.4s ease 0s;
@@ -32,4 +32,123 @@
 
 .sidebar-nav .glyphicon {
     padding-right: 10px;
+}
+
+.fa {
+    color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.nav-activity {
+    padding-top: 100px;
+    display: block;
+    position: absolute;
+    z-index: +1;
+    top: 0;
+    left: 0;
+    width: auto;
+    max-width: 90px;
+    height: auto;
+    padding-right: 0;
+    padding-left: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 200ms ease-out;
+    border-top: none;
+}
+.nav-activity:hover {
+  max-width: 300px;
+  cursor: pointer;
+}
+.nav-activity svg {
+  float: left;
+  margin: 10px 20px 10px 10px;
+}
+.nav-activity a .activity-title {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+}
+.nav-activity a .activity-listings {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8);
+}
+.nav-activity .icon-wrap {
+  position: relative;
+  float: left;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.nav-activity svg {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin: 10px;
+  margin-right: 20px;
+}
+.nav-activity svg circle {
+  fill: none;
+}
+.nav-activity .activity-link, .nav-activity a.activity-link {
+  display: block;
+  min-width: 300px;
+  padding: 5px 10px;
+  font-size: .9em;
+  white-space: nowrap;
+  border-top: none;
+  background-color: #212429;
+  border-color: #212429;
+}
+.nav-activity .activity-link.active, .nav-activity a.activity-link.active {
+  background-color: #2077D8;
+  border-color: #2077D8;
+}
+.nav-activity .activity-link.active .activity-listings, .nav-activity a.activity-link.active .activity-listings {
+  color: white;
+}
+.nav-activity .activity-link.active .svg-fill, .nav-activity .activity-link.active svg circle, .nav-activity a.activity-link.active .svg-fill, .nav-activity a.activity-link.active svg circle {
+  fill: #1875DC;
+}
+.nav-activity .activity-link.active .activity-title, .nav-activity a.activity-link.active .activity-title {
+  color: #ffffff;
+}
+.nav-activity .activity-link.active:hover .svg-fill, .nav-activity a.activity-link.active:hover .svg-fill {
+  fill: #549cec;
+}
+.nav-activity .activity-link:hover, .nav-activity a.activity-link:hover {
+  border-color: #2077D8;
+  background-color: #3184e0;
+}
+.nav-activity .activity-link .svg-fill, .nav-activity .activity-link .svg-fill *, .nav-activity .activity-link .svg-icon, .nav-activity .activity-link .svg-icon *, .nav-activity a.activity-link .svg-fill, .nav-activity a.activity-link .svg-fill *, .nav-activity a.activity-link .svg-icon, .nav-activity a.activity-link .svg-icon * {
+  transition: fill .2s;
+}
+.nav-activity .activity-link .svg-fill, .nav-activity .activity-link .svg-fill *, .nav-activity a.activity-link .svg-fill, .nav-activity a.activity-link .svg-fill * {
+  fill: #0E5099;
+  fill: #F3DF32;
+}
+
+.nav-activity .svg-icon, .nav-activity .svg-icon * {
+  fill: #fff;
 }
