@@ -27,18 +27,18 @@
                         </tr>                        
                         <tr>
                             <td>
-                                <input [(ngModel)]="inputName">
+                                <input [(ngModel)]="inputName" placeholder="App Name">
                             </td>
                             <td>
-                                <input [(ngModel)]="inputRedirect">
+                                <input [(ngModel)]="inputRedirect" placeholder="Redirect URI">
                             </td>
                             <td>
                                 <button (click)="createApp(inputName, inputRedirect)" class="btn btn-success">Add app</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <input [(ngModel)]="deleteID">
+                            <td colspan="2">
+                                <input [(ngModel)]="deleteID" placeholder="Client ID">
                             </td>
                             <td>
                                 <button (click)="deleteApp(deleteID)" class="btn btn-danger">Delete App</button>
