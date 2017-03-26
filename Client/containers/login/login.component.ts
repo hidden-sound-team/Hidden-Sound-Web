@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
                 this.store.dispatch({ type: LOGIN_USER, payload: result });
 
-                this.router.navigate([ this.returnUrl ]);
+                this.router.navigateByUrl(this.returnUrl);
             }).catch(error => {
                 this.errorMessage = '';
                 this.verifyEmail = '';
