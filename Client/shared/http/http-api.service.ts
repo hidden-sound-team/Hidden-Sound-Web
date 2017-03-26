@@ -32,6 +32,7 @@ export class ApiHttpService {
 
     constructor(private http: Http, private router: Router, private config: AppConfig, private authToken: AuthTokenService) {
         this.pendingCommands$ = this.pendingCommandsSubject.asObservable();
+        
     }
 
     // Http overrides 
@@ -61,15 +62,16 @@ export class ApiHttpService {
         return this.request(options);
     }
 
-    postForm(url: string, data?: any): Observable<Response> {
+    postForm(url: string, data?: any, queryToken?: boolean): Observable<Response> {
         let options = new ApiHttpOptions();
         options.method = RequestMethod.Post;
         options.url = url;
         options.data = this.buildUrlSearchParams(data);
 
-        options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
-        return this.request(options);
+        // options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+        return this.request(options, queryToken);
     }
 
     put(url: string, data?: any, params?: any): Observable<Response> {
@@ -114,7 +116,7 @@ export class ApiHttpService {
     // Internal methods
     // --------------------
 
-    private request(options: ApiHttpOptions): Observable<any> {
+    private request(options: ApiHttpOptions, queryToken?: boolean): Observable<any> {
         options.method = (options.method || RequestMethod.Get);
         options.url = (options.url || '');
         options.headers = (options.headers || {});
@@ -124,8 +126,16 @@ export class ApiHttpService {
         console.log(options.url);
 
         this.interpolateUrl(options);
-        this.addXsrfToken(options);
-        this.addBearerToken(options);
+
+        if (queryToken) {
+            options.params = { 'access_token': this.authToken.getAccessToken()};
+        } else {
+            if (this.authToken.getAccessToken()){
+                options.headers.Authorization = 'Bearer ' + this.authToken.getAccessToken();
+            }
+        }
+        // this.addXsrfToken(options);
+        // this.addBearerToken(options);
 
         options.url = this.config.getConfig('apiUrl') + options.url;
 
@@ -143,7 +153,7 @@ export class ApiHttpService {
         if (isCommand) {
             this.pendingCommandsSubject.next(++this.pendingCommandCount);
         }
-
+        
         let stream = this.http.request(options.url, requestOptions)
             .catch((error: any) => {
                 this.handleError(error);

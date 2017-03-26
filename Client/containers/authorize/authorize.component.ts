@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { isBrowser } from 'angular2-universal';
 import { Router, ActivatedRoute }    from '@angular/router';
-import { ApiHttpService } from 'app-shared';
+import { ApiHttpService, AuthTokenService } from 'app-shared';
+import { Http, RequestOptions, Headers } from '@angular/http';
 
 @Component({
     selector: 'app-authorize',
@@ -14,17 +15,30 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
     application: string;
     requestId: string;
     scope: string;
+    clientId: string;
+    redirectUri: string;
+    html: string;
 
     private sub: any;
 
-    constructor (private route: ActivatedRoute, private apiHttpService: ApiHttpService) {
+    constructor (private http: Http, private route: ActivatedRoute, private apiHttpService: ApiHttpService, private authToken: AuthTokenService) {
     
     }
 
     authorize() {
-        this.apiHttpService.postForm('/oauth/authorize', { 'request_id': this.requestId, 'submit.Accept': '' })
+        this.apiHttpService.postForm('/oauth/authorize', 
+            {   'request_id': this.requestId, 
+                //'client_id': this.clientId, 
+                //'response_type': 'code', 
+                //'redirect_uri': this.redirectUri, 
+                'submit.Accept': '',
+                //'response_mode': 'query'
+            })
             .subscribe(r => {
-
+                this.html = r.text();
+                //if(isBrowser){
+                //    window.location.href = this.redirectUri;
+                //}
             }, 
             error => {
 
@@ -41,6 +55,8 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
             this.application = params['application'];
             this.requestId = params['request_id'];
             this.scope = params['scope'];
+            this.clientId = params['client_id'];
+            this.redirectUri = decodeURIComponent(params['redirect_uri']);
         });
     }
 

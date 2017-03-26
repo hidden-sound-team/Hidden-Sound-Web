@@ -1,7 +1,7 @@
 <div class="content-main">
     <div class="content-header">
         <div class="header-inner">
-            <h2>Your Apps</h2>
+            <h2>Developer Apps</h2>
         </div>
     </div>
     <div class="content-inner content-inner-end">
@@ -10,50 +10,56 @@
             <div > <!--class="form-actions"-->
                 <table>
                     <thead>
-                        <td><strong>NAME</strong></td>
-                        <td><strong>REDIRECT URI</strong></td>
-                        <td><strong>CLIENT ID</strong></td>                        
+                        <th>NAME</th>
+                        <th>REDIRECT URI</th>
+                        <th colspan="2">CLIENT ID</th>                        
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Test Name</td>
-                            <td>Test URI</td>
-                            <td>Test ID </td>   
-                        </tr>
                         <tr *ngFor="let app of apps">                            
                             <td>{{ app.name }}</td>
                             <td>{{ app.redirectUri }}</td>
-                            <td>{{ app.clientId }}</td>                            
-                        </tr>                        
-                        <tr>
+                            <td>{{ app.clientId }}</td>  
                             <td>
-                                <input [(ngModel)]="inputName" placeholder="App Name">
-                            </td>
-                            <td>
-                                <input [(ngModel)]="inputRedirect" placeholder="Redirect URI">
-                            </td>
-                            <td>
-                                <button (click)="createApp(inputName, inputRedirect)" class="btn btn-success">Add app</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input [(ngModel)]="deleteID" placeholder="Client ID">
-                            </td>
-                            <td>
-                                <button (click)="deleteApp(deleteID)" class="btn btn-danger">Delete App</button>
-                            </td>
-                        </tr>
+                                <button (click)="deleteApp(app.clientId)" class="btn btn-small btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
+                                </button>
+                            </td>                          
+                        </tr>                   
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-purple" >Save Changes</button> <!--[disabled]="!developerForm.form.valid"-->
             </div>
         </div>    
     </div>
 </div>
 
-<p>Message: {{ message }}</p>
+<button class="btn btn-purple" (click)="modal.show()">
+    Add App
+</button>
+
+<app-modal>
+    <div class="app-modal-header">
+        <h3>Add a New App</h3>
+    </div>
+    <div class="app-modal-body">
+        <form>
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="inputName" name="appName" placeholder="App Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="inputRedirect" name="uri" placeholder="Redirect URI">
+            </div>
+            <div class="form-group">
+                <button (click)="createApp(inputName, inputRedirect); modal.hide();"  class="btn btn-purple btn-block">Add app</button>
+            </div>
+        </form>
+    </div>
+    <div class="app-modal-footer">
+    </div>
+</app-modal>
+
+
+<!--<p>Message: {{ message }}</p>
 <p>Name: {{ inputName }}</p>
 <p>Redirect URI: {{ inputRedirect }}</p>
 <p>Delete ID: {{ deleteID }}</p>
-<p> App list: {{ applications }}</p>
+<p> App list: {{ applications }}</p>-->
