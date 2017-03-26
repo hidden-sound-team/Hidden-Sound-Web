@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { Ng2BootstrapModule, CollapseDirective } from 'ng2-bootstrap';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 // Main "APP" Root Component
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
@@ -36,7 +37,8 @@ import {
     AccountDevicesComponent,
     AccountChangePasswordComponent,
     AccountDeveloperComponent,
-    QRComponent
+    QRComponent,
+    
 } from 'app-containers';
 
 // Provider (aka: "shared" | "services") imports
@@ -49,7 +51,10 @@ import {
     ApiHttpService,
     AuthService,
     UserService,
-    QRService
+    QRService,
+    DeviceService,
+    AppService,
+    DeveloperService
 } from 'app-shared';
 
 //////////////////////////////////////////////////////////////////
@@ -122,6 +127,10 @@ const PROVIDERS = [
     AuthService,
     UserService,
     QRService,
+    
+    DeviceService,
+    AppService,
+    DeveloperService,
 
     AuthenticatedGuard
 ];
@@ -151,7 +160,9 @@ const PROVIDERS = [
     // Routing
     RouterModule.forRoot(ROUTES),
 
-    Ng2PageScrollModule.forRoot()
+    Ng2PageScrollModule.forRoot(),
+    
+    Ng2TableModule
   ],
   declarations: [
     ...PIPES,
