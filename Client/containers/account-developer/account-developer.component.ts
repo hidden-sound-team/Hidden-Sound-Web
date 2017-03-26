@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeveloperService, App } from 'app-shared';
+import { ModalComponent } from 'app-components';
 
 @Component({
     selector: 'app-account-developer',
@@ -12,9 +13,16 @@ export class AccountDeveloperComponent implements OnInit {
     message: string = '';
     applications;
 
+    @ViewChild(ModalComponent)
+    public readonly modal: ModalComponent;
+
     constructor(private devService: DeveloperService) { }
 
     ngOnInit() { 
+        this.getApps();
+    }
+
+    getApps() {
         this.devService.getApps()
             .then(apps => {
                 this.apps = apps;
@@ -29,7 +37,8 @@ export class AccountDeveloperComponent implements OnInit {
         this.message = 'START';
         this.devService.createApp(appName, uri)
             .then((response) => {
-                this.message = response.name;
+                this.message = 'App created successfully';
+                this.getApps();
             } )
             .catch((error) => {
                 this.message = error; 
@@ -40,6 +49,7 @@ export class AccountDeveloperComponent implements OnInit {
         this.devService.deleteApp(clientID)
             .then((response) => {
                 this.message = 'SUCCESS';
+                this.getApps();
             })
             .catch(error => {
                 this.message = error;

@@ -24,12 +24,12 @@
                 </li>
                 <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']" (click)="isCollapsed = true">
                     <p class="navbar-btn">
-                        <a class="btn btn-success round" [routerLink]="['/account/info']">{{ user$.username }}</a>
+                        <a class="btn btn-purple round" [routerLink]="['/account/info']">{{ user$.username }}</a>
                     </p>
                 </li>
                 <li *ngIf="loggedIn$" [routerLinkActive]="['link-active']" (click)="logout(); isCollapsed = true">
                     <p class="navbar-btn">
-                        <a class="btn btn-danger round" [routerLink]="['/logout']">Logout</a>
+                        <a class="btn btn-primary round" [routerLink]="['/logout']">Logout</a>
                     </p>
                 </li>
             </ul>

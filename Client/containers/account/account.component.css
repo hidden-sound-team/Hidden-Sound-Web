@@ -6,6 +6,7 @@
 #account-content-wrapper {
     padding-left: 15px;
     padding-top: 15px;
+    min-height: 750px;
 }
 
 #account-sidebar-wrapper {
@@ -49,7 +50,7 @@ a {
 }
 
 .nav-activity {
-    padding-top: 100px;
+    padding-top: 80px;
     display: block;
     position: absolute;
     z-index: +1;
@@ -65,17 +66,14 @@ a {
     transition: 200ms ease-out;
     border-top: none;
 }
+
 .nav-activity:hover {
   max-width: 300px;
   cursor: pointer;
 }
-.nav-activity svg {
-  float: left;
-  margin: 10px 20px 10px 10px;
-}
+
 .nav-activity a .activity-title {
   display: block;
-  margin-top: 15px;
   font-weight: 600;
   color: #ffffff;
   font-size: 16px;
@@ -100,17 +98,6 @@ a {
   margin-right: 20px;
 }
 
-.nav-activity svg {
-  display: block;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
-  margin: 10px;
-  margin-right: 20px;
-}
-.nav-activity svg circle {
-  fill: none;
-}
 .nav-activity .activity-link, .nav-activity a.activity-link {
   display: block;
   min-width: 300px;
@@ -120,10 +107,12 @@ a {
   border-top: none;
   background-color: #212429;
   border-color: #212429;
+  display: flex;
+  align-items: center;
 }
 .nav-activity .activity-link.active, .nav-activity a.activity-link.active {
-  background-color: #2077D8;
-  border-color: #2077D8;
+  background-color: #390a8c;
+  border-color: #390a8c;
 }
 .nav-activity .activity-link.active .activity-listings, .nav-activity a.activity-link.active .activity-listings {
   color: white;
@@ -138,8 +127,8 @@ a {
   fill: #549cec;
 }
 .nav-activity .activity-link:hover, .nav-activity a.activity-link:hover {
-  border-color: #2077D8;
-  background-color: #3184e0;
+  border-color: #390a8c;
+  background-color: #390a8c;
 }
 .nav-activity .activity-link .svg-fill, .nav-activity .activity-link .svg-fill *, .nav-activity .activity-link .svg-icon, .nav-activity .activity-link .svg-icon *, .nav-activity a.activity-link .svg-fill, .nav-activity a.activity-link .svg-fill *, .nav-activity a.activity-link .svg-icon, .nav-activity a.activity-link .svg-icon * {
   transition: fill .2s;
