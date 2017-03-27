@@ -6,7 +6,7 @@
 #account-content-wrapper {
     padding-left: 15px;
     padding-top: 15px;
-    min-height: 750px;
+    min-height: 760px;
 }
 
 #account-sidebar-wrapper {
@@ -53,9 +53,10 @@ a {
     padding-top: 80px;
     display: block;
     position: absolute;
-    z-index: +1;
+    /*z-index: +1;*/
     top: 0;
     left: 0;
+    bottom: 0;
     width: auto;
     max-width: 90px;
     height: auto;
@@ -65,6 +66,8 @@ a {
     cursor: pointer;
     transition: 200ms ease-out;
     border-top: none;
+    background-color: #212429;
+
 }
 
 .nav-activity:hover {
