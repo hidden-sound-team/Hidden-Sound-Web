@@ -1,15 +1,49 @@
-h1 {
+.question {
     margin: auto;
     width: 60%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em;
 }
 
 #buttons {
     margin: auto;
-    width: 60%;
+    width: 40%;
     align-items: center;
     display: flex;
+    margin-bottom: 410px;
 }
 
-#buttons > button {
+#buttons > i {
     margin: auto;
+}
+
+.purple-text {
+    color: #390a8c;
+}
+
+.green {
+    color: #5cb85c;
+}
+
+.green:hover {
+    color: #449d44;   
+}
+
+.red {
+    color: #d9534f;
+}
+
+.red:hover {
+    color: #c9302c;
+}
+
+.fa {
+    font-size: 8em;
 }

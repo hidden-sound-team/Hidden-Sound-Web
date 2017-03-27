@@ -1,10 +1,14 @@
-<div>
-    <h1>
-        Would you like to authorize "{{ application }}"?
+<div class="question">
+    <h1>        
+        Would you like to authorize <strong class="purple-text">{{ application }}</strong>?        
     </h1>
 </div>
-<br>
+<!--<br>-->
 <div id="buttons">
-    <button (click)="authorize()" class="btn btn-lg btn-info" name="btn-authorize">Authorize</button>
-    <button (click)="decline()" class="btn btn-lg btn-danger" name="btn-decline">Decline</button>
+    <!--<button (click)="authorize()" class="btn btn-lg btn-success" name="btn-authorize">Authorize</button>
+    <button (click)="decline()" class="btn btn-lg btn-danger" name="btn-decline">Decline</button>-->
+    <i (click)="authorize()" class="fa fa-check-circle green" aria-hidden="true"></i>
+    <i (click)="decline()" class="fa fa-times-circle red" aria-hidden="true"></i>
+
+
 </div>
