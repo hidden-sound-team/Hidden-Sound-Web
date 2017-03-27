@@ -30,7 +30,7 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
         if (isBrowser) {
             setTimeout(() => {
                 window.location.href = this.config.getConfig('vendorUri') + '/Cart/Authorize?state=' + this.authToken.getAccessToken();
-            }, 2000);
+            }, 100);
         }
 
         /*
@@ -61,13 +61,14 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
 
     ngOnInit () {
         this.sub = this.route.queryParams.subscribe(params => {
-            this.application = params['application'];
+            this.application = decodeURIComponent(params['application']).replace(/\+/g, ' ');
             this.requestId = params['request_id'];
             this.scope = params['scope'];
             this.clientId = params['client_id'];
             this.redirectUri = decodeURIComponent(params['redirect_uri']);
         });
     }
+
 
     ngOnDestroy() {
         this.sub.unsubscribe();
