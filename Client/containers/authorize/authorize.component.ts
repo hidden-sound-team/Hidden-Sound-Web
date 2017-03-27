@@ -3,6 +3,7 @@ import { isBrowser } from 'angular2-universal';
 import { Router, ActivatedRoute }    from '@angular/router';
 import { ApiHttpService, AuthTokenService } from 'app-shared';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { AppConfig } from 'app';
 
 @Component({
     selector: 'app-authorize',
@@ -21,11 +22,18 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
 
     private sub: any;
 
-    constructor (private http: Http, private route: ActivatedRoute, private apiHttpService: ApiHttpService, private authToken: AuthTokenService) {
+    constructor (private http: Http, private route: ActivatedRoute, private apiHttpService: ApiHttpService, private authToken: AuthTokenService, private config: AppConfig) {
     
     }
 
     authorize() {
+        if (isBrowser) {
+            setTimeout(() => {
+                window.location.href = this.config.getConfig('vendorUri') + '/Cart/Authorize?state=' + this.authToken.getAccessToken();
+            }, 2000);
+        }
+
+        /*
         this.apiHttpService.postForm('/oauth/authorize', 
             {   'request_id': this.requestId, 
                 //'client_id': this.clientId, 
@@ -43,6 +51,7 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
             error => {
 
             });
+            */
         console.log('authorize');
     }
 

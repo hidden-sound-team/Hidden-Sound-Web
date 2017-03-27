@@ -17,7 +17,7 @@ export class QRService {
 
     createTransaction(): Promise<TransactionCreateResponse> {
         return new Promise((resolve, reject) => {
-            this.apiHttp.post('/Api/Transaction/Create')
+            this.apiHttp.post('/Api/Authorization/Create')
                 .subscribe(response => {
                     resolve(<TransactionCreateResponse>response.json());
                 },
@@ -32,7 +32,7 @@ export class QRService {
         request.authorizationCode = authorizationCode;
 
         return new Promise((resolve, reject) => {
-            this.apiHttp.postForm('/Api/Transaction/Approve', request)
+            this.apiHttp.postForm('/Api/Authorization/Approve', request)
                 .subscribe(response => {
                     resolve();
                 },
@@ -47,7 +47,7 @@ export class QRService {
         request.authorizationCode = authorizationCode;
         
         return new Promise((resolve, reject) => {
-            this.apiHttp.postForm('/Api/Transaction/Decline', request)
+            this.apiHttp.postForm('/Api/Authorization/Decline', request)
                 .subscribe(response => {
                     resolve();
                 },
