@@ -1,6 +1,8 @@
 .footer {
     background: #390a8c;
     color: #fff;
+    position: absolute;
+    width: 100%;
 }
 
 .social-section {
