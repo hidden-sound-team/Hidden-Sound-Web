@@ -9,9 +9,15 @@
 }
 
 #jumbo {
-    min-height: 400px;
+    min-height: 965px;
+    margin-top: -90px;
+    display: flex;
     text-align: center;
+    align-items: center;
     color: #390a8c;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 1px 1px 1px rgba(51,51,51,0.3);
+    background-image: url('https://os.alipayobjects.com/rmsportal/XBEMpMvEUUePLte.png');
+    background-size: cover;
 }
 
 #about {
@@ -68,6 +74,12 @@
     padding: 40px;
 }
 
+.content > .text {
+    text-align: left;
+    padding-top: 0px;
+    margin-top: -35px;
+}
+
 #step-list {
     align-items: initial;
     padding-bottom: 30px;
@@ -86,6 +98,10 @@
     margin-bottom: 20px;
     font-weight: bold;
     font-size: 1.5em;
+}
+
+.step > h2 {
+    text-align: center; 
 }
 
 #about > .container-fluid > .content > div > img {
