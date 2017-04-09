@@ -9,26 +9,85 @@
 }
 
 #jumbo {
-    height: 400px;
+    min-height: 400px;
     text-align: center;
     color: #390a8c;
 }
 
 #about {
-    height: 600px;
+    min-height: 600px;
     background: #f6f9fc;
     text-align: center;
     color: #390a8c;
 }
 
 #how {
-    height: 600px;
+    min-height: 600px;
     text-align: center;
     color: #390a8c;
+    padding-left: 30px;
+    padding-right: 30px;
 }
-
+/*
 #mobile {
     height: 600px;
     text-align: center;
     color: #390a8c;
+}*/
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content > div {
+    width: 30%;
+    font-size: 1.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.heading {
+    font-size: 3em;
+    font-weight: 500;
+    margin: 30px;
+}
+
+#how-image {
+    width: auto;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.content > .step {
+    width: 20%;
+    text-align: left;
+    padding: 40px;
+}
+
+#step-list {
+    align-items: initial;
+    padding-bottom: 30px;
+}
+
+.number {
+    background-color: #390a8c;
+    border-radius: 100%;
+    color: white;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#about > .container-fluid > .content > div > img {
+    width: 55%;
 }
