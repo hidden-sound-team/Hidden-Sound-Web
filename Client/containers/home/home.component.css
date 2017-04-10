@@ -20,6 +20,15 @@
     background-size: cover;
 }
 
+#jumbo > div > h1 {
+    font-size: 5em;
+}
+
+#jumbo > div {
+    margin-top: -250px;
+    margin-left: 0px;
+}
+
 #about {
     min-height: 600px;
     background: #f6f9fc;
