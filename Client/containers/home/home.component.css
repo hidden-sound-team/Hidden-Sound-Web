@@ -29,6 +29,16 @@
     margin-left: 0px;
 }
 
+@media (max-height: 900px) {
+    #jumbo {
+        min-height: 680px;
+    }
+
+    #jumbo > div {
+        margin-top: -150px;
+    }
+}
+
 #about {
     min-height: 600px;
     background: #f6f9fc;
