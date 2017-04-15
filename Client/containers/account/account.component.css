@@ -58,7 +58,8 @@ a {
     left: 0;
     bottom: 0;
     width: auto;
-    max-width: 90px;
+    /*max-width: 90px;*/
+    max-width: 300px;
     height: auto;
     padding-right: 0;
     padding-left: 0;
@@ -70,9 +71,15 @@ a {
 
 }
 
-.nav-activity:hover {
+/*.nav-activity:hover {
   max-width: 300px;
   cursor: pointer;
+}*/
+
+@media (max-width: 1200px) {
+  .nav-activity {
+    max-width: 90px;
+  }
 }
 
 .nav-activity a .activity-title {
