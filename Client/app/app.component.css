@@ -142,6 +142,7 @@ html, body {
     color: #390a8c;
     background-color: #d9c8f8;
     border-color: #917AB8;
+    border-radius: 0;
 }
 
 .alert-center {
