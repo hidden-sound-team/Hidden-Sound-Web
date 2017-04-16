@@ -18,7 +18,7 @@ class AuthorizedAppListResponse {
 })
 export class AccountAuthorizedAppsComponent implements OnInit {
 
-    authorizedApps: AuthorizedApp[];
+    authorizedApps: AuthorizedApp[] = [];
 
     constructor(private apiHttpService: ApiHttpService) { }
 
