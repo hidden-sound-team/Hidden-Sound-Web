@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeveloperService, App, CreateAppResponse } from 'app-shared';
 import { ModalComponent } from 'app-components';
+import { AppConfig } from 'app';
 
 @Component({
     selector: 'app-account-developer',
@@ -19,14 +20,16 @@ export class AccountDeveloperComponent implements OnInit {
     inputName: string;
     inputRedirect: string;
     
-
     @ViewChild(ModalComponent)
     public readonly modal: ModalComponent;
 
-    constructor(private devService: DeveloperService) { }
+    private devDocUrl: string;
+
+    constructor(private devService: DeveloperService, private appConfig: AppConfig) { }
 
     ngOnInit() { 
         this.getApps();
+        this.devDocUrl = this.appConfig.getConfig('apiUrl') + '/swagger';
     }
 
     getApps() {
@@ -85,6 +88,15 @@ export class AccountDeveloperComponent implements OnInit {
             .catch((error) => {
                 this.message = error;
             });
+    }
+
+    startAdd() {
+        this.isAdding = true;
+        this.showNotification = false;
+        this.inputName = '';
+        this.inputRedirect = '';
+        
+        this.modal.show();
     }
 
 }

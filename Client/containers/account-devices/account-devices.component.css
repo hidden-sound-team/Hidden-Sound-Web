@@ -11,3 +11,13 @@ th, td {
 tr:hover {
     background-color: #d9c8f8;
 }
+
+.content-main {
+    width: 60%;
+}
+
+@media (max-width: 1200px) {
+    .content-main {
+        width: 100%;
+    }
+}

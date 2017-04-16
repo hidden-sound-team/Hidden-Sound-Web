@@ -4,17 +4,24 @@
             <h2>Devices</h2>
         </div>
     </div>
+    <h4>
+        Here you can see a list of all the mobile devices linked to your account.
+        Use these devices to authorize your online purchases with our mobile app.
+    </h4>
     <div class="content-inner content-inner-end">
         <table>
-                <!--<thead>
-                    <th>Device Name</th>
-                    <th></th>
-                </thead>-->
+                <thead>
+                    <th>DEVICE NAME</th>
+                    <th>ACTIONS</th>
+                </thead>
                 <tbody>
                     <tr *ngFor="let device of devices">
                         <td>{{ device.name }}</td>
                         <td>
-                            <button type="button" class="btn btn-danger" (click)="delete(device)">Delete</button>
+                            <button type="button" class="btn btn-danger" (click)="delete(device)">
+                                <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
+                            </button>
+                            
                         </td>
                     </tr>
                 </tbody>

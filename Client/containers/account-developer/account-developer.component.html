@@ -4,20 +4,25 @@
             <h2>Developer Apps</h2>
         </div>
     </div>
+    <h4>
+        Here are a list of applications associated with your account. These applications will be able to call our API
+        and will allow you to integrate our service into your site!
+    </h4>
     <div class="content-inner content-inner-end">
         <!--class="form-horizontal" (ngSubmit)="submit" #developerForm="ngForm"-->
         <div  >
             <div > <!--class="form-actions"-->
                 <table>
                     <thead>
-                        <th>NAME</th>
-                        <th>REDIRECT URI</th>
-                        <th colspan="2">CLIENT ID</th>                        
-                    </thead>
+                        <th colspan="2">NAME</th>
+                        <!--<th>REDIRECT URI</th>-->
+                        <th>CLIENT ID</th>   
+                        <th>ACTIONS</th>                     
+                    </thead>                    
                     <tbody>
                         <tr *ngFor="let app of apps">                            
-                            <td>{{ app.name }}</td>
-                            <td>{{ app.redirectUri }}</td>
+                            <td colspan="2">{{ app.name }}</td>
+                            <!--<td>{{ app.redirectUri }}</td>-->
                             <td>{{ app.clientId }}</td>  
                             <td>
                                 <button (click)="startEdit(app)" class="btn btn-small btn-warning">
@@ -29,27 +34,45 @@
                             </td>                          
                         </tr>                   
                     </tbody>
+                    <tfoot>
+                        <td>
+                            <a href="{{devDocUrl}}" target="_blank" class="btn btn-purple">API Documentation</a>  
+                        </td>                        
+                        <td colspan="2"></td>
+                        <td>
+                            <button class="btn btn-purple " (click)="startAdd()">
+                                Add App
+                            </button>
+                        </td>                        
+                    </tfoot>
                 </table>
             </div>
         </div>    
     </div>
 </div>
 
-<button class="btn btn-purple" (click)="modal.show(); isAdding=true; showNotification=false;">
-    Add App
-</button>
+
 
 <app-modal>
     <div *ngIf="isAdding" class="app-modal-header">
         <h3>Add a New App</h3>
     </div>
     <div *ngIf="isAdding" class="app-modal-body">
+        <h4 style="text-align: justify">
+            Provide us with your application name and a callback URL. We'll register your application with our service
+            and give you a client ID along with a client secret, which you will only be shown once.
+        </h4>
+        <br>
         <form>
             <div class="form-group">
+                <label>Application Name</label>
                 <input class="form-control" [(ngModel)]="inputName" name="appName" placeholder="App Name">
+                <span>Your application name. This is used in user-facing authorization screens.</span>
             </div>
             <div class="form-group">
+                <label>Redirect URI</label>
                 <input class="form-control" [(ngModel)]="inputRedirect" name="uri" placeholder="Redirect URI">
+                <span>Where should we return after successfully authenticating?</span>
             </div>
             <div class="form-group">
                 <button (click)="createApp(inputName, inputRedirect);"  class="btn btn-purple btn-block">Complete</button>
@@ -68,10 +91,14 @@
     <div *ngIf="!isAdding" class="app-modal-body">
         <form>
             <div class="form-group">
+                <label>Application Name</label>
                 <input class="form-control" [(ngModel)]="inputName" name="appName" placeholder="App Name">
+                <span>Your application name. This is used in user-facing authorization screens.</span>
             </div>
             <div class="form-group">
+                <label>Redirect URI</label>
                 <input class="form-control" [(ngModel)]="inputRedirect" name="uri" placeholder="Redirect URI">
+                <span>Where should we return after successfully authenticating?</span>
             </div>
             <div class="form-group">
                 <button (click)="finishEdit(inputName, inputRedirect);"  class="btn btn-purple btn-block">Complete</button>

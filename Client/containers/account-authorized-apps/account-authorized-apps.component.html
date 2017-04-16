@@ -4,8 +4,15 @@
             <h2>Authorized Apps</h2>
         </div>
     </div>
+    <h4>
+        Here are a list of applications you have authorized. Once an application is authorized, you wont have to authorize it agian at checkout.
+    </h4>
     <div class="content-inner content-inner-end">
        <table>
+           <thead>
+               <th>APPLICATION NAME</th>
+               <th>ACTIONS</th>
+           </thead>
                 <tbody>
                     <tr *ngFor="let app of authorizedApps">
                         <td>{{ app.name }}</td>
