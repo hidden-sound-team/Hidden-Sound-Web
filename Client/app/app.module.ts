@@ -78,12 +78,12 @@ const ROUTES: Route[] = [
     { path: 'register', component: RegisterComponent, data: { title: 'Register' }, canActivate: [NonAuthenticatedGuard] },
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard] },
     { path: 'account', component: AccountComponent, data: { title: 'Account' }, canActivate: [AuthenticatedGuard], children: [
-        { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' }, canActivate: [AuthenticatedGuard] },
         { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' }, canActivate: [AuthenticatedGuard] },
         { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' }, canActivate: [AuthenticatedGuard] },
         { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' }, canActivate: [AuthenticatedGuard] },
         { path: 'authorizedapps', component: AccountAuthorizedAppsComponent, data: { title: 'Account - Authorized Apps' }, canActivate: [AuthenticatedGuard]},
-        { path: '*', component: AccountInfoComponent }
+        { path: 'info', component: AccountInfoComponent, data: { title: 'Account' }, canActivate: [AuthenticatedGuard] },
+        { path: '', pathMatch: 'full', redirectTo: 'info' }
     ]},
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard]},
     { path: 'logout', redirectTo: 'home' },

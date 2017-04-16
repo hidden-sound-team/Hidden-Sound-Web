@@ -13,6 +13,8 @@ export class AccountInfoComponent implements OnInit {
     private firstName: string;
     private lastName: string;
     private successMessage: string;
+    private language = 'EN';
+    private timezone = '-05:00';
 
     constructor(private userService: UserService) { }
 
@@ -21,6 +23,8 @@ export class AccountInfoComponent implements OnInit {
             this.email = user.email;
             this.firstName = user.firstName;
             this.lastName = user.lastName;
+            this.language = user.language;
+            this.timezone = user.timezone;
         });
      }
 
@@ -30,11 +34,15 @@ export class AccountInfoComponent implements OnInit {
         let request = new UpdateUserInfoRequest();
         request.firstName = this.firstName;
         request.lastName = this.lastName;
+        request.timezone = this.timezone;
+        request.language = this.language;
 
         this.userService.updateUserInfo(request).then(user => {
             this.email = user.email;
             this.firstName = user.firstName;
             this.lastName = user.lastName;
+            this.timezone = user.timezone;
+            this.language = user.language;
 
             this.successMessage = 'Your info had been updated.';
         });

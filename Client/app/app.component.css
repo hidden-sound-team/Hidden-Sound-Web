@@ -50,8 +50,8 @@ html, body {
     margin-left: 140px;
 }
 
-.form-horizontal input {
-    width: 210px;
+.form-horizontal input, .form-horizontal select {
+    width: 300px;
 }
 
 .content-main {
@@ -176,6 +176,3 @@ html, body {
     border: 1px solid #d8d8d8;
 }
 
-.form-horizontal input {
-  width: 300px;
-}
