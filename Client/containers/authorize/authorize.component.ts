@@ -19,6 +19,9 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
     clientId: string;
     redirectUri: string;
     html: string;
+    rawApplication: string;
+
+    renderView: boolean = false;
 
     private sub: any;
 
@@ -27,11 +30,15 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
     }
 
     authorize() {
-        if (isBrowser) {
-            setTimeout(() => {
-                window.location.href = this.config.getConfig('vendorUri') + '/Cart/Authorize?state=' + this.authToken.getAccessToken();
-            }, 100);
-        }
+        this.apiHttpService.postForm('/Application/AuthorizedApplication/Add', {
+                        'ClientId': this.rawApplication
+                    })
+                    .subscribe(response => {
+                        this.navigateToClient();
+                    }, error => {
+                        this.navigateToClient();
+                    });
+        
 
         /*
         this.apiHttpService.postForm('/oauth/authorize', 
@@ -58,14 +65,30 @@ export class AuthorizeComponent implements OnInit, OnDestroy {
     decline() {
         console.log('decline');
     }
+    
+    navigateToClient(){
+        if (isBrowser) {
+                    setTimeout(() => {
+                        window.location.href = this.config.getConfig('vendorUri') + '/Cart/Authorize?state=' + this.authToken.getAccessToken();
+                    }, 50);
+                }
+    }
 
     ngOnInit () {
         this.sub = this.route.queryParams.subscribe(params => {
             this.application = decodeURIComponent(params['application']).replace(/\+/g, ' ');
+            this.rawApplication = params['application'];
             this.requestId = params['request_id'];
             this.scope = params['scope'];
             this.clientId = params['client_id'];
             this.redirectUri = decodeURIComponent(params['redirect_uri']);
+
+            this.apiHttpService.get('/Application/AuthorizedApplication/' + this.rawApplication.replace(/\+/g, '%20'))
+                .subscribe(response => {
+                    this.navigateToClient();
+                }, error => {
+                    this.renderView = true;
+            });
         });
     }
 

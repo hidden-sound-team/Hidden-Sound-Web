@@ -1,0 +1,21 @@
+<div class="content-main">
+    <div class="content-header">
+        <div class="header-inner">
+            <h2>Authorized Apps</h2>
+        </div>
+    </div>
+    <div class="content-inner content-inner-end">
+       <table>
+                <tbody>
+                    <tr *ngFor="let app of authorizedApps">
+                        <td>{{ app.name }}</td>
+                        <td>
+                            <button (click)="deleteAuthorizedApp(app)" class="btn btn-small btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
+                            </button>
+                        </td>  
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
