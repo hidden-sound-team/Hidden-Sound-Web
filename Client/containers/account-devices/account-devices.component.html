@@ -5,16 +5,25 @@
         </div>
     </div>
     <div class="content-inner content-inner-end">
-        <table>
-                <!--<thead>
-                    <th>Device Name</th>
-                    <th></th>
-                </thead>-->
+        <table class="account-table">
+                <thead>
+                    <th>Type</th>
+                    <th class="absorb" colspan="2">Name</th>
+                </thead>
                 <tbody>
+                    <tr *ngIf="devices?.length == 0">
+                        <td class="alert alert-danger" colspan="3">You currently have no devices linked to this account.</td>
+                    </tr>
                     <tr *ngFor="let device of devices">
-                        <td>{{ device.name }}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" (click)="delete(device)">Delete</button>
+                        <td>Android</td>
+                        <td class="absorb">{{ device.name }}</td>
+                        <td class="icons">
+                            <button class="btn btn-small btn-warning">
+                                <i class="fa fa-pencil" aria-hidden="true" style="font-size: 1.3em;"></i>
+                            </button> 
+                            <button (click)="delete(device)" class="btn btn-small btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
+                            </button> 
                         </td>
                     </tr>
                 </tbody>

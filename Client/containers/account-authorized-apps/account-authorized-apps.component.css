@@ -1,13 +1,4 @@
-table {
-    width: 100%;
-}
-
-th, td {
-    padding: 15px;
+.name {
     text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-tr:hover {
-    background-color: #d9c8f8;
+    width: 25%;
 }

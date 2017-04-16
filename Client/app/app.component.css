@@ -99,3 +99,34 @@ html, body {
     border-color: #390a8c;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(57, 10, 140, 0.6);
 }
+
+.account-table {
+    width: 100%;
+    border-spacing: 0;
+    border: 1px solid #d8d8d8;
+    border-collapse: collapse;
+}
+
+.account-table td, .account-table th {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #d8d8d8;
+}
+
+.account-table th {
+    background: #390a8c;
+    color: white;
+}
+
+.account-table td.absorb, .account-table th.absorb {
+    width: 100%;
+    text-align: left;
+}
+
+.account-table tr:nth-child(2n) {
+    background: #f5f7f8;
+}
+
+.account-table .icons {
+    white-space: nowrap;
+}

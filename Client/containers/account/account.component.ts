@@ -8,8 +8,8 @@ export class newPass {
 
 @Component({
     selector: 'app-account',
-    templateUrl: 'account.component.html',
-    styleUrls: ['account.component.css']
+    template: require('./account.component.html'),
+    styles: [require('./account.component.css')]
 })
 export class AccountComponent implements OnInit {
     constructor() { }
