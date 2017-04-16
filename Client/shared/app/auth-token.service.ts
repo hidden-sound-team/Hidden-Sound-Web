@@ -22,6 +22,10 @@ export class AuthTokenService {
     }
 
     hasValidAccessToken(): boolean {
+        console.log(this.getAccessToken());
+        console.log(this.getExpiresOn());
+        console.log(Date.now());
+        
         let valid = this.getAccessToken() && this.getExpiresOn() >= Date.now();
         if(!valid){
             this.removeAccessToken();
