@@ -66,8 +66,8 @@ export class RegisterComponent implements OnInit {
 
     registerUser() {
         let request = new RegisterRequestModel();
-        request.firstName = this.user.firstName;
-        request.lastName = this.user.lastName;
+        // request.firstName = this.user.firstName;
+        // request.lastName = this.user.lastName;
         request.email = this.user.email;
         request.password = this.user.password;
         request.confirmPassword = this.user.passwordConf;
@@ -84,6 +84,7 @@ export class RegisterComponent implements OnInit {
 
     buildForm(): void {
         this.regForm = this.fb.group({
+            /*
             fname: [this.user.firstName, [
                 Validators.required,
                 Validators.minLength(2),
@@ -96,6 +97,7 @@ export class RegisterComponent implements OnInit {
                 Validators.maxLength(24)
                 ]
             ],
+            */
             emailaddress:[this.user.email, [
                 Validators.required,
                 Validators.minLength(7),

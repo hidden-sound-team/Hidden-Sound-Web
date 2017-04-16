@@ -6,6 +6,8 @@ export class User {
     email: string;
     firstName: string;
     lastName: string;
+    timezone: string;
+    language: string;
 }
 
 export class RegisterRequestModel {
@@ -25,6 +27,8 @@ export class ChangePasswordRequestModel {
 export class UpdateUserInfoRequest {
     firstName: string;
     lastName: string;
+    timezone: string;
+    language: string;
 }
 
 export class UserInfoResponse {
@@ -32,6 +36,8 @@ export class UserInfoResponse {
     lastName: string;
     username: string;
     email: string;
+    timezone: string;
+    language: string;
 }
 
 @Injectable()
@@ -61,6 +67,8 @@ export class UserService {
                     user.email = result.email;
                     user.firstName = result.firstName;
                     user.lastName = result.lastName;
+                    user.language = result.language;
+                    user.timezone = result.timezone;
 
                     resolve(user);
                 }, error => {
@@ -80,7 +88,9 @@ export class UserService {
                     user.email = result.email;
                     user.firstName = result.firstName;
                     user.lastName = result.lastName;
-
+                    user.language = result.language;
+                    user.timezone = result.timezone;
+                    
                     resolve(user);
                 }, error => {
                     reject(error);
