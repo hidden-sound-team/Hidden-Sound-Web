@@ -175,3 +175,7 @@ html, body {
     padding: 10px;
     border: 1px solid #d8d8d8;
 }
+
+.form-horizontal input {
+  width: 300px;
+}
