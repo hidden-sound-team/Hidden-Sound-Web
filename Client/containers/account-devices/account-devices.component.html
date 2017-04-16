@@ -4,29 +4,26 @@
             <h2>Devices</h2>
         </div>
     </div>
-    <h4>
-        Here you can see a list of all the mobile devices linked to your account.
-        Use these devices to authorize your online purchases with our mobile app.
-    </h4>
     <div class="content-inner content-inner-end">
-<<<<<<< HEAD
+        <h4 class="alert alert-purple alert-center">
+            <span>
+                Here you can see a list of all the mobile devices linked to your account.
+            </span>
+            <br>
+            <span>
+                Use these devices to authorize your online purchases with our mobile app.
+            </span>
+        </h4>
         <table class="account-table">
                 <thead>
                     <th>Type</th>
                     <th class="absorb" colspan="2">Name</th>
-=======
-        <table>
-                <thead>
-                    <th>DEVICE NAME</th>
-                    <th>ACTIONS</th>
->>>>>>> e8a234c00f7123ed088da8e23ba6fa23fe52c563
                 </thead>
                 <tbody>
                     <tr *ngIf="devices?.length == 0">
                         <td class="alert alert-danger" colspan="3">You currently have no devices linked to this account.</td>
                     </tr>
                     <tr *ngFor="let device of devices">
-<<<<<<< HEAD
                         <td>Android</td>
                         <td class="absorb">{{ device.name }}</td>
                         <td class="icons">
@@ -36,14 +33,6 @@
                             <button (click)="delete(device)" class="btn btn-small btn-danger">
                                 <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
                             </button> 
-=======
-                        <td>{{ device.name }}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" (click)="delete(device)">
-                                <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
-                            </button>
-                            
->>>>>>> e8a234c00f7123ed088da8e23ba6fa23fe52c563
                         </td>
                     </tr>
                 </tbody>

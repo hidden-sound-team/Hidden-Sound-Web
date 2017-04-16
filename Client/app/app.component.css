@@ -105,6 +105,7 @@ html, body {
     border-spacing: 0;
     border: 1px solid #d8d8d8;
     border-collapse: collapse;
+    box-shadow: 3px 3px 3px #888888;
 }
 
 .account-table td, .account-table th {
@@ -129,4 +130,18 @@ html, body {
 
 .account-table .icons {
     white-space: nowrap;
+}
+
+.alert-purple {
+    color: #390a8c;
+    background-color: #d9c8f8;
+    border-color: #917AB8;
+}
+
+.alert-center {
+    text-align: center;
+}
+
+.alert-center span {
+    line-height: 25px;
 }
