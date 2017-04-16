@@ -78,6 +78,7 @@ export class RegisterComponent implements OnInit {
                     type: REGISTER_USER,
                     payload: url
                 });
+
                 this.router.navigate(['/login']);
             });
     }

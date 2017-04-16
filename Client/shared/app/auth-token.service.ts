@@ -22,7 +22,13 @@ export class AuthTokenService {
     }
 
     hasValidAccessToken(): boolean {
-        let valid = this.getAccessToken() && this.getExpiresOn() >= Date.now();
+        let token = this.getAccessToken();
+        if(!token){
+            this.removeAccessToken();
+            return false;
+        }
+
+        let valid = this.getExpiresOn() >= Date.now();
         if(!valid){
             this.removeAccessToken();
             this.store.dispatch({ type: LOGOUT_USER });
