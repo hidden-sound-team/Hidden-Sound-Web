@@ -23,3 +23,4 @@ export * from './state/hmr';
 export * from './shared-module/base.shared.module';
 
 export * from './authenticated.guard';
+export * from './non-authenticated.guard';

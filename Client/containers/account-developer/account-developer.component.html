@@ -1,7 +1,12 @@
 <div class="content-main">
     <div class="content-header">
         <div class="header-inner">
-            <h2>Developer Apps</h2>
+            <div style="display: inline-block">
+                <h2>Developer Apps</h2>
+            </div>
+            <div style="float: right;">
+                <a href="{{devDocUrl}}" target="_blank" class="btn btn-purple">API Documentation</a> 
+            </div>
         </div>
     </div>
    
@@ -16,16 +21,18 @@
             <div > <!--class="form-actions"-->
                 <table class="account-table">
                     <thead>
-                        <th>Name</th>
-                        <th>REDIRECT URI</th>
-                        <th colspan="2">CLIENT ID</th>                        
+                        <th class="left">Name</th>
+                        <th class="name left" colspan="2">Client ID</th>                        
                     </thead>
                     <tbody>
+                        <tr *ngIf="apps?.length == 0">
+                            <td class="alert alert-info" colspan="3">You currently have no apps.</td>
+                        </tr>
                         <tr *ngFor="let app of apps">                            
-                            <td colspan="2">{{ app.name }}</td>
+                            <td class="absorb">{{ app.name }}</td>
                             <!--<td>{{ app.redirectUri }}</td>-->
-                            <td>{{ app.clientId }}</td>  
-                            <td>
+                            <td class="name left">{{ app.clientId }}</td>  
+                            <td class="icons">
                                 <button (click)="startEdit(app)" class="btn btn-small btn-warning">
                                     <i class="fa fa-pencil" aria-hidden="true" style="font-size: 1.3em;"></i>
                                 </button>                            
@@ -36,11 +43,10 @@
                         </tr>                   
                     </tbody>                                                        
                 </table>               
-            </div> <br>
-                <a href="{{devDocUrl}}" target="_blank" class="btn btn-purple float-right">API Documentation</a>  
-                <button class="btn btn-purple float-right" (click)="startAdd()">
-                    Add App
-                </button> 
+            </div>
+            <div class="footer-buttons">
+                <button class="btn btn-purple" (click)="startAdd()">Add App</button> 
+            </div>
         </div>    
     </div>
 </div>
@@ -52,11 +58,10 @@
         <h3>Add a New App</h3>
     </div>
     <div *ngIf="isAdding" class="app-modal-body">
-        <h4 style="text-align: justify">
+        <h4 class="alert alert-purple alert-center" style="text-align: justify">
             Provide us with your application name and a callback URL. We'll register your application with our service
             and give you a client ID along with a client secret, which you will only be shown once.
         </h4>
-        <br>
         <form>
             <div class="form-group">
                 <label>Application Name</label>
@@ -72,10 +77,15 @@
                 <button (click)="createApp(inputName, inputRedirect);"  class="btn btn-purple btn-block">Complete</button>
             </div>
         </form>
-        <div *ngIf="showNotification" class="alert alert-success">
-            Your app has been created successfully! Here is your client secret. Please record it and keep it somewhere safe.
-            You will not be shown this client secret again!
-            <strong>{{ newApp.clientSecret }}</strong>
+        <div *ngIf="showNotification" class="alert alert-success center">
+            Your app has been created successfully! 
+            <br>
+            Here is your client secret. Please record it and keep it somewhere safe.
+            <br>
+            <strong>
+                <span class="red">You will not be shown this client secret again!</span>
+                {{ newApp.clientSecret }}
+            </strong>
         </div>
     </div>
 

@@ -56,6 +56,7 @@ html, body {
 
 .content-main {
     /*width: 590px;*/
+    border: 1px solid #d8d8d8;
 }
 
 .content-header {
@@ -79,7 +80,7 @@ html, body {
 }
 
 .content-inner {
-    padding: 12px;
+    padding: 20px;
     background-color: #fff;
     /*border-left: 1px solid #e6ecf0;*/
     /*border-right: 1px solid #e6ecf0;*/
@@ -106,10 +107,11 @@ html, body {
     border: 1px solid #d8d8d8;
     border-collapse: collapse;
     box-shadow: 3px 3px 3px #888888;
+    font-size: 16px;
 }
 
 .account-table td, .account-table th {
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     border: 1px solid #d8d8d8;
 }
@@ -132,6 +134,10 @@ html, body {
     white-space: nowrap;
 }
 
+.account-table .left {
+    text-align: left;
+}
+
 .alert-purple {
     color: #390a8c;
     background-color: #d9c8f8;
@@ -144,4 +150,27 @@ html, body {
 
 .alert-center span {
     line-height: 25px;
+}
+
+.account-form-table {
+    width: 100%;
+    border-spacing: 0;
+    border: 1px solid #d8d8d8;
+    border-collapse: collapse;
+    box-shadow: 3px 3px 3px #888888;
+}
+
+.account-form-table tr:nth-child(2n) {
+    background: #f5f7f8;
+}
+
+.account-form-table td:first-child {
+    text-align: right;
+    font-weight: bold;
+    width: 150px;
+}
+
+.account-form-table td {
+    padding: 10px;
+    border: 1px solid #d8d8d8;
 }

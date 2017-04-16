@@ -24,7 +24,7 @@ import { BaseSharedModule, AppComponent, appReducer } from 'app';
 // Component imports
 import { NavMenuComponent, FooterComponent, ModalComponent } from 'app-components';
 
-import { AppConfig, AuthenticatedGuard } from 'app';
+import { AppConfig, AuthenticatedGuard, NonAuthenticatedGuard } from 'app';
 
 // Container (aka: "pages") imports
 import {
@@ -74,15 +74,15 @@ const ROUTES: Route[] = [
 
     // Other routes
     { path: 'home', component: HomeComponent, data: { title: 'Two Factor Authentication Manager'} },
-    { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-    { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
+    { path: 'login', component: LoginComponent, data: { title: 'Login' }, canActivate: [NonAuthenticatedGuard] },
+    { path: 'register', component: RegisterComponent, data: { title: 'Register' }, canActivate: [NonAuthenticatedGuard] },
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard] },
     { path: 'account', component: AccountComponent, data: { title: 'Account' }, canActivate: [AuthenticatedGuard], children: [
-        { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' } },
-        { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' } },
-        { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' } },
-        { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' } },
-        { path: 'authorizedapps', component: AccountAuthorizedAppsComponent, data: { title: 'Account - Authorized Apps' }},
+        { path: 'info', component: AccountInfoComponent, data: { title: 'Account - My Info' }, canActivate: [AuthenticatedGuard] },
+        { path: 'devices', component: AccountDevicesComponent, data: { title: 'Account - Devices' }, canActivate: [AuthenticatedGuard] },
+        { path: 'changepassword', component: AccountChangePasswordComponent, data: { title: 'Account - Change Password' }, canActivate: [AuthenticatedGuard] },
+        { path: 'developer', component: AccountDeveloperComponent, data: { title: 'Account - Developer' }, canActivate: [AuthenticatedGuard] },
+        { path: 'authorizedapps', component: AccountAuthorizedAppsComponent, data: { title: 'Account - Authorized Apps' }, canActivate: [AuthenticatedGuard]},
         { path: '*', component: AccountInfoComponent }
     ]},
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard]},
@@ -134,7 +134,8 @@ const PROVIDERS = [
     AppService,
     DeveloperService,
 
-    AuthenticatedGuard
+    AuthenticatedGuard,
+    NonAuthenticatedGuard
 ];
 
 

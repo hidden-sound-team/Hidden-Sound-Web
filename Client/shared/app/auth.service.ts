@@ -42,6 +42,7 @@ export class AuthService {
                 .subscribe(r => {
                     let result = <OAuthTokenResponse>r.json();
                     this.authTokenService.setAccessToken(result.access_token);
+                    this.authTokenService.setExpiresOn(Date.now() + (result.expires_in * 1000));
 
                     let user = new User();
                     user.username = username;
