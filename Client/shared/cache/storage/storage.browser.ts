@@ -2,7 +2,7 @@ import { StorageService } from './storage.service';
 
 export class BrowserStorage implements StorageService {
     getItem (key: string): any {
-        let storedItem = window.sessionStorage.getItem(key);
+        let storedItem = window.localStorage.getItem(key);
         try {
             return JSON.parse(storedItem);
         } catch (ex) {
@@ -13,17 +13,17 @@ export class BrowserStorage implements StorageService {
     setItem (key: string, value: any) {
         // We need to try and stringify it first (we can't save Objects/etc or it'll error out)
         if (typeof value !== 'string') {
-            window.sessionStorage.setItem(key, JSON.stringify(value));
+            window.localStorage.setItem(key, JSON.stringify(value));
         } else {
-            window.sessionStorage.setItem(key, value);
+            window.localStorage.setItem(key, value);
         }
     }
     
     removeItem (key: string) {
-        window.sessionStorage.removeItem(key);
+        window.localStorage.removeItem(key);
     }
 
     clear () {
-        window.sessionStorage.clear();
+        window.localStorage.clear();
     }
 }
