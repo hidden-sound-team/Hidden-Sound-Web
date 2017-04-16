@@ -29,3 +29,8 @@
     height: 0px;
     text-align: right;
 }
+
+.modal-body {
+    padding-left: 20px;
+    padding-right: 20px;
+}

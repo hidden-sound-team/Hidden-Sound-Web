@@ -2,3 +2,13 @@
     text-align: left;
     width: 25%;
 }
+
+.content-main {
+    width: 60%;
+}
+
+@media (max-width: 1200px) {
+    .content-main {
+        width: 100%;
+    }
+}

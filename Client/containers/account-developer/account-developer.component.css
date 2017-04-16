@@ -11,3 +11,14 @@ th, td {
 tr:hover {
     background-color: #d9c8f8;
 }
+
+.btn-add {
+    float: right;
+    margin-right: 70px;
+}
+
+@media (max-width: 1200px) {
+    .btn-add {
+        margin-right: 30px;
+    }
+}
