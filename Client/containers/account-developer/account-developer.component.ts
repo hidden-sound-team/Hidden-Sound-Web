@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DeveloperService, App } from 'app-shared';
+import { DeveloperService, App, CreateAppResponse } from 'app-shared';
 import { ModalComponent } from 'app-components';
 
 @Component({
@@ -10,8 +10,15 @@ import { ModalComponent } from 'app-components';
 export class AccountDeveloperComponent implements OnInit {
 
     apps: App[];
+    newApp: CreateAppResponse;    
+    selectedApp: App;
     message: string = '';
     applications;
+    showNotification = false;
+    isAdding = false;
+    inputName: string;
+    inputRedirect: string;
+    
 
     @ViewChild(ModalComponent)
     public readonly modal: ModalComponent;
@@ -38,6 +45,8 @@ export class AccountDeveloperComponent implements OnInit {
         this.devService.createApp(appName, uri)
             .then((response) => {
                 this.message = 'App created successfully';
+                this.newApp = response;
+                this.showNotification = true;
                 this.getApps();
             } )
             .catch((error) => {
@@ -52,6 +61,28 @@ export class AccountDeveloperComponent implements OnInit {
                 this.getApps();
             })
             .catch(error => {
+                this.message = error;
+            });
+    }
+
+    startEdit( app: App ) {
+        this.selectedApp = app;
+        this.inputName = app.name;
+        this.inputRedirect = app.redirectUri;
+        this.showNotification = false;
+        this.isAdding = false;
+        this.modal.show();
+    }
+
+    finishEdit( appName: string, uri: string ) {
+        this.selectedApp.name = appName;
+        this.selectedApp.redirectUri = uri;
+        this.devService.editApp( this.selectedApp )
+            .then((response) => {
+                this.getApps();
+                this.showNotification = true;
+            })
+            .catch((error) => {
                 this.message = error;
             });
     }

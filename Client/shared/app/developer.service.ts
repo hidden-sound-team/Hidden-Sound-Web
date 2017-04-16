@@ -16,6 +16,11 @@ class CreateAppRequest {
     public redirectUri: string;    
 }
 
+class EditAppRequest {
+    public Name: string;
+    public RedirectUri: string;
+}
+
 export class CreateAppResponse {
     public name: string;
     public clientId: string;
@@ -61,6 +66,22 @@ export class DeveloperService {
     deleteApp(clientID: string): Promise<any> {
         return new Promise((resolve, reject) => {
             this.apiHttpService.delete('/Application/Application/' + clientID)
+                .subscribe(response => {
+                    resolve(response);
+                },
+                error => {
+                    reject(error);
+                });
+        });
+    }
+
+    editApp(app: App): Promise<any> {
+        let request = new EditAppRequest();
+        request.Name = app.name;
+        request.RedirectUri = app.redirectUri;
+
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.putForm('/Application/Application/' + app.clientId, request)
                 .subscribe(response => {
                     resolve(response);
                 },

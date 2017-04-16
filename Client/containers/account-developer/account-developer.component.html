@@ -20,6 +20,9 @@
                             <td>{{ app.redirectUri }}</td>
                             <td>{{ app.clientId }}</td>  
                             <td>
+                                <button (click)="startEdit(app)" class="btn btn-small btn-warning">
+                                    <i class="fa fa-pencil" aria-hidden="true" style="font-size: 1.3em;"></i>
+                                </button>                            
                                 <button (click)="deleteApp(app.clientId)" class="btn btn-small btn-danger">
                                     <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
                                 </button>
@@ -32,15 +35,15 @@
     </div>
 </div>
 
-<button class="btn btn-purple" (click)="modal.show()">
+<button class="btn btn-purple" (click)="modal.show(); isAdding=true; showNotification=false;">
     Add App
 </button>
 
 <app-modal>
-    <div class="app-modal-header">
+    <div *ngIf="isAdding" class="app-modal-header">
         <h3>Add a New App</h3>
     </div>
-    <div class="app-modal-body">
+    <div *ngIf="isAdding" class="app-modal-body">
         <form>
             <div class="form-group">
                 <input class="form-control" [(ngModel)]="inputName" name="appName" placeholder="App Name">
@@ -49,17 +52,44 @@
                 <input class="form-control" [(ngModel)]="inputRedirect" name="uri" placeholder="Redirect URI">
             </div>
             <div class="form-group">
-                <button (click)="createApp(inputName, inputRedirect); modal.hide();"  class="btn btn-purple btn-block">Add app</button>
+                <button (click)="createApp(inputName, inputRedirect);"  class="btn btn-purple btn-block">Complete</button>
             </div>
         </form>
+        <div *ngIf="showNotification" class="alert alert-success">
+            Your app has been created successfully! Here is your client secret. Please record it and keep it somewhere safe.
+            You will not be shown this client secret again!
+            <strong>{{ newApp.clientSecret }}</strong>
+        </div>
     </div>
+
+    <div *ngIf="!isAdding" class="app-modal-header">
+        <h3>Edit Your App</h3>
+    </div>
+    <div *ngIf="!isAdding" class="app-modal-body">
+        <form>
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="inputName" name="appName" placeholder="App Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="inputRedirect" name="uri" placeholder="Redirect URI">
+            </div>
+            <div class="form-group">
+                <button (click)="finishEdit(inputName, inputRedirect);"  class="btn btn-purple btn-block">Complete</button>
+            </div>
+        </form>
+        <div *ngIf="showNotification" class="alert alert-success">
+            You have successfully edited your application!
+        </div>
+    </div>
+
+
     <div class="app-modal-footer">
     </div>
 </app-modal>
 
 
-<!--<p>Message: {{ message }}</p>
-<p>Name: {{ inputName }}</p>
-<p>Redirect URI: {{ inputRedirect }}</p>
+<!--<p>Message: {{ message }}</p>-->
+<!--<p>Name: {{ inputName }}</p>
+<p>Redirect URI: {{ inputRedirect }}</p>S
 <p>Delete ID: {{ deleteID }}</p>
 <p> App list: {{ applications }}</p>-->
