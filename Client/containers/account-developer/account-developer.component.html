@@ -22,7 +22,7 @@
                 <table class="account-table">
                     <thead>
                         <th class="left">Name</th>
-                        <th class="left">Description</th>
+                        <th class="left">Website</th>
                         <th class="name left" colspan="2">Client ID</th>                        
                     </thead>
                     <tbody>
@@ -32,7 +32,7 @@
                         <tr *ngFor="let app of apps">                            
                             <td class="name left">{{ app.name }}</td>
                             <!--<td>{{ app.redirectUri }}</td>-->
-                            <td class="absorb">{{ app.description }}</td>
+                            <td class="absorb">{{ app.websiteUri }}</td>
                             <td class="name left">{{ app.clientId }}</td>  
                             <td class="icons">
                                 <button (click)="startEdit(app)" class="btn btn-small btn-warning">
