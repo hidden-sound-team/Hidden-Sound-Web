@@ -170,7 +170,7 @@ ul > li > a.active {
   border-color: #390a8c;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .nav-activity {
     display: none;
   }
@@ -192,6 +192,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333333;
+    width: 100%;
 }
 
 li {
