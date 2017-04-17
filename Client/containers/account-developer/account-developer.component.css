@@ -46,3 +46,14 @@
   text-align: right;
   margin-top: 15px;
 }
+
+#btn-api {
+  float: right;
+}
+
+@media (max-width: 450px) {
+  #btn-api {
+    float: none;
+    padding-top: 10px;
+  }
+}

@@ -5,6 +5,8 @@ export class App {
     public name: string;
     public clientId: string;
     public redirectUri: string;
+    public description: string;
+    public websiteUri: string;
 }
 
 class AppListResponse {
@@ -13,12 +15,16 @@ class AppListResponse {
 
 class CreateAppRequest {
     public name: string;
-    public redirectUri: string;    
+    public redirectUri: string;
+    public description: string;
+    public websiteUri: string;
 }
 
 class EditAppRequest {
-    public Name: string;
-    public RedirectUri: string;
+    public name: string;
+    public redirectUri: string;
+    public description: string;
+    public websiteUri: string;
 }
 
 export class CreateAppResponse {
@@ -26,6 +32,8 @@ export class CreateAppResponse {
     public clientId: string;
     public clientSecret: string;
     public redirectUri: string;
+    public description: string;
+    public websiteUri: string;
 }
 
 @Injectable()
@@ -46,10 +54,12 @@ export class DeveloperService {
         });
     }
 
-    createApp(appName: string, uri: string): Promise<CreateAppResponse> {
+    createApp(appName: string, uri: string, description: string, website: string): Promise<CreateAppResponse> {
         let request = new CreateAppRequest();
         request.name = appName;
         request.redirectUri = uri;
+        request.description = description;
+        request.websiteUri = website;
 
         return new Promise((resolve, reject) => {
             this.apiHttpService.postForm('/Application/Application/Create', request)
@@ -77,8 +87,10 @@ export class DeveloperService {
 
     editApp(app: App): Promise<any> {
         let request = new EditAppRequest();
-        request.Name = app.name;
-        request.RedirectUri = app.redirectUri;
+        request.name = app.name;
+        request.redirectUri = app.redirectUri;
+        request.description = app.description;
+        request.websiteUri = app.websiteUri;
 
         return new Promise((resolve, reject) => {
             this.apiHttpService.putForm('/Application/Application/' + app.clientId, request)

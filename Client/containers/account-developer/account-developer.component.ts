@@ -17,8 +17,12 @@ export class AccountDeveloperComponent implements OnInit {
     applications;
     showNotification = false;
     isAdding = false;
+
+    // Form fields
     inputName: string;
     inputRedirect: string;
+    inputDescription: string;
+    inputWebsite: string;
     
     @ViewChild(ModalComponent)
     public readonly modal: ModalComponent;
@@ -43,11 +47,11 @@ export class AccountDeveloperComponent implements OnInit {
         });
     }
 
-    createApp(appName: string, uri: string) {
+    createApp(appName: string, uri: string, description: string, website: string) {
         this.message = 'START';
-        this.devService.createApp(appName, uri)
+        this.devService.createApp(appName, uri, description, website)
             .then((response) => {
-                this.message = 'App created successfully';
+                // this.message = 'App created successfully';
                 this.newApp = response;
                 this.showNotification = true;
                 this.getApps();
@@ -69,17 +73,25 @@ export class AccountDeveloperComponent implements OnInit {
     }
 
     startEdit( app: App ) {
+        // Fill input fields
         this.selectedApp = app;
         this.inputName = app.name;
         this.inputRedirect = app.redirectUri;
+        this.inputDescription = app.description;
+        this.inputWebsite = app.websiteUri;
+
+        // Change modal view and show
         this.showNotification = false;
         this.isAdding = false;
         this.modal.show();
     }
 
-    finishEdit( appName: string, uri: string ) {
+    finishEdit( appName: string, uri: string, description: string, website: string ) {
         this.selectedApp.name = appName;
         this.selectedApp.redirectUri = uri;
+        this.selectedApp.description = description;
+        this.selectedApp.websiteUri = website;
+
         this.devService.editApp( this.selectedApp )
             .then((response) => {
                 this.getApps();
