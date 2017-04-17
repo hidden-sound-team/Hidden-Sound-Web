@@ -56,8 +56,14 @@ html, body {
 
 @media (max-width: 550px) {
     .form-horizontal input, .form-horizontal select {
-    width: 200px;
-    }
+        width: 200px;
+    }   
+}
+
+@media (max-width: 700px) {
+    .table-wrapper {
+          overflow-x: auto;
+    } 
 }
 
 .content-main {
@@ -180,8 +186,4 @@ html, body {
 .account-form-table td {
     padding: 10px;
     border: 1px solid #d8d8d8;
-}
-
-.table-wrapper {
-  overflow-x: auto;
 }
