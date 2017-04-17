@@ -148,7 +148,7 @@ a {
 }
 
 /* LAPTOP & TABLET */
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .nav-activity {
     max-width: 90px;
   }
@@ -170,7 +170,7 @@ ul > li > a.active {
   border-color: #390a8c;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .nav-activity {
     display: none;
   }
