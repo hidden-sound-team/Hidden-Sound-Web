@@ -10,7 +10,7 @@ import { AppConfig } from 'app';
 })
 export class AccountDeveloperComponent implements OnInit {
 
-    apps: App[];
+    apps: App[] = [];
     newApp: CreateAppResponse;    
     selectedApp: App;
     message: string = '';

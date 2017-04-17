@@ -9,7 +9,7 @@ import { DeviceService, Device } from 'app-shared';
 })
 export class AccountDevicesComponent implements OnInit {
 
-    devices: Device[];
+    devices: Device[] = [];
 
     constructor(private deviceService: DeviceService) { }
 

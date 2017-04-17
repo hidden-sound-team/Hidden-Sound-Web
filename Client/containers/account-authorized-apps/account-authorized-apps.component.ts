@@ -5,6 +5,8 @@ import { ApiHttpService } from 'app-shared';
 class AuthorizedApp {
     public id: string;
     public name: string;
+    public description: string;
+    public websiteUri: string;
 }
 
 class AuthorizedAppListResponse {
@@ -18,7 +20,7 @@ class AuthorizedAppListResponse {
 })
 export class AccountAuthorizedAppsComponent implements OnInit {
 
-    authorizedApps: AuthorizedApp[];
+    authorizedApps: AuthorizedApp[] = [];
 
     constructor(private apiHttpService: ApiHttpService) { }
 
