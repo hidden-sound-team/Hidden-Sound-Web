@@ -14,7 +14,7 @@
                 <table class="account-table">
                     <thead>
                         <th class="name">Name</th>
-                        <th class="absorb" colspan="2">Description</th>
+                        <th class="absorb" colspan="2">Website</th>
                     </thead>
                     <tbody>
                         <tr *ngIf="authorizedApps?.length == 0">
@@ -22,7 +22,7 @@
                         </tr>
                         <tr *ngFor="let app of authorizedApps">
                             <td class="name">{{ app.name }}</td>
-                            <td class="absorb">Description goes here</td>
+                            <td class="absorb">{{ app.websiteUri }}</td>
                             <td>
                                 <button (click)="deleteAuthorizedApp(app)" class="btn btn-small btn-danger">
                                     <i class="fa fa-trash" aria-hidden="true" style="font-size: 1.3em;"></i>
