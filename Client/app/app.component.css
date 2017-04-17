@@ -54,6 +54,12 @@ html, body {
     width: 300px;
 }
 
+@media (max-width: 550px) {
+    .form-horizontal input, .form-horizontal select {
+    width: 200px;
+    }
+}
+
 .content-main {
     /*width: 590px;*/
     border: 1px solid #d8d8d8;
@@ -176,3 +182,6 @@ html, body {
     border: 1px solid #d8d8d8;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
