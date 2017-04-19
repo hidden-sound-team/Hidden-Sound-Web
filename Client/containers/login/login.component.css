@@ -41,3 +41,7 @@
 .modal-dialog {
     width: 350px;
 }
+
+.login-wrapper {
+    min-height: 760px;
+}
