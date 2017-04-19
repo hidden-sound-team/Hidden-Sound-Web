@@ -8,6 +8,8 @@
     padding-left: 30px;
     padding-top: 15px;
     min-height: 760px;
+    width: 65%;
+    margin: auto;
 }
 
 #account-sidebar-wrapper {
@@ -51,16 +53,16 @@ a {
 }
 
 .nav-activity {
-    /* padding-top: 80px; */
+    padding-top: 80px; 
     display: block;
-    /* position: absolute; */
+    position: absolute; 
     /*z-index: +1;*/
     top: 0;
     left: 0;
     bottom: 0;
     width: auto;
-    /*max-width: 90px;*/
-    max-width: 300px;
+    max-width: 90px;
+    /*max-width: 300px;*/
     height: auto;
     padding-right: 0;
     padding-left: 0;
@@ -68,14 +70,13 @@ a {
     cursor: pointer;
     transition: 200ms ease-out;
     border-top: none;
-    background-color: #212429;
+    background-color: #201c2b;
 
 }
 
-/*.nav-activity:hover {
+.nav-activity:hover {
   max-width: 300px;
-  cursor: pointer;
-}*/
+}
 
 .nav-activity a .activity-title {
   display: block;
@@ -110,8 +111,8 @@ a {
   font-size: .9em;
   white-space: nowrap;
   border-top: none;
-  background-color: #212429;
-  border-color: #212429;
+  /*background-color: #212429;*/
+  /*border-color: #212429;*/
   display: flex;
   align-items: center;
 }
@@ -148,20 +149,34 @@ a {
 }
 
 /* LAPTOP & TABLET */
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
   .nav-activity {
+    max-width: 90px;
+    position: inherit;
+    padding-top: 0;
+  }
+
+  .nav-activity:hover {
     max-width: 90px;
   }
 
+  #account-wrapper > #account-content-wrapper {
+    width: 90%;
+    margin: auto;
+    margin-right: 30px;    
+  }
+}
+
+@media (max-width: 1700px) {
   #account-content-wrapper {
-    width: 100%;
+    margin-left: 300px;
   }
 }
 
 /* MOBILE */
 .mobile-nav {
   display: none;
-  background-color: #212429;
+  background-color: #17141f;
   top: 80px;
 }
 
@@ -179,7 +194,8 @@ ul > li > a.active {
     display: block;
   }
 
-  #account-content-wrapper {
+  #account-wrapper > #account-content-wrapper {
+    margin: auto;
     margin-top: 100px;
     padding-left: 0;
     padding-right: 0;
@@ -191,7 +207,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333333;
+    background-color: #201c2b;
     width: 100%;
 }
 
