@@ -7,6 +7,10 @@ export class Device {
     public name: string;
 }
 
+class editDeviceRequest {
+    public name: string;
+}
+
 class DeviceListResponse {
     public devices: Device[];
 }
@@ -37,5 +41,20 @@ export class DeviceService {
                     reject(error);
                 });
         });
+    }
+
+    editDevice(id: string, name: string) {
+        let request = new editDeviceRequest();
+        request.name = name;
+
+        return new Promise((resolve, reject) => {
+            this.apiHttpService.putForm('/Application/Device/' + id, request)
+                .subscribe(response => {
+                    resolve(response);
+                },
+                error => {
+                    reject(error);
+                })
+        })
     }
 }
