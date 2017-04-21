@@ -3,7 +3,6 @@
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-    margin-bottom: 346px;
 }
 
 .panel {
@@ -26,4 +25,8 @@ div {
 
 .warning {
     color: darkred;
+}
+
+.register-wrapper {
+    min-height: 760px;
 }
