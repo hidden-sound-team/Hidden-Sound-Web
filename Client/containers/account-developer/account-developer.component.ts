@@ -107,6 +107,8 @@ export class AccountDeveloperComponent implements OnInit {
         this.showNotification = false;
         this.inputName = '';
         this.inputRedirect = '';
+        this.inputDescription = '';
+        this.inputWebsite = '';
         
         this.modal.show();
     }
