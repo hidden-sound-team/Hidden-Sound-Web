@@ -12,6 +12,7 @@ html, body {
 #main {
     overflow:auto;
     padding-top: 80px;
+    min-height: 840px;
 }
 
 .btn.round {
