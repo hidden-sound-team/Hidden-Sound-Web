@@ -24,3 +24,5 @@ export * from './account-change-password/account-change-password.component';
 export * from './account-developer/account-developer.component';
 export * from './account-devices/account-devices.component';
 export * from './account-authorized-apps/account-authorized-apps.component';
+
+export * from './project/project.component';

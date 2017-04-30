@@ -1,0 +1,12 @@
+.project-wrapper {
+    margin-top: -80px;
+}
+
+.picture > img {
+    width: 100px;
+    height: 100px;
+}
+
+section {
+    min-height: 200px;
+}

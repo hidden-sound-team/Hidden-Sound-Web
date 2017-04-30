@@ -38,7 +38,8 @@ import {
     AccountChangePasswordComponent,
     AccountDeveloperComponent,
     QRComponent,
-    AccountAuthorizedAppsComponent
+    AccountAuthorizedAppsComponent,
+    ProjectComponent
     
 } from 'app-containers';
 
@@ -86,6 +87,7 @@ const ROUTES: Route[] = [
         { path: '', pathMatch: 'full', redirectTo: 'info' }
     ]},
     { path: 'authorize', component: AuthorizeComponent, data: { title: 'Authorize' }, canActivate: [AuthenticatedGuard]},
+    { path: 'project', component: ProjectComponent, data: { tittle: 'The Project' }},
     { path: 'logout', redirectTo: 'home' },
     { path: '**', redirectTo: 'not-found' }
 ];
@@ -115,7 +117,8 @@ const COMPONENTS = [
     AccountChangePasswordComponent,
     AccountDeveloperComponent,
     AccountAuthorizedAppsComponent,
-    QRComponent
+    QRComponent,
+    ProjectComponent
 ];
 
 const PROVIDERS = [

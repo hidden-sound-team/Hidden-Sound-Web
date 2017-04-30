@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
     styles: [require('./footer.component.css')]
 })
 export class FooterComponent implements OnInit {
-    constructor() { }
+    show: boolean = true;
 
-    ngOnInit() { }
+    constructor(private router: Router) {
+        this.router.events.subscribe((val) => {
+            if (val.url === '/project') {
+                this.show = false;
+            }
+        });
+     }
+
+    ngOnInit() { 
+
+    }
 }

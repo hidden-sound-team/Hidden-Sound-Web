@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-default">
+<nav class="navbar navbar-fixed-top navbar-default" *ngIf="show">
     <div class="container">
         <div class="logo navbar-header">
             <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed">
@@ -35,11 +35,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right nav-menu">
                 <li>
+                    <a [routerLink]="['/project']">The Project</a>
+                </li>
+                <li>
                     <a pageScroll [routerLink]="['/home']" href="#about" (click)="isCollapsed = true">About Hidden Sound</a>
                 </li>
                 <li>
                     <a pageScroll [routerLink]="['/home']" href="#how" (click)="isCollapsed = true">How it works</a>
-                </li>
+                </li>                
                 <!--<li *ngIf="loggedIn$">
                     <a href="{{devDocUrl}}" target="_blank">API Documentation</a>
                 </li>-->

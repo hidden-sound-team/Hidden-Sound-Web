@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -14,6 +15,7 @@ export class NavMenuComponent implements OnInit {
 
     public logoImageUrl = require('../../images/logo-large.png');
     public isCollapsed: boolean = true;
+    public show: boolean = true;
 
     loggedIn$: {};
     user$: {};
@@ -21,7 +23,13 @@ export class NavMenuComponent implements OnInit {
     private devDocUrl: string;
 
     // Use "constructor"s only for dependency injection
-    constructor(private store: Store<AppState>, private authService: AuthService, private appConfig: AppConfig) {}
+    constructor(private store: Store<AppState>, private authService: AuthService, private appConfig: AppConfig, private router: Router) {
+        this.router.events.subscribe((val) => {
+            if (val.url === '/project') {
+                this.show = false;
+            }
+        });
+    }
 
     // Here you want to handle anything with @Input()'s @Output()'s
     // Data retrieval / etc - this is when the Component is "ready" and wired up
