@@ -214,10 +214,6 @@ a:hover {
   min-height: auto;
 }
 
-.center-align a .fa {
-  font-size: 7em;
-}
-
 section:nth-child(odd) {
   background-color: #f6f9fc;
   margin-right: -15px;
@@ -254,21 +250,22 @@ section:nth-child(odd) {
   color: #390a8c;
 }
 
-.modal {
-  background-color: rgba(57, 10, 140, 0.7); 
-}
-.project-wrapper app-modal .modal {
-    background-color: pink;
-}
-.modal-dialog {
-  width: 100%;
-  margin: auto;
+a:hover {
+  cursor: pointer;
 }
 
-.modal-content {
-  background-color: none;
+#demo .container .list ul li {
+  font-size: 30px;
+  padding-bottom: 10px;
 }
 
+#demo .container .list ul li a .fa {
+  padding-right: 10px;
+}
+
+a.btn-purple {
+  color: #fff;
+}
 
 /* BUSINESS CARDS*/
 .bussinesscard {
@@ -484,5 +481,26 @@ section:nth-child(odd) {
 
   .right-card {
     left: 70%;
+  }
+}
+
+@media (max-height: 900px) {
+  video {
+    height: 600px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  video {
+    width: 900px;
+  }
+
+  .left-card {
+    left: 24%
+  }
+
+  .right-card {
+    left: 76%;
   }
 }

@@ -330,75 +330,56 @@
             <div class="title row">
                 Demo
             </div>
-            <div>
+            <div class="list center-align">
                 <ul>
                     <li>
                         <a href="https://github.com/hidden-sound-team/Hidden-Sound-Android/releases" target="_blank">
-                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                            &nbsp;<span style="font-size: 36px; padding-left: 5px;"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                            <!--<i class="fa fa-tablet" aria-hidden="true"></i>-->
                             Mobile App
                         </a>
                     </li>
                     <li>
                         <a href="http://vendor-hiddensound.azurewebsites.net/" target="_blank">
-                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                            <i class="fa fa-shopping-cart fa-flip-horizontal" aria-hidden="true"></i>
                             Vendor Site    
                         </a>
                     </li>
                     <li>
-                        <a (click)="showFirstVideo()"><i class="fa fa-play" aria-hidden="true"></i>Linking your first device</a>
+                        <a (click)="showFirstVideo()">
+                            &nbsp;<i class="fa fa-play" aria-hidden="true"></i>
+                            Linking your first device
+                        </a>
                     </li>
                     <li>
-                        <a (click)="showSecondVideo()"><i class="fa fa-play" aria-hidden="true"></i>Changing your device</a>
+                        <a (click)="showSecondVideo()">
+                            &nbsp;<i class="fa fa-play" aria-hidden="true"></i> 
+                            Changing your device
+                        </a>
                     </li>
                 </ul>
             </div>
-            <!--<div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div class="row center-align"><h3>Mobile App</h3></div>
-                    <div class="row center-align img-link" style="font-size: 2.5em;">
-                        <a href="https://github.com/hidden-sound-team/Hidden-Sound-Android/releases" target="_blank"><i class="fa fa-mobile" aria-hidden="true"></i></a>
-                    </div>
-                </div>  
-                <div class="col-md-6 col-xs-12">
-                    <div class="row center-align"><h3>Vendor Site</h3></div>
-                    <div class="row center-align img-link" style="padding-top: 10px;">
-                        <a href="http://vendor-hiddensound.azurewebsites.net/" target="_blank"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                    </div>
-                </div>                       
-            </div>
-            <br><br>-->
-            <!--<div class="row center-align"><h1>Videos</h1></div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <video controls>
-                        <source src='videos/first-run.mp4' type="video/mp4">                        
-                        <source src='videos/first-run.ogg' type="video/ogg">
-                        Ooops
-                    </video>
-                    <video controls>
-                        <source src='videos/change-device.mp4' type="video/mp4">                        
-                        Ooops
-                    </video>
-                </div>
-                video 2
-            </div>-->
+        </div>
+        <br><br><br>
+        <div class="center-align">
+            <a class="btn btn-purple round" [routerLink]="['/home']" style="font-size:18px;">Return to Main Site</a>
         </div>
     </section>
 
-    <app-modal>
+    <app-modal-project>
         <div class="app-modal-header">
             <div *ngIf="showFirstVid"><h2>Linking Your First Device</h2></div>
             <div *ngIf="!showFirstVid"><h2>Changing Your Device</h2></div>
         </div>
         <div class="app-modal-body">
-            <div *ngIf="showFirstVid">
+            <div *ngIf="showFirstVid" class="center-align">
                 <video controls>
                     <source src='videos/first-run.mp4' type="video/mp4">   
                     <source src='videos/first-run.ogg' type="video/ogg">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div *ngIf="!showFirstVid">
+            <div *ngIf="!showFirstVid" class="center-align">
                 <video controls>
                     <source src='videos/change-device.mp4' type="video/mp4">   
                     <source src='videos/change-device.ogg' type="video/ogg">
@@ -406,6 +387,5 @@
                 </video>
             </div>
         </div>
-        <div class="app-modal-footer"></div>
-    </app-modal>
+    </app-modal-project>
 </div>

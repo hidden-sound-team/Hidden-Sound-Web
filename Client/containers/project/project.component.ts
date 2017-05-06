@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { ModalComponent } from 'app-components';
+import { ModalProjectComponent } from 'app-components';
 
 @Component({
     selector: 'app-project',
@@ -22,8 +22,8 @@ export class ProjectComponent implements OnInit {
 
     public showFirstVid: boolean = true;
 
-    @ViewChild(ModalComponent)
-    public readonly modal: ModalComponent;
+    @ViewChild(ModalProjectComponent)
+    public readonly modal: ModalProjectComponent;
 
     constructor() { }
 

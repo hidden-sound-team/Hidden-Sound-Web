@@ -15,4 +15,5 @@
 export * from './footer/footer.component';
 export * from './navmenu/navmenu.component';
 export * from './modal/modal.component';
+export * from './modal-project/modal-project.component';
 

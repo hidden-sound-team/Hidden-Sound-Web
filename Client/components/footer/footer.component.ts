@@ -14,6 +14,9 @@ export class FooterComponent implements OnInit {
             if (val.url === '/project') {
                 this.show = false;
             }
+            else {
+                this.show = true;
+            }
         });
      }
 

@@ -22,7 +22,7 @@ import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { BaseSharedModule, AppComponent, appReducer } from 'app';
 
 // Component imports
-import { NavMenuComponent, FooterComponent, ModalComponent } from 'app-components';
+import { NavMenuComponent, FooterComponent, ModalComponent, ModalProjectComponent } from 'app-components';
 
 import { AppConfig, AuthenticatedGuard, NonAuthenticatedGuard } from 'app';
 
@@ -107,6 +107,7 @@ const COMPONENTS = [
     NavMenuComponent,
     FooterComponent,
     ModalComponent,
+    ModalProjectComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
