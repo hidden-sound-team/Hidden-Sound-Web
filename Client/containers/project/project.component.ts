@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { ModalComponent } from 'app-components';
 
 @Component({
     selector: 'app-project',
@@ -18,7 +20,22 @@ export class ProjectComponent implements OnInit {
     public createTran = require('../../images/info/create-tran.png');
     public sysArch = require('../../images/info/sys-arch.png');
 
+    public showFirstVid: boolean = true;
+
+    @ViewChild(ModalComponent)
+    public readonly modal: ModalComponent;
+
     constructor() { }
 
     ngOnInit() { }
+
+    showFirstVideo() {
+        this.showFirstVid = true;
+        this.modal.show();
+    }
+
+    showSecondVideo() {
+        this.showFirstVid = false;
+        this.modal.show();
+    }
 }

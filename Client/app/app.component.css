@@ -5,8 +5,8 @@ html, body {
 
 #wrap {
   min-height: 100%;
-  margin-bottom: -329px;
-  padding-bottom: 329px;
+  /*margin-bottom: -329px;
+  padding-bottom: 329px;*/
 }
 
 #main {

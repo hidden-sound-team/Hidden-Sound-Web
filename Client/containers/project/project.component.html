@@ -1,6 +1,10 @@
 <div class="container-fluid project-wrapper">
-    <section id="banner">
-        BANNER
+    <section id="banner" class="parallax">
+        <div class="header-text">
+            <h1>Hidden Sound</h1>
+            <h2>Oakland University</h2>
+            <h3>Senior Design Project</h3>
+        </div>
     </section>
     <!--<section id="team">
             <div class="container">
@@ -87,7 +91,7 @@
                     </div>	
                     <div class="contact">
                         <ul>
-                            <li><span class="btn-floating btn-small btn-maj"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>Computer Science</li>
+                            <li><span class="btn-floating btn-small btn-maj"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span> Computer Science</li>
                             <li>
                                 <span class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></span>
                                 <a href="https://www.linkedin.com/in/mark-easterly-5818bab1/">/mark-easterly-5818bab1</a>
@@ -260,6 +264,33 @@
             <div class="title row">
                 Technology
             </div>
+            <div class="list">
+                <div>
+                    <ul>
+                        <li><h3>IDEs</h3></li>
+                        <li>Visual Studio 2015</li>
+                        <li>Visual Studio Code</li>
+                        <li>Andriod Studio</li>
+                    </ul>       
+                </div>
+                <div>
+                    <ul>
+                        <li><h3>Languages & Frameworks</h3></li>
+                        <li>ASP.NET Core + C#</li>
+                        <li>Angular 2 + TypeScript</li>
+                        <li>Android Java</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><h3>Team Management</h3></li>
+                        <li>VS Team Services</li>
+                        <li>Microsoft Azure</li>
+                        <li>Slack</li>
+                        <li>GitHub</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
     <section id="sys-arch">
@@ -268,7 +299,9 @@
                 <div class="title row">
                     System Architecture
                 </div>
-                <img [src]="sysArch">
+                <div class="center-align">
+                    <img [src]="sysArch">
+                </div>
             </div>
         </div>
     </section>
@@ -277,7 +310,9 @@
             <div class="title row">
                 Build and Release Process
             </div>
-            <img [src]="buildRelease">
+            <div class="center-align">
+                <img [src]="buildRelease">
+            </div>
         </div>
     </section>
     <section id="create-tran">
@@ -285,7 +320,9 @@
             <div class="title row">
                 Create Transaction
             </div>
-            <img [src]="createTran">
+            <div class="center-align">
+                <img [src]="createTran">
+            </div>
         </div>
     </section>
     <section id="demo">
@@ -293,6 +330,82 @@
             <div class="title row">
                 Demo
             </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="https://github.com/hidden-sound-team/Hidden-Sound-Android/releases" target="_blank">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                            Mobile App
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://vendor-hiddensound.azurewebsites.net/" target="_blank">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                            Vendor Site    
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="showFirstVideo()"><i class="fa fa-play" aria-hidden="true"></i>Linking your first device</a>
+                    </li>
+                    <li>
+                        <a (click)="showSecondVideo()"><i class="fa fa-play" aria-hidden="true"></i>Changing your device</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="row center-align"><h3>Mobile App</h3></div>
+                    <div class="row center-align img-link" style="font-size: 2.5em;">
+                        <a href="https://github.com/hidden-sound-team/Hidden-Sound-Android/releases" target="_blank"><i class="fa fa-mobile" aria-hidden="true"></i></a>
+                    </div>
+                </div>  
+                <div class="col-md-6 col-xs-12">
+                    <div class="row center-align"><h3>Vendor Site</h3></div>
+                    <div class="row center-align img-link" style="padding-top: 10px;">
+                        <a href="http://vendor-hiddensound.azurewebsites.net/" target="_blank"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                    </div>
+                </div>                       
+            </div>
+            <br><br>-->
+            <!--<div class="row center-align"><h1>Videos</h1></div>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <video controls>
+                        <source src='videos/first-run.mp4' type="video/mp4">                        
+                        <source src='videos/first-run.ogg' type="video/ogg">
+                        Ooops
+                    </video>
+                    <video controls>
+                        <source src='videos/change-device.mp4' type="video/mp4">                        
+                        Ooops
+                    </video>
+                </div>
+                video 2
+            </div>-->
         </div>
     </section>
+
+    <app-modal>
+        <div class="app-modal-header">
+            <div *ngIf="showFirstVid"><h2>Linking Your First Device</h2></div>
+            <div *ngIf="!showFirstVid"><h2>Changing Your Device</h2></div>
+        </div>
+        <div class="app-modal-body">
+            <div *ngIf="showFirstVid">
+                <video controls>
+                    <source src='videos/first-run.mp4' type="video/mp4">   
+                    <source src='videos/first-run.ogg' type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div *ngIf="!showFirstVid">
+                <video controls>
+                    <source src='videos/change-device.mp4' type="video/mp4">   
+                    <source src='videos/change-device.ogg' type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="app-modal-footer"></div>
+    </app-modal>
 </div>
